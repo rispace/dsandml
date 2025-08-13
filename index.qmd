@@ -1,0 +1,216 @@
+---
+title: "Data Science and Machine Learning Algorithms"
+search: true
+---
+
+
+<p align="center">
+  <img src="/_assets/images/uc.jpeg" alt="Post under construction" width="400" height="400"/>
+</p>
+
+<p style="text-align: justify">
+    This page is my personal repository of most common and useful machine learning algorithms using Python and other data science tricks and tip
+</p>  
+
+
+## Data Science Algebra  
+
+- **[Eigen Decomposition](/posts/eigendecomposition/index.qmd){target="_blank" style="text-decoration:none"}**  
+
+## **Data Science**  
+Data science involves extracting knowledge from structured and unstructured data. It combines principle from statistics, machine learning, data analysis, and domain knoledge to understand and interpret the data
+
+#### Data Collection \& Accuisition  
+
+- **[Web srcaping](/posts/datacollection/index.qmd){target="_blank" style="text-decoration:none"}:** Data collection through Webscraping  
+- API integration  
+- Data Lakes, Data Warehouse  
+
+#### Data Cleaning \& Preprocessing  
+
+This involves *[Handling Missing Values, Data Transformation](/codepages/titanic/index.qmd#handling-missing-data){target="_blank" style="text-decoration:none"}, [Feature Engineering](/posts/eda/index.qmd#feature-engineering){target="_blank" style="text-decoration:none"}, [Encoding Categorical Variables](/codepages/titanic/index.qmd){target="_blank" style="text-decoration:none"}, Handling Outliers*  
+
+#### Exploratory Data Analysis (EDA)  
+
+This usually includes the *[Descriptive Statistics](/posts/eda/index.qmd#discriptive-statistics){target="_blank" style="text-decoration:none"}, [Data Visualization, Identifying Patterns, Trends, Correlations](/posts/dataviz/index.qmd){target="_blank" style="text-decoration:none"}* of the features and labels.  
+  
+#### Statistical Methods  
+
+- **[ANOVA - Categorical Features'](/posts/dataengineering/index.qmd){target="_blank" style="text-decoration:none"}:** How do we treat the categorical features for our data science project?
+- Hypothesis Testing  
+- Probability Distributions  
+- Inferential Statistics  
+- Sampling Methods  
+
+#### Big Data Techniques  
+
+- Hadoop, Spark  
+- Distributed Data Storage  (e.g., HDFS, NoSQL)
+- Data PipeLines, ETL (Extract, Transform, Load)
+
+## **$\text{Machine Learning Algorithms}$**  
+
+### $\text{Supervised Learning}$  
+(Training with labeled data: input-output pairs)  
+
+#### **Regression**  
+
+::::{.grid}
+:::{.g-col-6}
+##### Parametric    
+
+- [Simple Linear Regression](/posts/simplelinreg/index.qmd){target="_blank" style="text-decoration:none"}
+- [Multiple Linear Regression](/posts/multiplelinreg/index.qmd){target="_blank" style="text-decoration:none"}
+- [Polynomial Regression](/posts/polyreg/index.qmd){target="_blank" style="text-decoration:none"}
+:::  
+
+:::{.g-col-6}
+##### Non-Parametric  
+
+- [K-Nearest Neighbor (KNN) Regression](/posts/knn/index.qmd){target="_blank" style="text-decoration:none"}
+- [Decesion Trees Regression](/posts/decisiontree/index.qmd){target="_blank" style="text-decoration:none"}
+- [Random Forest Regression](/posts/randomforest/index.qmd){target="_blank" style="text-decoration:none"}
+- [Support Vector Machine (SVM) Regression](/posts/svm/index.qmd){target="_blank" style="text-decoration:none"}
+:::
+::::  
+
+#### **Classification**  
+
+::::{.columns}
+:::{.column width="33%"}
+##### Parametric    
+
+- [Logistic Regression](/posts/logreg/index.qmd){target="_blank" style="text-decoration:none"}
+- [Naive Bayes](/posts/naivebayes/index.qmd){target="_blank" style="text-decoration:none"}
+- [Linear Discriminant Analysis (LDA)](/posts/lda/index.qmd){target="_blank" style="text-decoration:none"}  
+- Quadratic Discriminant Analysis (QDA)
+:::  
+
+:::{.column width="33%"}
+##### Non-Parametric  
+
+- [KNN Classification](/posts/knn/index.qmd){target="_blank" style="text-decoration:none"}
+- [Decision Tree Classification](/posts/decisiontree/index.qmd){target="_blank" style="text-decoration:none"}
+- [Random Forest Classification](/posts/randomforest/index.qmd){target="_blank" style="text-decoration:none"}
+- [Support Vector Machine (SVM) Classification](/posts/svm/index.qmd){target="_blank" style="text-decoration:none"}
+:::  
+
+:::{.column width="33%"}
+##### Multi-Class Classification  
+
+- [Multi-class Classification](/posts/multiclass/index.qmd){target="_blank" style="text-decoration:none"}
+:::  
+
+
+:::{.column width="33%"}
+##### Bayesian or Probabilistic Classification  
+
+- [What is Bayesian or Probabilistic Classification?](/posts/bayesianclassification/index.qmd){target="_blank" style="text-decoration:none"}    
+- [Linear Discriminant Analysis (LDA)](/posts/lda/index.qmd){target="_blank" style="text-decoration:none"}  
+- Quadratic Discriminant Analysis (QDA)  
+- Naive Bayes 
+- Bayesian Network Classifier (Tree Augmented Naive Bayes (TAN))
+:::  
+
+:::{.column width="33%"}
+##### Non-probabilistic Classification  
+
+- [Support Vector Machine (SVM) Classification](/posts/svm/index.qmd){target="_blank" style="text-decoration:none"}  
+- [Decision Tree Classification](/posts/decisiontree/index.qmd){target="_blank" style="text-decoration:none"}  
+- [Random Forest Classification](/posts/randomforest/index.qmd){target="_blank" style="text-decoration:none"}  
+- [KNN Classification](/posts/knn/index.qmd){target="_blank" style="text-decoration:none"}  
+- Perceptron
+:::  
+
+:::{.column width="33%"}
+##### Ensemble Methods  
+
+- [Bagging: Decision Tree Classification](/posts/decisiontree/index.qmd){target="_blank" style="text-decoration:none"}  
+- [Bagging: Random Forest Classification](/posts/randomforest/index.qmd){target="_blank" style="text-decoration:none"}  
+- [Boosting: Adaptive Boosting](/posts/adaboost/index.qmd){target="_blank" style="text-decoration:none"}  
+:::
+::::  
+
+
+### $\text{Unsupervised Learning}$  
+(Training with unlabeled data)  
+
+::::{.columns}
+:::{.column width="33%"}
+##### Clustering      
+
+- [k-Means Clustering](/posts/kmeans/index.qmd){target="_blank" style="text-decoration:none"}  
+- Hierarchical Clustering  
+- DBSCAN (Density-Based Spatial Clustering)  
+- Gaussian Mixture Models (GMM)
+:::  
+
+:::{.column width="33%"}
+##### Dimensionality Reduction  
+
+- [Principal Component Analysis](/posts/pca/index.qmd){target="_blank" style="text-decoration:none"}  
+- Latent Dirichlet Allocation (LDA)
+- t-SNE (t-distributed Stochastic Neihbor Embedding)  
+- Factor Analysis  
+- Autoencoders  
+:::  
+
+:::{.column width="33%"}
+##### Anomaly Detection  
+
+- Isolation Forests  
+- One-Class SVM
+:::
+::::    
+
+### $\text{Semi-Supervised Learning}$  
+(Combination of labeled and unlabeled data)  
+
+- Self-training  
+- Co-training  
+- Label Propagation 
+
+### $\text{Reinforcement Learning}$  
+(Learning via rewards and penalties)  
+
+- Markov Decision Process (MDP)  
+- Q-Learning  
+- Deep Q-Networks (DQN)  
+- Policy Gradient Method  
+
+## **$\text{Deep Learnings}$**  
+
+### **$\text{Artificial Neural Networks (ANN)}$**    
+
+- [Regression](/posts/ann-linreg/index.qmd){target="_blank" style="text-decoration:none"}  
+- [Classification](/posts/ann-classification1/index.qmd){target="_blank" style="text-decoration:none"}  
+
+### **$\text{Convolutional Neural Networks (CNN)}$**     
+  
+### **$\text{Recurrent Neural Networks (RNN)}$**    
+### **$\text{Long Short-Term Memory (LSTM)}$**    
+### **$\text{Generative Adversarial Networks (GAN)}$**    
+
+## **$\text{Model Evaluation and Fine Tuning}$**  
+
+#### Model Evaluation Metrics  
+
+- **For Regression:** Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), $R^2$ score  
+- **For Classification:** [Accuracy, Precision, Recall, F1 Score, ROC-AUC](/posts/classificationmetrics/index.qmd){target="_blank" style="text-decoration:none"}    
+- **Cross-validation:** kFold, Stratified k-fold, leave-one-out  
+
+#### Model Optimization  
+
+- **Bias-Variance:** [Bias Variance Trade off](/posts/biasvariance/index.qmd){target="_blank" style="text-decoration:none"}  
+- **Hyperparameter Tuning:** Grid Search, Random Search, Bayesian Optimization  
+- **Features Selection Techniques:** Recursive Feature Elimination (RFE), [L1 or Rasso Regurlarization](/posts/regularization/index.qmd){target="_blank" style="text-decoration:none"}, [L2 or Ridge Regularization](/posts/regularization/index.qmd){target="_blank" style="text-decoration:none"}  
+- **Model Interpretability:** SHAP (Shapley values), LIME (Local Interpretable Model-agnostic Explanations)  
+
+#### Ensemble Methods  
+
+- **Bagging:** [Random Forest](/posts/randomforest/index.qmd){target="_blank" style="text-decoration:none"}, Bootstrap Aggregating  
+- **Boosting:** [Gradient Boosting](/posts/gradientboosting/index.qmd){target="_blank" style="text-decoration:none"}, AdaBoost, XGBoost, CatBoost  
+- **Stacking:** Stacked Generalization
+
+
+

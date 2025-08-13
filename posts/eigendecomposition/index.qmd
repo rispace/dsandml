@@ -1,0 +1,282 @@
+---
+title: "Matrix decomposition: Understanding Eigendecomposition - A Fundamental Tool in Linear Algebra"
+date: "2025-08-09"
+author: Rafiq Islam
+categories: [Data Science, Machine Learning, Artificial Intelligence, Data Engineering]
+citation: true
+search: true
+lightbox: true
+image: dis.png
+listing: 
+    contents: "/../../posts"
+    max-items: 3
+    type: grid
+    categories: true
+    date-format: full
+    fields: [image, date, title, author, reading-time]  
+format: 
+    html: default
+    ipynb: default
+    docx: 
+      toc: true
+      adsense:
+        enable-ads: false
+    epub:
+      toc: true
+      adsense:
+        enable-ads: false
+    pdf: 
+      toc: true
+      pdf-engine: pdflatex
+      adsense:
+        enable-ads: false
+      number-sections: false
+      colorlinks: true
+      cite-method: biblatex
+toc-depth: 4
+---  
+
+<p style="text-align:justify">
+In many areas of data science, machine learning, and applied mathematics, **eigendecomposition** is a core technique for understanding and transforming data. Whether you’re working with dimensionality reduction (like PCA), solving systems of differential equations, or analyzing graph structures, chances are you’ll run into eigenvalues and eigenvectors.
+</p>
+
+---
+
+### What Is Eigendecomposition?
+
+Eigendecomposition is a way of **breaking down** a square matrix into a set of simpler components based on its **eigenvalues** and **eigenvectors**.
+
+For a given square matrix $A$, if we can find a basis of eigenvectors, then $A$ can be expressed as:
+
+$$
+A = Q \Lambda Q^{-1}
+$$
+
+Where:
+
+* $Q$ is a matrix whose columns are the eigenvectors of $A$.
+* $\Lambda$ (capital lambda) is a **diagonal matrix** containing the eigenvalues of $A$ along its diagonal.
+* $Q^{-1}$ is the inverse of $Q$.
+
+This is essentially rewriting $A$ as a combination of **scaling operations** along special directions (the eigenvectors).
+
+
+### Eigenvalues and Eigenvectors Recap
+
+Before decomposition, we need to understand the building blocks:
+
+Given a square matrix $A$, an **eigenvector** $\mathbf{v}$ and **eigenvalue** $\lambda$ satisfy:
+
+$$
+A \mathbf{v} = \lambda \mathbf{v}
+$$
+
+* $\mathbf{v}$ is a direction in which the transformation $A$ acts by **stretching or compressing** without rotating it.
+* $\lambda$ tells us how much $A$ scales $\mathbf{v}$.
+
+Example:
+If $A \mathbf{v} = 3 \mathbf{v}$, then $\mathbf{v}$ is scaled by a factor of 3 under $A$.
+
+
+### When Can We Use Eigendecomposition?
+
+Not all matrices can be decomposed this way.
+
+* Eigendecomposition is possible for **diagonalizable matrices**, i.e., matrices with enough linearly independent eigenvectors to form a basis.
+* **Symmetric matrices** (in real-valued cases) are always diagonalizable and have orthogonal eigenvectors.
+
+If a matrix is **defective** (doesn’t have enough eigenvectors), we can’t use eigendecomposition directly — but other decompositions (like Jordan decomposition or SVD) still work.
+
+
+### Why Is This Useful?
+
+Eigendecomposition lets us **simplify matrix operations** by working in a new coordinate system defined by eigenvectors.
+
+If:
+
+$$
+A = Q \Lambda Q^{-1}
+$$
+
+Then:
+
+$$
+A^k = Q \Lambda^k Q^{-1}
+$$
+
+Where $\Lambda^k$ is just the diagonal matrix with each eigenvalue raised to the $k$-th power. This makes repeated multiplications or exponentials of matrices much easier.
+
+
+### Applications in Data Science and Beyond
+
+#### **Principal Component Analysis (PCA)**
+
+* PCA uses eigendecomposition of the covariance matrix to find the **principal directions** of data variability.
+* Eigenvectors correspond to directions of maximum variance; eigenvalues tell you how much variance is captured.
+
+#### **Solving Systems of Differential Equations**
+
+* Linear ODE systems can be solved by diagonalizing the system matrix.
+
+#### **Graph Analysis**
+
+* In spectral graph theory, eigenvalues of adjacency or Laplacian matrices reveal connectivity and clustering properties.
+
+#### **Markov Chains**
+
+* The steady state of a Markov process is related to the eigenvector corresponding to eigenvalue $\lambda = 1$.
+
+---
+
+### A Simple Example
+
+Let’s take:
+
+$$
+A = \begin{bmatrix} 4 & 1 \\ 2 & 3 \end{bmatrix}
+$$
+
+1. **Find eigenvalues** by solving:
+
+$$
+\det(A - \lambda I) = 0
+$$
+
+$$
+(4 - \lambda)(3 - \lambda) - 2 = \lambda^2 - 7\lambda + 10 = 0
+$$
+
+$$
+\lambda_1 = 5, \quad \lambda_2 = 2
+$$
+
+2. **Find eigenvectors** by solving $(A - \lambda I)\mathbf{v} = 0$.
+
+* For $\lambda = 5$: eigenvector $\mathbf{v}_1 = [1, 1]^T$
+* For $\lambda = 2$: eigenvector $\mathbf{v}_2 = [-1, 2]^T$
+
+3. **Form Q and $\Lambda$**:
+
+$$
+Q = \begin{bmatrix} 1 & -1 \\ 1 & 2 \end{bmatrix}, \quad
+\Lambda = \begin{bmatrix} 5 & 0 \\ 0 & 2 \end{bmatrix}
+$$
+
+4. **Check**:
+
+$$
+A = Q \Lambda Q^{-1}
+$$
+
+---  
+
+### Visualization. 
+
+
+```{python}
+#| code-fold: true
+#| echo: false
+#| output: asis
+#| fig-align: center
+import matplotlib.pyplot as plt
+import numpy as np
+from mywebstyle import plot_style
+plot_style('#f4f4f4')
+
+theta = np.linspace(0,2*np.pi, 100)
+circle_pts = np.vstack((np.cos(theta),np.sin(theta)))
+A = np.array([[4, 1],
+              [2, 3]])
+trans_pts = A@ circle_pts
+v1 = np.array([1,1])
+v1_unit = v1/np.linalg.norm(v1)
+v2 = np.array([-1,2])
+v2_unit = v2/np.linalg.norm(v2)
+
+fig, axs = plt.subplots(1,2, figsize=(9,4))
+
+axs[0].plot(circle_pts[0],circle_pts[1], label='Unit Circle')
+axs[0].arrow(0,0,v1_unit[0], v1_unit[1], head_width=0.1, color='r',label='(1,1) Eigenvector$v_1$')
+axs[0].arrow(0,0,v2_unit[0], v2_unit[1], head_width=0.1, color='g',label='(-1,2) Eigenvector $v_2$')
+axs[0].set_xlim([-3,3])
+axs[0].set_ylim([-3,3])
+axs[0].set_aspect('equal')
+axs[0].grid(True)
+axs[0].legend()
+axs[0].set_title('Original Unit Circle')
+
+axs[1].plot(trans_pts[0],trans_pts[1], label='Transformation', color='b')
+axs[1].set_xlim([-6,6])
+axs[1].set_ylim([-6,6])
+axs[1].set_aspect('equal')
+axs[1].grid(True)
+axs[1].legend()
+axs[1].set_title('Transformed Circle (Ellipse)')
+plt.tight_layout()
+plt.show()
+```
+
+### Key Takeaways
+
+* **Eigendecomposition = diagonalization** of a matrix via eigenvalues and eigenvectors.
+* Only works for diagonalizable matrices, but symmetric matrices are guaranteed to work.
+* Simplifies many computations, from raising matrices to powers to solving ODEs.
+* Foundation for PCA, spectral graph analysis, and many machine learning methods.
+
+---
+
+**Tip:** If your matrix isn’t diagonalizable, try **Singular Value Decomposition (SVD)** — it works for any matrix and generalizes many of the benefits of eigendecomposition.  
+
+
+**Share on**  
+
+::::{.columns}
+:::{.column width="33%"}
+<a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/eigendecomposition/" target="_blank" style="color:#1877F2; text-decoration: none;">
+ 
+{{< fa brands facebook size=3x >}}
+</a>
+ 
+:::
+ 
+:::{.column width="33%"}
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/eigendecomposition/" target="_blank" style="color:#0077B5; text-decoration: none;">
+ 
+{{< fa brands linkedin size=3x >}}
+</a>
+ 
+:::
+ 
+:::{.column width="33%"}
+<a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/eigendecomposition/" target="_blank" style="color:#1DA1F2; text-decoration: none;">
+ 
+{{< fa brands twitter size=3x >}}
+</a>
+ 
+:::
+::::
+ 
+<script src="https://giscus.app/client.js"
+        data-repo="mrislambd/mrislambd.github.io" 
+        data-repo-id="R_kgDOMV8crA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMV8crM4CjbQW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+ 
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+ src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0"></script>
+<div class="fb-comments" data-href="https://mrislambd.github.io/dsandml/posts/eigendecomposition/" data-width="750" data-numposts="5"></div>
+
+**You may also like**
+
+

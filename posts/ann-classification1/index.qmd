@@ -1,0 +1,295 @@
+---
+title: "Artificial Neural Network (ANN) - Classification 1"
+date: "2025-03-25"
+author: Rafiq Islam
+categories: [Data Science, Machine Learning, Artificial Intelligence]
+citation: true
+search: true
+lightbox: true
+image: bclass.png
+listing: 
+    contents: "/../../posts"
+    max-items: 3
+    type: grid
+    categories: true
+    date-format: full
+    fields: [image, date, title, author, reading-time]  
+format: 
+    html: default
+    ipynb: default
+    docx: 
+      toc: true
+      adsense:
+        enable-ads: false
+    epub:
+      toc: true
+      adsense:
+        enable-ads: false
+    pdf: 
+      toc: true
+      pdf-engine: pdflatex
+      adsense:
+        enable-ads: false
+      number-sections: false
+      colorlinks: true
+      cite-method: biblatex
+toc-depth: 4
+---  
+
+**Incomplete**
+
+## Binary Classification  
+
+Say we have a dataset like this
+
+```{python}
+#| code-fold: true
+import torch
+import numpy as np
+import matplotlib.pyplot as plt
+from mywebstyle import plot_style
+plot_style('#f4f4f4')
+
+np.random.seed(0)
+n=100
+center1 = [2, 2]
+center2 = [0, -2]
+stdv = 1.5
+cluster1 = [
+    center1[0] + np.random.randn(n)*stdv, center1[1] + np.random.randn(n)*stdv
+]
+cluster2 = [
+    center2[0] + np.random.randn(n)*stdv, center2[1] + np.random.randn(n)*stdv
+]
+
+data_matrix = np.hstack((cluster1, cluster2)).T
+data = torch.tensor(data_matrix).float()
+labels = torch.tensor(
+    np.vstack((np.zeros((n,1)),(np.ones((n,1)))))
+).float()
+
+plt.scatter(
+    data[np.where(labels==0)[0],0],
+    data[np.where(labels==0)[0],1],
+    color='red',
+    label = 'class 1'
+)
+plt.scatter(
+    data[np.where(labels==1)[0],0],
+    data[np.where(labels==1)[0],1],
+    color='blue',
+    label = 'class 2'
+)
+plt.legend()
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.show()
+```
+
+and we want to make an ANN classifier model with this data. So, we consider a two layer neural network
+
+```{python}
+#| echo: false
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+from mywebstyle import plot_style
+plot_style('#f4f4f4')
+
+# Create figure and axis
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.set_xlim(0, 12)
+ax.set_ylim(0, 7)
+ax.axis('off')
+
+# Draw arrow
+def draw_arrow(start, end, label=None, color='black'):
+    ax.annotate('', xy=end, xytext=start,
+                arrowprops=dict(arrowstyle='->', color=color, lw=2))
+    if label:
+        mx, my = (start[0]+end[0])/2, (start[1]+end[1])/2
+        ax.text(mx, my+0.3, label, ha='center', fontsize=12)
+
+# Draw nodes
+def draw_node(center, text, color='lightgray', edge_color='black'):
+    circle = patches.Circle(center, radius=0.5, facecolor=color, edgecolor=edge_color, linewidth=2)
+    ax.add_patch(circle)
+    ax.text(center[0], center[1], text, fontsize=16, ha='center', va='center')
+
+# Input labels
+ax.text(*(0.5,5.5), '$X_{{10}}$', fontsize=16, ha='right', va='center')
+ax.text(*(0.5,3.5), '$X_{{11}}$', fontsize=16, ha='right', va='center')
+ax.text(*(0.5,1.5), '$X_{{12}}$', fontsize=16, ha='right', va='center')
+ax.text(*(4.5,5.5), '$X_{{20}}$', fontsize=16, ha='right', va='center')
+
+# Draw all arrows with labels
+draw_arrow((0.5, 5.5), (2,3.5), '$w_{10}$', color='red')
+draw_arrow((0.5, 3.5), (2,3.5), '$w_{11}$', color='red')
+draw_arrow((0.5, 1.5), (2,3.5), '$w_{12}$', color='red')
+draw_arrow((4.5, 5.5), (6,3.5), '$w_{23}$', color='red')
+draw_arrow((3,3.5), (4,3.5))
+draw_arrow((5,3.5), (6,3.5), '$w_{24}$', color='green')
+draw_arrow((7,3.5), (8,3.5))
+draw_arrow((9,3.5),(10,3.5))
+
+# Draw all nodes
+draw_node((2.5,3.5), '∑', color='lightgray')
+ax.text(*(3,1.5), 'Linear', fontsize=16, ha='right', va='center')
+draw_node((4.5, 3.5), 'ReLU', color='honeydew', edge_color='darkgreen')
+ax.text(*(5.2,1.5), 'ReLU(x)', fontsize=16, ha='right', va='center')
+draw_node((6.5,3.5), '∑', color='lightgray')
+ax.text(*(7,1.5), 'Linear', fontsize=16, ha='right', va='center')
+draw_node((8.5,3.5), 'Sig(x)', color='mistyrose', edge_color='red')
+ax.text(*(9,1.5), 'Sigmoid', fontsize=16, ha='right', va='center')
+
+# Output label
+ax.text(*(10.3,3.5), '$\\hat{y}$', fontsize=16, ha='left', va='center')
+
+plt.tight_layout()
+plt.savefig('bclass.png')
+plt.show()
+```  
+
+So our model 
+
+```{python}
+import torch.nn as nn
+
+ANN_classifier = nn.Sequential(
+    nn.Linear(2,1),                 # Input layer mapping R^2--> R
+    nn.ReLU(),                      # Activation function in layer 1
+    nn.Linear(1,1),                 # Output layer
+    nn.Sigmoid()                    # Activation function in layer 2
+)
+```  
+
+Now let's train the model 
+
+```{python}
+lr = 0.01                           # Learning Rate
+loss_function = nn.BCELoss()        # Binary Cross Entropy Loss
+optimizer = torch.optim.SGD(        # Stochastic Gradient Descent Optimizer
+    ANN_classifier.parameters(),
+    lr=lr
+)
+num_epochs = 1000                   # Number of Epochs
+
+# Define losses to store the loss from each epoch
+losses = torch.zeros(num_epochs)
+for epoch in range(num_epochs):
+    # Forward Pass
+    pred = ANN_classifier(data)
+
+    # Compute loss
+    loss = loss_function(pred, labels)
+    losses[epoch] = loss 
+
+    # Backpropagation
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+plt.plot(losses.detach())
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.show()
+```  
+
+Next we compute the predictions made the model
+
+```{python}
+preds = ANN_classifier(data)
+predicted_labels = preds>0.5
+mis_classification = np.where(predicted_labels != labels)[0]
+acc = 100 - 100*len(mis_classification)/(2*100)
+plt.plot(
+    data[mis_classification,0], data[mis_classification,1],
+    'rx', markersize=12, markeredgewidth=3
+)
+plt.plot(
+    data[np.where(~predicted_labels)[0],0],
+    data[np.where(~predicted_labels)[0],1],'bs'
+)
+plt.plot(
+    data[np.where(predicted_labels)[0],0],
+    data[np.where(predicted_labels)[0],1],'ko'
+)
+plt.title(f'{acc}% correct')
+plt.show()
+```
+
+
+## Multiclass Classification  
+We use the IRIS data for this project  
+
+```{python}
+import seaborn as sns
+iris = sns.load_dataset('iris')
+sns.pairplot(iris, hue='species')
+plt.show()
+```  
+
+### Data Pre-process  
+
+```{python}
+data = torch.tensor(iris[iris.columns[0:4]].values).float()
+labels = torch.zeros(len(data), dtype=torch.long)
+labels[iris.species=='versicolor']=1
+labels[iris.species=='virginica']=2
+```  
+
+Model 
+
+```{python}
+iris_classifier = nn.Sequential(
+    nn.Linear(4,64),
+    nn.ReLU(),
+    nn.Linear(64,64),
+    nn.ReLU(),
+    nn.Linear(64,3)
+)
+loss_fun = nn.CrossEntropyLoss()
+optimizer = torch.optim.SGD(iris_classifier.parameters(), lr=0.01)
+```
+
+Training  
+
+```{python}
+num_epochs = 1000
+losses = torch.zeros(num_epochs)
+running_acc = []
+
+for epoch in range(num_epochs):
+    # forward pass
+    yhat = iris_classifier(data)
+    # compute loss
+    loss = loss_fun(yhat, labels)
+    losses[epoch] = loss
+
+    # back-prop
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+    # accuracy 
+    matches = torch.argmax(yhat, axis=1)==labels
+    matchesNum = matches.float()
+    acc = 100*torch.mean(matchesNum)
+    running_acc.append(acc)
+
+# Model prediction
+preds = iris_classifier(data)
+predicted_labels = torch.argmax(preds, axis=1)
+totalacc = 100*torch.mean((predicted_labels==labels).float())
+
+fig, ax = plt.subplots(1,2, figsize=(9,4))
+ax[0].plot(losses.detach())
+ax[0].set_ylabel('loss')
+ax[0].set_xlabel('epoch')
+ax[0].set_title('Losses')
+
+ax[1].plot(running_acc)
+ax[1].set_ylabel('accuracy')
+ax[1].set_xlabel('epoch')
+ax[1].set_title('Accuracy')
+plt.show()
+```  
