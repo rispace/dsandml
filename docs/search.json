@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Data Science and Machine Learning Algorithms",
     "section": "",
-    "text": "This page is my personal repository of most common and useful machine learning algorithms using Python and other data science tricks and tip"
+    "text": "This page is my personal repository of most common and useful machine learning algorithms using Python and other data science tricks and tips. It is a vast area that can be classified or separated in many different ways"
   },
   {
     "objectID": "index.html#binary-search",
@@ -1145,7 +1145,7 @@
     "href": "codepages/titanic/index.html#modeling",
     "title": "Classification Probelm: Predict the chance of survival of a voager on Titanic based on the voager’s information",
     "section": "Modeling",
-    "text": "Modeling\n\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn import metrics\n\nX_train, X_test, y_train, y_test = train_test_split(\n    titanic.drop('Survived', axis=1),\n    titanic.Survived, test_size=0.30,\n    random_state=123\n    )\nlogreg = LogisticRegression()\nlogreg.fit(X_train, y_train)\npred = logreg.predict(X_test)\n\n/Users/macpc/Library/CloudStorage/OneDrive-FloridaStateUniversity/OnlineLearning/python_environments/pytorch-env/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py:469: ConvergenceWarning:\n\nlbfgs failed to converge (status=1):\nSTOP: TOTAL NO. of ITERATIONS REACHED LIMIT.\n\nIncrease the number of iterations (max_iter) or scale the data as shown in:\n    https://scikit-learn.org/stable/modules/preprocessing.html\nPlease also refer to the documentation for alternative solver options:\n    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression"
+    "text": "Modeling\n\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn import metrics\n\nX_train, X_test, y_train, y_test = train_test_split(\n    titanic.drop('Survived', axis=1),\n    titanic.Survived, test_size=0.30,\n    random_state=123\n    )\nlogreg = LogisticRegression()\nlogreg.fit(X_train, y_train)\npred = logreg.predict(X_test)\n\n/Users/macpc/Library/CloudStorage/OneDrive-FloridaStateUniversity/QuartoWebPage/WebEnv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning:\n\nlbfgs failed to converge (status=1):\nSTOP: TOTAL NO. OF ITERATIONS REACHED LIMIT.\n\nIncrease the number of iterations (max_iter) or scale the data as shown in:\n    https://scikit-learn.org/stable/modules/preprocessing.html\nPlease also refer to the documentation for alternative solver options:\n    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression"
   },
   {
     "objectID": "codepages/titanic/index.html#evaluation",
@@ -1201,7 +1201,7 @@
     "href": "index.html#data-science-algebra",
     "title": "Data Science and Machine Learning Algorithms",
     "section": "Data Science Algebra",
-    "text": "Data Science Algebra\n\nEigen Decomposition"
+    "text": "Data Science Algebra\n\nEigen Decomposition\n\nSingular Value Decomposition (SVD)"
   },
   {
     "objectID": "posts/DsMlAlgebra/index.html",
@@ -1264,7 +1264,7 @@
     "href": "index.html#data-science",
     "title": "Data Science and Machine Learning Algorithms",
     "section": "Data Science",
-    "text": "Data Science\nData science involves extracting knowledge from structured and unstructured data. It combines principle from statistics, machine learning, data analysis, and domain knoledge to understand and interpret the data\n\nData Collection & Accuisition\n\nWeb srcaping: Data collection through Webscraping\n\nAPI integration\n\nData Lakes, Data Warehouse\n\n\n\nData Cleaning & Preprocessing\nThis involves Handling Missing Values, Data Transformation, Feature Engineering, Encoding Categorical Variables, Handling Outliers\n\n\nExploratory Data Analysis (EDA)\nThis usually includes the Descriptive Statistics, Data Visualization, Identifying Patterns, Trends, Correlations of the features and labels.\n\n\nStatistical Methods\n\nANOVA - Categorical Features’: How do we treat the categorical features for our data science project?\nHypothesis Testing\n\nProbability Distributions\n\nInferential Statistics\n\nSampling Methods\n\n\n\nBig Data Techniques\n\nHadoop, Spark\n\nDistributed Data Storage (e.g., HDFS, NoSQL)\nData PipeLines, ETL (Extract, Transform, Load)"
+    "text": "Data Science\nData science involves extracting knowledge from structured and unstructured data. It combines principle from statistics, machine learning, data analysis, and domain knoledge to understand and interpret the data\n\nData Collection & Accuisition\n\nWeb srcaping: Data collection through Webscraping\n\n\n\nData Cleaning, Pre-processing & Exploratory Data Analysis (EDA)\n\nHandling Missing Values: Data Transformation.\n\nFeature Engineering\n\nEncoding Categorical Variables\n\nExploratory Data Analysis (EDA)\n\nDescriptive Statistics\n\n\nImportance of Class Balance\n\n\n\nStatistical Methods\n\nANOVA - Categorical Features’: How do we treat the categorical features for our data science project?"
   },
   {
     "objectID": "posts/eigendecomposition/index.html",
@@ -1279,5 +1279,124 @@
     "title": "Artificial Neural Network (ANN) - Classification 1",
     "section": "Multiclass Classification",
     "text": "Multiclass Classification\nWe use the IRIS data for this project\n\nimport seaborn as sns\niris = sns.load_dataset('iris')\nsns.pairplot(iris, hue='species')\nplt.show()\n\n\n\n\n\n\n\n\n\nData Pre-process\n\ndata = torch.tensor(iris[iris.columns[0:4]].values).float()\nlabels = torch.zeros(len(data), dtype=torch.long)\nlabels[iris.species=='versicolor']=1\nlabels[iris.species=='virginica']=2\n\nModel\n\niris_classifier = nn.Sequential(\n    nn.Linear(4,64),\n    nn.ReLU(),\n    nn.Linear(64,64),\n    nn.ReLU(),\n    nn.Linear(64,3)\n)\nloss_fun = nn.CrossEntropyLoss()\noptimizer = torch.optim.SGD(iris_classifier.parameters(), lr=0.01)\n\nTraining\n\nnum_epochs = 1000\nlosses = torch.zeros(num_epochs)\nrunning_acc = []\n\nfor epoch in range(num_epochs):\n    # forward pass\n    yhat = iris_classifier(data)\n    # compute loss\n    loss = loss_fun(yhat, labels)\n    losses[epoch] = loss\n\n    # back-prop\n    optimizer.zero_grad()\n    loss.backward()\n    optimizer.step()\n\n    # accuracy \n    matches = torch.argmax(yhat, axis=1)==labels\n    matchesNum = matches.float()\n    acc = 100*torch.mean(matchesNum)\n    running_acc.append(acc)\n\n# Model prediction\npreds = iris_classifier(data)\npredicted_labels = torch.argmax(preds, axis=1)\ntotalacc = 100*torch.mean((predicted_labels==labels).float())\n\nfig, ax = plt.subplots(1,2, figsize=(9,4))\nax[0].plot(losses.detach())\nax[0].set_ylabel('loss')\nax[0].set_xlabel('epoch')\nax[0].set_title('Losses')\n\nax[1].plot(running_acc)\nax[1].set_ylabel('accuracy')\nax[1].set_xlabel('epoch')\nax[1].set_title('Accuracy')\nplt.show()"
+  },
+  {
+    "objectID": "posts/svd/index.html",
+    "href": "posts/svd/index.html",
+    "title": "Matrix decomposition: Understanding Singular Value Decomposition",
+    "section": "",
+    "text": "Artificial Neural Network (ANN) - Classification 1\n\n\n4 min\n\n\n\nRafiq Islam\n\n\nTuesday, March 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nArtificial Neural Network (ANN) - Regression\n\n\n5 min\n\n\n\nRafiq Islam\n\n\nTuesday, March 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBayesian Probabilistic Models for Classification\n\n\n12 min\n\n\n\nRafiq Islam\n\n\nTuesday, October 22, 2024\n\n\n\n\n\n\n\n\nNo matching items\n\n Back to topCitationBibTeX citation:@online{islam2025,\n  author = {Islam, Rafiq},\n  title = {Matrix Decomposition: {Understanding} {Singular} {Value}\n    {Decomposition}},\n  date = {2025-08-23},\n  url = {https://rispace.github.io/posts/svd/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nIslam, Rafiq. 2025. “Matrix Decomposition: Understanding Singular\nValue Decomposition.” August 23, 2025. https://rispace.github.io/posts/svd/."
+  },
+  {
+    "objectID": "posts/dsmltypes/index.html",
+    "href": "posts/dsmltypes/index.html",
+    "title": "Data Science and Machine Learning Algorithms",
+    "section": "",
+    "text": "Data science involves extracting knowledge from structured and unstructured data. It combines principle from statistics, machine learning, data analysis, and domain knoledge to understand and interpret the data\n\n\n\nWeb scrapping: Data collection through Webscrapping\n\nAPI integration\n\nData Lakes, Data Warehouse\n\n\n\n\nThis involves handling missing values, data transformation, feature engineering, encoding categorical variables, handling outliers, etc\n\n\n\nThis usually includes the descriptive statistics, data visualization, identifying patterns, trends, correlations of the features and labels.\n\n\n\n\nANOVA - Categorical Features: How do we treat the categorical features for our data science project?\nHypothesis Testing\n\nProbability Distributions\n\nInferential Statistics\n\nSampling Methods\n\n\n\n\n\nHadoop, Spark\n\nDistributed Data Storage (e.g., HDFS, NoSQL)\nData PipeLines, ETL (Extract, Transform, Load)"
+  },
+  {
+    "objectID": "posts/dsmltypes/index.html#data-science",
+    "href": "posts/dsmltypes/index.html#data-science",
+    "title": "Data Science and Machine Learning Algorithms",
+    "section": "",
+    "text": "Data science involves extracting knowledge from structured and unstructured data. It combines principle from statistics, machine learning, data analysis, and domain knoledge to understand and interpret the data\n\n\n\nWeb scrapping: Data collection through Webscrapping\n\nAPI integration\n\nData Lakes, Data Warehouse\n\n\n\n\nThis involves handling missing values, data transformation, feature engineering, encoding categorical variables, handling outliers, etc\n\n\n\nThis usually includes the descriptive statistics, data visualization, identifying patterns, trends, correlations of the features and labels.\n\n\n\n\nANOVA - Categorical Features: How do we treat the categorical features for our data science project?\nHypothesis Testing\n\nProbability Distributions\n\nInferential Statistics\n\nSampling Methods\n\n\n\n\n\nHadoop, Spark\n\nDistributed Data Storage (e.g., HDFS, NoSQL)\nData PipeLines, ETL (Extract, Transform, Load)"
+  },
+  {
+    "objectID": "posts/dsmltypes/index.html#textmachine-learning-algorithms",
+    "href": "posts/dsmltypes/index.html#textmachine-learning-algorithms",
+    "title": "Data Science and Machine Learning Algorithms",
+    "section": "\\(\\text{Machine Learning Algorithms}\\)",
+    "text": "\\(\\text{Machine Learning Algorithms}\\)\n\n\\(\\text{Supervised Learning}\\)\n(Training with labeled data: input-output pairs)\n\nRegression\n\n\nParametric\n\nSimple Linear Regression\nMultiple Linear Regression\nPolynomial Regression\n\n\n\nNon-Parametric\n\nK-Nearest Neighbor (KNN) Regression\nDecesion Trees Regression\nRandom Forest Regression\nSupport Vector Machine (SVM) Regression\n\n\n\n\n\nClassification\n\n\n\nParametric\n\nLogistic Regression\nNaive Bayes\nLinear Discriminant Analysis (LDA)\n\nQuadratic Discriminant Analysis (QDA)\n\n\n\n\nNon-Parametric\n\nKNN Classification\nDecision Tree Classification\nRandom Forest Classification\nSupport Vector Machine (SVM) Classification\n\n\n\n\nMulti-Class Classification\n\nMulti-class Classification\n\n\n\n\nBayesian or Probabilistic Classification\n\nWhat is Bayesian or Probabilistic Classification?\n\nLinear Discriminant Analysis (LDA)\n\nQuadratic Discriminant Analysis (QDA)\n\nNaive Bayes\nBayesian Network Classifier (Tree Augmented Naive Bayes (TAN))\n\n\n\n\nNon-probabilistic Classification\n\nSupport Vector Machine (SVM) Classification\n\nDecision Tree Classification\n\nRandom Forest Classification\n\nKNN Classification\n\nPerceptron\n\n\n\n\nEnsemble Methods\n\nBagging: Decision Tree Classification\n\nBagging: Random Forest Classification\n\nBoosting: Adaptive Boosting\n\n\n\n\n\n\n\n\n\\(\\text{Unsupervised Learning}\\)\n(Training with unlabeled data)\n\n\n\nClustering\n\nk-Means Clustering\n\nHierarchical Clustering\n\nDBSCAN (Density-Based Spatial Clustering)\n\nGaussian Mixture Models (GMM)\n\n\n\n\nDimensionality Reduction\n\nPrincipal Component Analysis\n\nLatent Dirichlet Allocation (LDA)\nt-SNE (t-distributed Stochastic Neihbor Embedding)\n\nFactor Analysis\n\nAutoencoders\n\n\n\n\n\nAnomaly Detection\n\nIsolation Forests\n\nOne-Class SVM\n\n\n\n\n\n\n\\(\\text{Semi-Supervised Learning}\\)\n(Combination of labeled and unlabeled data)\n\nSelf-training\n\nCo-training\n\nLabel Propagation\n\n\n\n\\(\\text{Reinforcement Learning}\\)\n(Learning via rewards and penalties)\n\nMarkov Decision Process (MDP)\n\nQ-Learning\n\nDeep Q-Networks (DQN)\n\nPolicy Gradient Method"
+  },
+  {
+    "objectID": "posts/dsmltypes/index.html#textdeep-learnings",
+    "href": "posts/dsmltypes/index.html#textdeep-learnings",
+    "title": "Data Science and Machine Learning Algorithms",
+    "section": "\\(\\text{Deep Learnings}\\)",
+    "text": "\\(\\text{Deep Learnings}\\)\n\n\\(\\text{Artificial Neural Networks (ANN)}\\)\n\nRegression\nClassification\n\n\n\n\\(\\text{Convolutional Neural Networks (CNN)}\\)\n\n\n\\(\\text{Recurrent Neural Networks (RNN)}\\)\n\n\n\\(\\text{Long Short-Term Memory (LSTM)}\\)\n\n\n\\(\\text{Generative Adversarial Networks (GAN)}\\)"
+  },
+  {
+    "objectID": "posts/dsmltypes/index.html#textmodel-evaluation-and-fine-tuning",
+    "href": "posts/dsmltypes/index.html#textmodel-evaluation-and-fine-tuning",
+    "title": "Data Science and Machine Learning Algorithms",
+    "section": "\\(\\text{Model Evaluation and Fine Tuning}\\)",
+    "text": "\\(\\text{Model Evaluation and Fine Tuning}\\)\n\nModel Evaluation Metrics\n\nFor Regression: Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), \\(R^2\\) score\n\nFor Classification: Accuracy, Precision, Recall, F1 Score, ROC-AUC\nCross-validation: kFold, Stratified k-fold, leave-one-out\n\n\n\nModel Optimization\n\nBias-Variance: Bias Variance Trade off\nHyperparameter Tuning: Grid Search, Random Search, Bayesian Optimization\n\nFeatures Selection Techniques: Recursive Feature Elimination (RFE), L1 or Rasso Regurlarization, L2 or Ridge Regularization\nModel Interpretability: SHAP (Shapley values), LIME (Local Interpretable Model-agnostic Explanations)\n\n\n\nEnsemble Methods\n\nBagging: Random Forest, Bootstrap Aggregating\n\nBoosting: Gradient Boosting, AdaBoost, XGBoost, CatBoost\n\nStacking: Stacked Generalization"
+  },
+  {
+    "objectID": "posts/dsmltypes/index.html#machine-learning-algorithms",
+    "href": "posts/dsmltypes/index.html#machine-learning-algorithms",
+    "title": "Data Science and Machine Learning Algorithms",
+    "section": "Machine Learning Algorithms",
+    "text": "Machine Learning Algorithms\n\nSupervised Learning\n(Training with labeled data: input-output pairs)\n\nRegression\n\n\nParametric\n\nSimple Linear Regression\nMultiple Linear Regression\nPolynomial Regression\n\n\n\nNon-Parametric\n\nK-Nearest Neighbor (KNN) Regression\nDecesion Trees Regression\nRandom Forest Regression\nSupport Vector Machine (SVM) Regression\n\n\n\n\n\nClassification\n\n\n\nParametric\n\nLogistic Regression\nNaive Bayes\nLinear Discriminant Analysis (LDA)\nQuadratic Discriminant Analysis (QDA)\n\n\n\n\nNon-Parametric\n\nKNN Classification\nDecision Tree Classification\nRandom Forest Classification\nSupport Vector Machine (SVM) Classification\n\n\n\n\nMulti-Class Classification\n\nMulti-class Classification\n\n\n\n\nBayesian or Probabilistic Classification\n\nBayesian or Probabilistic Classification\nLinear Discriminant Analysis (LDA)\nQuadratic Discriminant Analysis (QDA)\n\nNaive Bayes\nBayesian Network Classifier (Tree Augmented Naive Bayes (TAN))\n\n\n\n\nNon-probabilistic Classification\n\nSupport Vector Machine (SVM) Classification\nDecision Tree Classification\nRandom Forest Classification\nKNN Classification\nPerceptron\n\n\n\n\nEnsemble Methods\n\nBagging: Decision Tree Classification\nBagging: Random Forest Classification\nBoosting: Adaptive Boosting\n\n\n\n\n\n\n\nUnsupervised Learning.\n(Training with unlabeled data)\n\n\n\nClustering\n\nk-Means Clustering\nHierarchical Clustering\n\nDBSCAN (Density-Based Spatial Clustering)\n\nGaussian Mixture Models (GMM)\n\n\n\n\nDimensionality Reduction\n\nPrincipal Component Analysis\nLatent Dirichlet Allocation (LDA)\nt-SNE (t-distributed Stochastic Neihbor Embedding)\n\nFactor Analysis\n\nAutoencoders\n\n\n\n\n\nAnomaly Detection\n\nIsolation Forests\n\nOne-Class SVM\n\n\n\n\n\n\nSemi-Supervised Learning\n(Combination of labeled and unlabeled data)\n\nSelf-training\n\nCo-training\n\nLabel Propagation\n\n\n\nReinforcement Learning\n(Learning via rewards and penalties)\n\nMarkov Decision Process (MDP)\n\nQ-Learning\n\nDeep Q-Networks (DQN)\n\nPolicy Gradient Method"
+  },
+  {
+    "objectID": "index.html#machine-learning-algorithms",
+    "href": "index.html#machine-learning-algorithms",
+    "title": "Data Science and Machine Learning Algorithms",
+    "section": "Machine Learning Algorithms",
+    "text": "Machine Learning Algorithms\n\nSimple Linear Regression\nMultiple Linear Regression\nLogistic Regression\n\nPolynomial Regression\nK-Nearest Neighbor (KNN) Regression and Classification\nSupport Vector Machine (SVM)\nNaive Bayes\nLinear Discriminant Analysis (LDA)\n\nQuadratic Discriminant Analysis (QDA)\nMulti-class Classification\nWhat is Bayesian or Probabilistic Classification?\n\nLinear Discriminant Analysis (LDA)\n\nEnsemble Learning\n\nBagging: Decision Regression and Classification\n\nBagging: Random Forest Regression and Classification\n\nBoosting: Adaptive Boosting\n\n\nClustering\n\nk-Means Clustering\n\nPrincipal Component Analysis"
+  },
+  {
+    "objectID": "index.html#deep-learning",
+    "href": "index.html#deep-learning",
+    "title": "Data Science and Machine Learning Algorithms",
+    "section": "Deep Learning",
+    "text": "Deep Learning\n\nArtificial Neural Networks (ANN)\n\nRegression\n\nClassification"
+  },
+  {
+    "objectID": "index.html#model-evaluation-metrics",
+    "href": "index.html#model-evaluation-metrics",
+    "title": "Data Science and Machine Learning Algorithms",
+    "section": "Model Evaluation Metrics",
+    "text": "Model Evaluation Metrics\n\nFor Regression: Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), \\(R^2\\) score\n\nFor Classification: Accuracy, Precision, Recall, F1 Score, ROC-AUC\n\nCross-validation: kFold, Stratified k-fold, leave-one-out"
+  },
+  {
+    "objectID": "index.html#model-optimization",
+    "href": "index.html#model-optimization",
+    "title": "Data Science and Machine Learning Algorithms",
+    "section": "Model Optimization",
+    "text": "Model Optimization\n\nBias-Variance: Bias Variance Trade off\n\nHyperparameter Tuning: Grid Search, Random Search, Bayesian Optimization\n\nFeatures Selection Techniques: Recursive Feature Elimination (RFE), L1 or Rasso Regurlarization, L2 or Ridge Regularization\n\nModel Interpretability: SHAP (Shapley values), LIME (Local Interpretable Model-agnostic Explanations)"
+  },
+  {
+    "objectID": "posts/classbalance/index.html",
+    "href": "posts/classbalance/index.html",
+    "title": "Importance of class balance in training a classification model",
+    "section": "",
+    "text": "When building a classification model, one of the most important — and often overlooked — aspects is class balance. Class balance refers to how evenly distributed the categories (or classes) in our dataset are. Getting this wrong can cause our model to fail silently, producing high accuracy but poor performance in practice."
+  },
+  {
+    "objectID": "posts/classbalance/index.html#class-balance",
+    "href": "posts/classbalance/index.html#class-balance",
+    "title": "Importance of class balance in training a classification model",
+    "section": "Class Balance",
+    "text": "Class Balance\nFirst of all, what is class balance? It simply refers to the presence of all class almost/approximately equally in proportion. To explain better let’s look at the famous IRIS dataset from seaborn library."
+  },
+  {
+    "objectID": "posts/classbalance/index.html#what-is-class-balance-and-why-does-it-matter",
+    "href": "posts/classbalance/index.html#what-is-class-balance-and-why-does-it-matter",
+    "title": "Importance of class balance in training a classification model",
+    "section": "What is Class Balance and Why Does it Matter?",
+    "text": "What is Class Balance and Why Does it Matter?\n\nImagine you’re training a model to detect credit card fraud. Out of 100,000 transactions, maybe only 500 are fraudulent — that’s 0.5% fraud cases vs. 99.5% normal cases. This dataset is imbalanced, because one class (normal transactions) dominates the other.  On the other hand, if you had 50,000 fraud cases and 50,000 normal cases, the dataset would be balanced, meaning each class contributes equally to training.\n\n\nMisleading Accuracy\n\nIf 99.5% of your data is “normal,” a model that predicts everything as normal would be 99.5% accurate — but it’s useless for catching fraud.\n\nBiased Learning\n\nMachine learning algorithms tend to optimize for the majority class, learning little to nothing about the minority class.\n\nReal-World Risks\n\nIn fraud detection, medical diagnosis, or spam filtering, the minority class is usually the one we care about most. Missing these cases can have huge consequences."
+  },
+  {
+    "objectID": "posts/classbalance/index.html#strategies-to-handle-class-imbalance",
+    "href": "posts/classbalance/index.html#strategies-to-handle-class-imbalance",
+    "title": "Importance of class balance in training a classification model",
+    "section": "Strategies to Handle Class Imbalance",
+    "text": "Strategies to Handle Class Imbalance\n\n1. Resampling Techniques\n\nOversampling minority class (e.g., SMOTE — Synthetic Minority Oversampling Technique)\nUndersampling majority class to reduce dominance\n\nUseful when we want to directly modify the training dataset.\n\n\n2. Algorithmic Approaches\n\nUse models that handle imbalance better, like tree-based models (Random Forest, XGBoost) with class weights.\nAdjust class weights in algorithms (e.g., class_weight='balanced' in scikit-learn).\n\n\n\n3. Evaluation Metrics Beyond Accuracy\nAccuracy isn’t enough. We use:\n\nPrecision & Recall (focus on the minority class)\nF1-score (balance between precision & recall)\nROC-AUC / PR-AUC (good for imbalance scenarios)\n\n\n\n4. Data Collection & Domain Knowledge\nSometimes the best solution is collecting more samples of the minority class or applying domain-specific rules to aid the model."
+  },
+  {
+    "objectID": "posts/classbalance/index.html#randomization",
+    "href": "posts/classbalance/index.html#randomization",
+    "title": "Importance of class balance in training a classification model",
+    "section": "Randomization",
+    "text": "Randomization\nAnother desirable characteristic we want in the data is the randomization of all classes. If your dataset is ordered (e.g., first all “Class 0” rows, then all “Class 1” rows), most machine learning algorithms will process it sequentially. Without randomization (shuffling), we risk:\n\nThe model learning from only one class at the start, delaying convergence.\n\nBatch-based algorithms (like stochastic gradient descent, mini-batch training) seeing batches with only one class implies poor updates.\n\nSolution: We should shuffle our data before splitting into train/test and before feeding into training.\n\nIn scikit-learn: train_test_split(..., shuffle=True) (default).\n\nIn PyTorch / TensorFlow: DataLoader(..., shuffle=True).\n\nRandomization is crucial before splitting, otherwise we may end up with:\n\nTrain set = only majority class\n\nTest set = only minority class\n\nleading to meaningless evaluation. So, we should always shuffle, and in imbalanced data, consider stratified splitting (preserves class ratios in both sets: train_test_split(X, y, stratify=y))"
+  },
+  {
+    "objectID": "posts/classbalance/index.html#example",
+    "href": "posts/classbalance/index.html#example",
+    "title": "Importance of class balance in training a classification model",
+    "section": "Example",
+    "text": "Example\nLet’s explain everything with the famous IRIS dataset from the seaborn library.\n\nimport torch\nimport torch.nn as nn\nimport numpy as np\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfrom sklearn.model_selection import train_test_split\niris = sns.load_dataset('iris')\ndata = torch.tensor(iris[iris.columns[0:4]].values).float()\nlabels = torch.zeros(len(data), dtype=torch.long)\nlabels[iris.species=='versicolor']=1\nlabels[iris.species=='virginica']=2\nsns.countplot(x=\"species\", data=iris)\nprint(labels)\n\ntensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n        0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n        1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,\n        2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,\n        2, 2, 2, 2, 2, 2])\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nAs we can see that the number of observation is 150. So, if we just directly split this data into 70-30 or 80-20 training-test ratio then the training data will be an imbalanced data.\n\n\n\ntrainProp = 0.8\nnumTrainData = int(len(labels)*trainProp)\ntrainTestB = np.zeros(len(labels), dtype=bool)\ntrainTestB[range(numTrainData)] = True\ntrainTestB\n\narray([ True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True, False, False, False, False, False, False,\n       False, False, False, False, False, False, False, False, False,\n       False, False, False, False, False, False, False, False, False,\n       False, False, False, False, False, False])\n\n\nLet’s check if the dataset is balanced\n\nprint('Class average in full dataset')\nprint(torch.mean(labels.float()))\nprint('')\nprint('Class average in the training proportion')\nprint(torch.mean(labels[trainTestB].float()))\nprint('')\nprint('Class average in the test proportion')\nprint(torch.mean(labels[~trainTestB].float()))\n\nClass average in full dataset\ntensor(1.)\n\nClass average in the training proportion\ntensor(0.7500)\n\nClass average in the test proportion\ntensor(2.)\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that the average in all cases should be either 1 or very close to one, as we have 0,1, and 2 classes.\n\n\n\nactualTrain = np.random.choice(range(len(labels)), numTrainData, replace=False)\ntrainTestB = np.zeros(len(labels), dtype=bool)\ntrainTestB[actualTrain] = True\nprint('Class average in the training proportion')\nprint(torch.mean(labels[trainTestB].float()))\nprint('')\nprint('Class average in the test proportion')\nprint(torch.mean(labels[~trainTestB].float()))\n\nClass average in the training proportion\ntensor(0.9833)\n\nClass average in the test proportion\ntensor(1.0667)\n\n\nModeling\n\niris_classifier = nn.Sequential(\n    nn.Linear(4, 64),\n    nn.ReLU(),\n    nn.Linear(64,64),\n    nn.ReLU(),\n    nn.Linear(64,3)\n)\nloss_fun = nn.CrossEntropyLoss()\noptimizer = torch.optim.SGD(iris_classifier.parameters(), lr=0.01)\n\nData Structure\n\nprint('Full data shape')\nprint(data.shape)\nprint(' ')\nprint('Training data shape')\nprint(data[trainTestB, :].shape)\nprint(' ')\nprint('Test data shape')\nprint(data[~trainTestB, :].shape)\n\nFull data shape\ntorch.Size([150, 4])\n \nTraining data shape\ntorch.Size([120, 4])\n \nTest data shape\ntorch.Size([30, 4])\n\n\nNext, train and test the model\n\nnEpochs = 1000\nlosses = torch.zeros(nEpochs)\naccuracy_track = []\n\nfor epoch in range(nEpochs):\n    # forward pass\n    yHat = iris_classifier(data[trainTestB,:])\n    # compute accuracy\n    accuracy_track.append(\n        100*torch.mean(\n            (torch.argmax(yHat, axis=1)==labels[trainTestB]\n        ).float())\n    )\n    # compute loss\n    loss = loss_fun(yHat, labels[trainTestB])\n    losses[epoch] = loss\n\n    # back propagation\n    optimizer.zero_grad()\n    loss.backward()\n    optimizer.step()\n\nAfter training, now we can use our model to compute train and test accuracies\n\npred = iris_classifier(data[trainTestB, :])\ntraining_accuracy = 100 * torch.mean(\n    (torch.argmax(pred, axis=1)==labels[trainTestB]).float()\n)\npred = iris_classifier(data[~trainTestB, :])\ntest_accuracy = 100 * torch.mean(\n    (torch.argmax(pred, axis=1)==labels[~trainTestB]).float()\n)\nprint('Accuracy on training data: %g%%' %training_accuracy)\nprint('Accuracy on test data: %g%%' %test_accuracy)\n\nAccuracy on training data: 99.1667%\nAccuracy on test data: 96.6667%\n\n\nInstead of manual splitting, we could also use sklearn library and obtain similar results\n\ndef modeling():\n    iris_classifier = nn.Sequential(\n        nn.Linear(4, 64),\n        nn.ReLU(),\n        nn.Linear(64,64),\n        nn.ReLU(),\n        nn.Linear(64,3)\n    )\n    loss_fun = nn.CrossEntropyLoss()\n    optimizer = torch.optim.SGD(iris_classifier.parameters(), lr=0.01)\n    return iris_classifier, loss_fun, optimizer\n\nnEpochs = 200\nX_train, X_test, y_train, y_test = train_test_split(\n        data, labels, train_size=trainProp\n    )\ndef model_training():\n    losses = torch.zeros(nEpochs)\n    training_accuracy = []\n    test_accuracy = []\n    for epoch in range(nEpochs):\n        # forward pass\n        yHat = iris_classifier(X_train)\n        loss = loss_fun(yHat, y_train)\n\n        # back propagation \n        optimizer.zero_grad()\n        loss.backward()\n        optimizer.step()\n\n        # compute training accuracy\n        training_accuracy.append(\n            100*torch.mean((torch.argmax(yHat, axis=1)==y_train).float()).item()\n        )\n        # compute test accuracy\n        predtest = torch.argmax(iris_classifier(X_test), axis=1)\n        test_accuracy.append(\n            100*torch.mean((predtest==y_test).float()).item()\n        )\n    return training_accuracy, test_accuracy\n\nNow we re-train the model\n\niris_classifier, loss_fun, optimizer = modeling()\ntrain_acc, test_acc = model_training()\nplt.plot(train_acc, 'r-', label='train')\nplt.plot(test_acc, 'b-', label='test')\nplt.xlabel('Epochs')\nplt.ylabel('Accuracy')\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\nShare on\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou may also like"
   }
 ]

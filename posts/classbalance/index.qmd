@@ -1,0 +1,349 @@
+---
+title: "Importance of class balance in training a classification model"
+date: "2025-08-23"
+author: Rafiq Islam
+categories: [Data Science, Machine Learning, Artificial Intelligence, Data Engineering]
+citation: true
+search: true
+image: classbal.png
+lightbox: true
+listing: 
+    contents: "/../../posts"
+    max-items: 3
+    type: grid
+    categories: true
+    date-format: full
+    fields: [image, date, title, author, reading-time]  
+format: 
+    html: default
+    ipynb: default
+    docx: 
+      toc: true
+      adsense:
+        enable-ads: false
+    epub:
+      toc: true
+      adsense:
+        enable-ads: false
+    pdf: 
+      toc: true
+      pdf-engine: pdflatex
+      adsense:
+        enable-ads: false
+      number-sections: false
+      colorlinks: true
+      cite-method: biblatex
+toc-depth: 4
+---  
+
+<p style="text-align: justify">
+ When building a **classification model**, one of the most important — and often overlooked — aspects is **class balance**. Class balance refers to how evenly distributed the categories (or classes) in our dataset are. Getting this wrong can cause our model to fail silently, producing high accuracy but poor performance in practice. </p>  
+
+## What is Class Balance and Why Does it Matter?
+<p style="text-align: justify">
+Imagine you’re training a model to detect credit card fraud. Out of 100,000 transactions, maybe only 500 are fraudulent — that’s **0.5% fraud cases vs. 99.5% normal cases**. This dataset is **imbalanced**, because one class (normal transactions) dominates the other.<br>
+<br>
+On the other hand, if you had 50,000 fraud cases and 50,000 normal cases, the dataset would be **balanced**, meaning each class contributes equally to training.</p>
+
+1. **Misleading Accuracy**
+
+   * If 99.5% of your data is “normal,” a model that predicts *everything as normal* would be **99.5% accurate** — but it’s useless for catching fraud.
+
+2. **Biased Learning**
+
+   * Machine learning algorithms tend to optimize for the majority class, learning little to nothing about the minority class.
+
+3. **Real-World Risks**
+
+   * In fraud detection, medical diagnosis, or spam filtering, the minority class is usually the one we *care about most*. Missing these cases can have huge consequences.
+
+## Strategies to Handle Class Imbalance
+
+### 1. **Resampling Techniques**
+
+* **Oversampling minority class** (e.g., SMOTE — Synthetic Minority Oversampling Technique)
+* **Undersampling majority class** to reduce dominance
+
+Useful when we want to directly modify the training dataset.
+
+### 2. **Algorithmic Approaches**
+
+* Use models that handle imbalance better, like **tree-based models** (Random Forest, XGBoost) with class weights.
+* Adjust **class weights** in algorithms (e.g., `class_weight='balanced'` in scikit-learn).
+
+### 3. **Evaluation Metrics Beyond Accuracy**
+
+Accuracy isn’t enough. We use:
+
+* **Precision & Recall** (focus on the minority class)
+* **F1-score** (balance between precision & recall)
+* **ROC-AUC / PR-AUC** (good for imbalance scenarios)
+
+### 4. **Data Collection & Domain Knowledge**
+
+Sometimes the best solution is **collecting more samples of the minority class** or applying **domain-specific rules** to aid the model.
+
+## Randomization  
+
+Another desirable characteristic we want in the data is the randomization
+of all classes. If your dataset is ordered (e.g., first all “Class 0” rows, then all “Class 1” rows), most machine learning algorithms will process it sequentially. Without randomization (shuffling), we risk:  
+
+- The model learning from only one class at the start, delaying convergence.  
+- Batch-based algorithms (like stochastic gradient descent, mini-batch training) seeing batches with only one class implies poor updates.
+
+Solution: We should shuffle our data before splitting into train/test and before feeding into training.  
+
+- In *scikit-learn*: `train_test_split(..., shuffle=True)` (default).  
+- In *PyTorch / TensorFlow*: `DataLoader(..., shuffle=True)`.  
+
+Randomization is crucial before splitting, otherwise we may end up with:  
+
+- Train set = only majority class  
+- Test set = only minority class
+
+leading to meaningless evaluation. So, we should always shuffle, and in imbalanced data, consider stratified splitting (preserves class ratios in both sets: `train_test_split(X, y, stratify=y)`)  
+
+## Example  
+
+```{python}
+#| echo: false
+from mywebstyle import plot_style
+plot_style('#f4f4f4')
+```
+
+Let's explain everything with the famous *IRIS* dataset from the `seaborn`
+library.  
+
+```{python}
+import torch
+import torch.nn as nn
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+iris = sns.load_dataset('iris')
+data = torch.tensor(iris[iris.columns[0:4]].values).float()
+labels = torch.zeros(len(data), dtype=torch.long)
+labels[iris.species=='versicolor']=1
+labels[iris.species=='virginica']=2
+sns.countplot(x="species", data=iris)
+print(labels)
+```  
+
+::: {.callout-important}
+As we can see that the number of observation is `{python} len(labels)`. So, if we just directly split this data into 70-30 or 80-20 training-test ratio then the training data will be an imbalanced data.  
+:::
+
+```{python}
+trainProp = 0.8
+numTrainData = int(len(labels)*trainProp)
+trainTestB = np.zeros(len(labels), dtype=bool)
+trainTestB[range(numTrainData)] = True
+trainTestB
+```  
+
+Let's check if the dataset is balanced  
+```{python}
+print('Class average in full dataset')
+print(torch.mean(labels.float()))
+print('')
+print('Class average in the training proportion')
+print(torch.mean(labels[trainTestB].float()))
+print('')
+print('Class average in the test proportion')
+print(torch.mean(labels[~trainTestB].float()))
+```  
+
+::: {.callout-note}
+Note that the average in all cases should be either 1 or very close to one,
+as we have 0,1, and 2 classes.
+:::  
+
+```{python}
+actualTrain = np.random.choice(range(len(labels)), numTrainData, replace=False)
+trainTestB = np.zeros(len(labels), dtype=bool)
+trainTestB[actualTrain] = True
+print('Class average in the training proportion')
+print(torch.mean(labels[trainTestB].float()))
+print('')
+print('Class average in the test proportion')
+print(torch.mean(labels[~trainTestB].float()))
+```  
+
+Modeling  
+
+```{python}
+iris_classifier = nn.Sequential(
+    nn.Linear(4, 64),
+    nn.ReLU(),
+    nn.Linear(64,64),
+    nn.ReLU(),
+    nn.Linear(64,3)
+)
+loss_fun = nn.CrossEntropyLoss()
+optimizer = torch.optim.SGD(iris_classifier.parameters(), lr=0.01)
+
+```  
+
+Data Structure  
+
+```{python}
+print('Full data shape')
+print(data.shape)
+print(' ')
+print('Training data shape')
+print(data[trainTestB, :].shape)
+print(' ')
+print('Test data shape')
+print(data[~trainTestB, :].shape)
+```  
+
+Next, train and test the model  
+
+```{python}
+nEpochs = 1000
+losses = torch.zeros(nEpochs)
+accuracy_track = []
+
+for epoch in range(nEpochs):
+    # forward pass
+    yHat = iris_classifier(data[trainTestB,:])
+    # compute accuracy
+    accuracy_track.append(
+        100*torch.mean(
+            (torch.argmax(yHat, axis=1)==labels[trainTestB]
+        ).float())
+    )
+    # compute loss
+    loss = loss_fun(yHat, labels[trainTestB])
+    losses[epoch] = loss
+
+    # back propagation
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+```  
+
+After training, now we can use our model to compute train and test accuracies
+
+```{python}
+pred = iris_classifier(data[trainTestB, :])
+training_accuracy = 100 * torch.mean(
+    (torch.argmax(pred, axis=1)==labels[trainTestB]).float()
+)
+pred = iris_classifier(data[~trainTestB, :])
+test_accuracy = 100 * torch.mean(
+    (torch.argmax(pred, axis=1)==labels[~trainTestB]).float()
+)
+print('Accuracy on training data: %g%%' %training_accuracy)
+print('Accuracy on test data: %g%%' %test_accuracy)
+```  
+
+Instead of manual splitting, we could also use `sklearn` library and obtain
+similar results 
+
+```{python}
+def modeling():
+    iris_classifier = nn.Sequential(
+        nn.Linear(4, 64),
+        nn.ReLU(),
+        nn.Linear(64,64),
+        nn.ReLU(),
+        nn.Linear(64,3)
+    )
+    loss_fun = nn.CrossEntropyLoss()
+    optimizer = torch.optim.SGD(iris_classifier.parameters(), lr=0.01)
+    return iris_classifier, loss_fun, optimizer
+
+nEpochs = 200
+X_train, X_test, y_train, y_test = train_test_split(
+        data, labels, train_size=trainProp
+    )
+def model_training():
+    losses = torch.zeros(nEpochs)
+    training_accuracy = []
+    test_accuracy = []
+    for epoch in range(nEpochs):
+        # forward pass
+        yHat = iris_classifier(X_train)
+        loss = loss_fun(yHat, y_train)
+
+        # back propagation 
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        # compute training accuracy
+        training_accuracy.append(
+            100*torch.mean((torch.argmax(yHat, axis=1)==y_train).float()).item()
+        )
+        # compute test accuracy
+        predtest = torch.argmax(iris_classifier(X_test), axis=1)
+        test_accuracy.append(
+            100*torch.mean((predtest==y_test).float()).item()
+        )
+    return training_accuracy, test_accuracy
+```  
+
+Now we re-train the model
+```{python}
+iris_classifier, loss_fun, optimizer = modeling()
+train_acc, test_acc = model_training()
+plt.plot(train_acc, 'r-', label='train')
+plt.plot(test_acc, 'b-', label='test')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+```  
+
+**Share on**  
+
+::::{.columns}
+:::{.column width="33%"}
+<a href="https://www.facebook.com/sharer.php?u=https://rispace.github.io/posts/classbalance/" target="_blank" style="color:#1877F2; text-decoration: none;">
+ 
+{{< fa brands facebook size=3x >}}
+</a>
+ 
+:::
+ 
+:::{.column width="33%"}
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rispace.github.io/posts/classbalance/" target="_blank" style="color:#0077B5; text-decoration: none;">
+ 
+{{< fa brands linkedin size=3x >}}
+</a>
+ 
+:::
+ 
+:::{.column width="33%"}
+<a href="https://www.twitter.com/intent/tweet?url=https://rispace.github.io/posts/classbalance/" target="_blank" style="color:#1DA1F2; text-decoration: none;">
+ 
+{{< fa brands twitter size=3x >}}
+</a>
+ 
+:::
+::::
+ 
+<script src="https://giscus.app/client.js"
+        data-repo="rispace/rispace.github.io"
+        data-repo-id="R_kgDOPdB7AQ"
+        data-category="Ideas"
+        data-category-id="DIC_kwDOPdB7Ac4CuMVL"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+ 
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+ src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0"></script>
+<div class="fb-comments" data-href="https://rispace.github.io/posts/classbalance/" data-width="750" data-numposts="5"></div>  
+
+**You may also like**  

@@ -1,0 +1,201 @@
+---
+title: "Data Science and Machine Learning Algorithms"
+search: true
+---
+
+
+## **Data Science**  
+Data science involves extracting knowledge from structured and unstructured data. It combines principle from statistics, machine learning, data analysis, and domain knoledge to understand and interpret the data
+
+#### Data Collection \& Accuisition  
+
+- Web scrapping: Data collection through Webscrapping  
+- API integration  
+- Data Lakes, Data Warehouse  
+
+#### Data Cleaning \& Preprocessing  
+
+This involves *handling missing values, data transformation, feature engineering, encoding categorical variables, handling outliers, etc*  
+
+#### Exploratory Data Analysis (EDA)  
+
+This usually includes the descriptive statistics, data visualization, identifying patterns, trends, correlations of the features and labels.  
+  
+#### Statistical Methods  
+
+- ANOVA - Categorical Features: How do we treat the categorical features for our data science project?
+- Hypothesis Testing  
+- Probability Distributions  
+- Inferential Statistics  
+- Sampling Methods  
+
+#### Big Data Techniques  
+
+- Hadoop, Spark  
+- Distributed Data Storage  (e.g., HDFS, NoSQL)
+- Data PipeLines, ETL (Extract, Transform, Load)
+
+## Machine Learning Algorithms  
+
+### Supervised Learning  
+(Training with labeled data: input-output pairs)  
+
+#### **Regression**  
+
+::::{.grid}
+:::{.g-col-6}
+##### Parametric    
+
+- Simple Linear Regression
+- Multiple Linear Regression
+- Polynomial Regression
+:::  
+
+:::{.g-col-6}
+##### Non-Parametric  
+
+- K-Nearest Neighbor (KNN) Regression
+- Decesion Trees Regression
+- Random Forest Regression
+- Support Vector Machine (SVM) Regression
+:::
+::::  
+
+#### **Classification**  
+
+::::{.columns}
+:::{.column width="33%"}
+##### Parametric    
+
+- Logistic Regression
+- Naive Bayes
+- Linear Discriminant Analysis (LDA)
+- Quadratic Discriminant Analysis (QDA)
+:::  
+
+:::{.column width="33%"}
+##### Non-Parametric  
+
+- KNN Classification
+- Decision Tree Classification
+- Random Forest Classification
+- Support Vector Machine (SVM) Classification
+:::  
+
+:::{.column width="33%"}
+##### Multi-Class Classification  
+
+- Multi-class Classification
+:::  
+
+
+:::{.column width="33%"}
+##### Bayesian or Probabilistic Classification  
+
+- Bayesian or Probabilistic Classification
+- Linear Discriminant Analysis (LDA)
+- Quadratic Discriminant Analysis (QDA)  
+- Naive Bayes 
+- Bayesian Network Classifier (Tree Augmented Naive Bayes (TAN))
+:::  
+
+:::{.column width="33%"}
+##### Non-probabilistic Classification  
+
+- Support Vector Machine (SVM) Classification
+- Decision Tree Classification
+- Random Forest Classification
+- KNN Classification
+- Perceptron
+:::  
+
+:::{.column width="33%"}
+##### Ensemble Methods  
+
+- Bagging: Decision Tree Classification
+- Bagging: Random Forest Classification
+- Boosting: Adaptive Boosting
+:::
+::::  
+
+
+### Unsupervised Learning. 
+(Training with unlabeled data)  
+
+::::{.columns}
+:::{.column width="33%"}
+##### Clustering      
+
+- k-Means Clustering
+- Hierarchical Clustering  
+- DBSCAN (Density-Based Spatial Clustering)  
+- Gaussian Mixture Models (GMM)
+:::  
+
+:::{.column width="33%"}
+##### Dimensionality Reduction  
+
+- Principal Component Analysis
+- Latent Dirichlet Allocation (LDA)
+- t-SNE (t-distributed Stochastic Neihbor Embedding)  
+- Factor Analysis  
+- Autoencoders  
+:::  
+
+:::{.column width="33%"}
+##### Anomaly Detection  
+
+- Isolation Forests  
+- One-Class SVM
+:::
+::::    
+
+### Semi-Supervised Learning  
+(Combination of labeled and unlabeled data)  
+
+- Self-training  
+- Co-training  
+- Label Propagation 
+
+### Reinforcement Learning  
+(Learning via rewards and penalties)  
+
+- Markov Decision Process (MDP)  
+- Q-Learning  
+- Deep Q-Networks (DQN)  
+- Policy Gradient Method  
+
+## **$\text{Deep Learnings}$**  
+
+### **$\text{Artificial Neural Networks (ANN)}$**    
+
+- Regression
+- Classification
+
+### **$\text{Convolutional Neural Networks (CNN)}$**     
+  
+### **$\text{Recurrent Neural Networks (RNN)}$**    
+### **$\text{Long Short-Term Memory (LSTM)}$**    
+### **$\text{Generative Adversarial Networks (GAN)}$**    
+
+## **$\text{Model Evaluation and Fine Tuning}$**  
+
+#### Model Evaluation Metrics  
+
+- **For Regression:** Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), $R^2$ score  
+- **For Classification:** Accuracy, Precision, Recall, F1 Score, ROC-AUC
+- **Cross-validation:** kFold, Stratified k-fold, leave-one-out  
+
+#### Model Optimization  
+
+- **Bias-Variance:** Bias Variance Trade off
+- **Hyperparameter Tuning:** Grid Search, Random Search, Bayesian Optimization  
+- **Features Selection Techniques:** Recursive Feature Elimination (RFE), L1 or Rasso Regurlarization, L2 or Ridge Regularization
+- **Model Interpretability:** SHAP (Shapley values), LIME (Local Interpretable Model-agnostic Explanations)  
+
+#### Ensemble Methods  
+
+- **Bagging:** Random Forest, Bootstrap Aggregating  
+- **Boosting:** Gradient Boosting, AdaBoost, XGBoost, CatBoost  
+- **Stacking:** Stacked Generalization
+
