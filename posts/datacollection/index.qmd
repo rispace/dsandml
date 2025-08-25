@@ -61,9 +61,7 @@ Data source websites mainly falls into two categories such as data repositories 
 
 Example of collecting data from [UCI Machine Learning Repository](https://archive.ics.uci.edu/datasets){target="_blank"}  
 
-```{python}  
-#| code-fold: false
-#| code-summary: "Show the code" 
+```python  
 from ucimlrepo import fetch_ucirepo 
   
 # fetch dataset 
@@ -85,10 +83,6 @@ you may need to install the [UCI Machine Learning Repository](https://archive.ic
 pip install ucimlrepo
 ```  
 
-```{python}
-#| code-fold: false
-X.head()
-```  
 
 ## Web Scraping  
 
