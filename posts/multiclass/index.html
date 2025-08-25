@@ -519,7 +519,7 @@ Multi-class classification involves assigning an input to one of several distinc
 <p style="text-align: justify">
 Let’s consider the classic Iris dataset that contains three classes of iris species: <em>setosa, versicolor, virginica</em>. We will use this dataset to demonstrate different multi-class classification techniques in python.
 </p>
-<div id="b307c1b6" class="cell" data-execution_count="1">
+<div id="d275e8f4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
@@ -571,7 +571,7 @@ Decision Trees can naturally handle multi-class classification tasks. At each sp
 <li><strong>Advantages</strong>: Easy to interpret, no need for extensive pre-processing, and handles both categorical and numerical features.</li>
 <li><strong>Disadvantages</strong>: Prone to overfitting and can produce unstable models if not carefully tuned.</li>
 </ul>
-<div id="6f6a7db6" class="cell" data-execution_count="2">
+<div id="9882ec52" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report </span>
@@ -591,12 +591,12 @@ Decision Trees can naturally handle multi-class classification tasks. At each sp
 <pre><code>              precision    recall  f1-score   support
 
       setosa       1.00      1.00      1.00        18
-  versicolor       0.83      1.00      0.91        10
-   virginica       1.00      0.88      0.94        17
+  versicolor       0.77      1.00      0.87        10
+   virginica       1.00      0.82      0.90        17
 
-    accuracy                           0.96        45
-   macro avg       0.94      0.96      0.95        45
-weighted avg       0.96      0.96      0.96        45
+    accuracy                           0.93        45
+   macro avg       0.92      0.94      0.92        45
+weighted avg       0.95      0.93      0.93        45
 </code></pre>
 </div>
 </div>
@@ -608,7 +608,7 @@ Random Forests are ensembles of decision trees and can also naturally handle mul
 <li><strong>Advantages</strong>: Higher accuracy and reduced overfitting compared to single decision trees.</li>
 <li><strong>Disadvantages</strong>: Less interpretable than individual trees, and training can be computationally intensive.</li>
 </ul>
-<div id="6e5fd2cf" class="cell" data-execution_count="3">
+<div id="a7970e69" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier()</span>
@@ -637,7 +637,7 @@ Naive Bayes is a probabilistic classifier based on Bayes’ theorem, assuming th
 <li><strong>Advantages</strong>: Fast, simple, and works well for text classification.</li>
 <li><strong>Disadvantages</strong>: Assumes feature independence, which might not hold in many real-world datasets.</li>
 </ul>
-<div id="e9b34e3c" class="cell" data-execution_count="4">
+<div id="3ecaef01" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> MultinomialNB</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> MultinomialNB()</span>
@@ -658,15 +658,15 @@ weighted avg       0.48      0.62      0.52        45
 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning:
+<pre><code>/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning:
 
 Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
 
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning:
+/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning:
 
 Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
 
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning:
+/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning:
 
 Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
 </code></pre>
@@ -680,7 +680,7 @@ KNN is a non-parametric algorithm that classifies a data point based on the majo
 <li><strong>Advantages</strong>: Simple to implement, no training phase.</li>
 <li><strong>Disadvantages</strong>: Slow at prediction time, sensitive to the choice of k and the distance metric.</li>
 </ul>
-<div id="4098471c" class="cell" data-execution_count="5">
+<div id="ea23514a" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">5</span>)</span>
@@ -714,7 +714,7 @@ This technique involves training one classifier per class. Each classifier is tr
 <li><strong>Disadvantages</strong>: Can become inefficient when there are many classes, since it requires training one model per class.</li>
 </ul>
 <p>Example with <a href="../../posts/logreg/index.html" style="text-decoration:none" target="_blank">Logistic Regression</a></p>
-<div id="38a689fd" class="cell" data-execution_count="6">
+<div id="f2d57c63" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.multiclass <span class="im">import</span> OneVsRestClassifier</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -745,7 +745,7 @@ This strategy involves training a binary classifier for every possible pair of c
 <li><strong>Disadvantages</strong>: Computationally expensive for large class numbers due to the many classifiers needed.</li>
 </ul>
 <p>Example with support vector classifier</p>
-<div id="4e908181" class="cell" data-execution_count="7">
+<div id="5933adeb" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.multiclass <span class="im">import</span> OneVsOneClassifier</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -777,7 +777,7 @@ In neural networks, multi-class classification is typically handled using the <s
 <li><strong>Advantages</strong>: Can model complex non-linear relationships and works well with large datasets.</li>
 <li><strong>Disadvantages</strong>: Requires more data and computational resources compared to simpler models.</li>
 </ul>
-<div id="ef3a55af" class="cell" data-execution_count="8">
+<div id="6898f684" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> Sequential </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Dense, Input</span>
@@ -804,103 +804,23 @@ In neural networks, multi-class classification is typically handled using the <s
 <span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>test_loss, accuracy <span class="op">=</span> model.evaluate(X_test, y_test)</span>
 <span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Test Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">'</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>2025-08-13 17:45:43.763869: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+<pre><code>2025-08-25 01:04:33.867322: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/attr_value.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/tensor.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/resource_handle.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/tensor_shape.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/types.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/full_type.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/function.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/node_def.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/op_def.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/graph.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/graph_debug_info.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/versions.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/protobuf/config.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at xla/tsl/protobuf/coordination_config.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/cost_graph.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/step_stats.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/allocation_description.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/framework/tensor_description.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/protobuf/cluster.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/google/protobuf/runtime_version.py:98: UserWarning:
-
-Protobuf gencode version 5.28.3 is exactly one major version older than the runtime version 6.31.1 at tensorflow/core/protobuf/debug.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
-
-2025-08-13 17:45:45.606607: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)</code></pre>
+2025-08-25 01:04:35.709431: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
-<pre><span class="ansi-bold">1/2</span> <span class="ansi-green-fg">━━━━━━━━━━</span><span class="ansi-white-fg">━━━━━━━━━━</span> <span class="ansi-bold">0s</span> 89ms/step - accuracy: 0.9375 - loss: 0.7574
+<pre><span class="ansi-bold">1/2</span> <span class="ansi-green-fg">━━━━━━━━━━</span><span class="ansi-white-fg">━━━━━━━━━━</span> <span class="ansi-bold">0s</span> 90ms/step - accuracy: 0.9062 - loss: 0.6639
 
-<span class="ansi-bold">2/2</span> <span class="ansi-green-fg">━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-bold">0s</span> 14ms/step - accuracy: 0.9556 - loss: 0.7580
+<span class="ansi-bold">2/2</span> <span class="ansi-green-fg">━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-bold">0s</span> 14ms/step - accuracy: 0.9333 - loss: 0.6663
 
-Test Accuracy: 0.9555555582046509
+Test Accuracy: 0.9333333373069763
 </pre>
 </div>
 </div>
 </div>
 <p>Training and Validation loss</p>
-<div id="6a97b06c" class="cell" data-execution_count="9">
+<div id="fbfd0735" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>X_train, X_val, y_train, y_val <span class="op">=</span> train_test_split(</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    X_train, y_train, test_size<span class="op">=</span><span class="fl">0.10</span>, random_state<span class="op">=</span><span class="dv">123</span>,</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    stratify<span class="op">=</span>y_train</span>
@@ -949,7 +869,7 @@ Test Accuracy: 0.9555555582046509
 <li><strong>Precision, Recall, and F1-score</strong>: These can be extended to multiple classes by calculating them per class (micro, macro, or weighted averages).</li>
 <li><strong>Receiver Operating Characteristic (ROC) and Area Under the Curve (AUC)</strong>: These are less commonly used for multi-class problems, but can still be adapted using OvR schemes.</li>
 </ul>
-<div id="e33c3b65" class="cell" data-execution_count="10">
+<div id="3004237d" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
@@ -1037,7 +957,7 @@ General information about multi-class classification can be found in machine lea
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1755104287747" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
+<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1756081024741" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
 <a href="../../posts/ann-classification1/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -1059,7 +979,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1755104287747" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="930">
+<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1756081024742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="930">
 <a href="../../posts/ann-linreg/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -1081,7 +1001,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1755104287750" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2300">
+<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1756081024744" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2300">
 <a href="../../posts/bayesianclassification/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
