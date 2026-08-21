@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,16 @@
 
 <title>Data collection through Webscraping – Mohammad Rafiqul Islam</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -60,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -75,14 +81,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-03325b20210ee815536666ba4a3739ba.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-03325b20210ee815536666ba4a3739ba.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-03325b20210ee815536666ba4a3739ba.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-668b4bf65ca412b3963a8d4356ccfb65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-bf8620ae136997fc5e805fd163043728.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-668b4bf65ca412b3963a8d4356ccfb65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-8c58d867e4f8676b55ffd2727d4221c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-928ff36315edffdace0e0f88c35df17c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-8c58d867e4f8676b55ffd2727d4221c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -146,13 +152,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   })
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6878992848042528" crossorigin="anonymous"></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -165,7 +171,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -362,7 +368,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../_assets/images/fsu-logo.png" alt="Florida State University" class="navbar-logo">
+    <img src="../../_assets/images/fsu-logo.png" alt="Florida State University" class="navbar-logo light-content">
+    <img src="../../_assets/images/fsu-logo.png" alt="Florida State University" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Mohammad Rafiqul Islam</span>
@@ -419,7 +426,7 @@ window.Quarto = {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/mrislambd" target="_blank"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/rispace" target="_blank"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -519,7 +526,7 @@ window.Quarto = {
 <li><a href="https://www.kaggle.com" target="_blank">Kaggle Competition</a></li>
 </ol>
 <p>Example of collecting data from <a href="https://archive.ics.uci.edu/datasets" target="_blank">UCI Machine Learning Repository</a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ucimlrepo <span class="im">import</span> fetch_ucirepo </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ucimlrepo <span class="im">import</span> fetch_ucirepo </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fetch dataset </span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> fetch_ucirepo(<span class="bu">id</span><span class="op">=</span><span class="dv">53</span>) </span>
@@ -532,26 +539,26 @@ window.Quarto = {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iris.metadata) </span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># variable information </span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iris.variables) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iris.variables) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>you may need to install the <a href="https://archive.ics.uci.edu/datasets" target="_blank">UCI Machine Learning Repository</a> as a package using pip.</p>
 <pre><code>pip install ucimlrepo</code></pre>
 </section>
 <section id="web-scraping" class="level2">
 <h2 class="anchored" data-anchor-id="web-scraping">Web Scraping</h2>
 <p>We scrapping is another way of collecting the data for the research if the data is not available in any repositiory. We can collect the data from a website using a library called <code>BeautifulSoup</code> if the website has permision for other people to collect data from the website.</p>
-<div id="f723d296" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bs4                      <span class="co"># library for BeautifulSoup</span></span>
+<div id="80a80cc0" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bs4                      <span class="co"># library for BeautifulSoup</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup   <span class="co"># import the BeautifulSoup object</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> set_style</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>set_style(<span class="st">"whitegrid"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>set_style(<span class="st">"whitegrid"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now let’s make a html object using <code>BeautifulSoup</code>. Let’s say we have a html website that looks like below</p>
-<div id="1cda724a" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>html_doc<span class="op">=</span><span class="st">"""</span></span>
+<div id="3cdc7a62" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>html_doc<span class="op">=</span><span class="st">"""</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;!DOCTYPE html&gt;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;html lang="en"&gt;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;head&gt;</span></span>
@@ -564,36 +571,36 @@ window.Quarto = {
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;a href="htpps://mrislambd.github.io/research" class="research" id="research"&gt; Research &lt;/a&gt;</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/body&gt;</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/html&gt;</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we want to grab information from the dummy html documnet above.</p>
-<div id="817ff1d0" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>soup<span class="op">=</span>BeautifulSoup(html_doc, features<span class="op">=</span><span class="st">'html.parser'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1a024661" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>soup<span class="op">=</span>BeautifulSoup(html_doc, features<span class="op">=</span><span class="st">'html.parser'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now that we have the object <code>soup</code> we can walk through each elements in this object. For example, if we want to grab the title element,</p>
-<div id="947ab71b" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>soup.html.head.title</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d4530428" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>soup.html.head.title</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>&lt;title&gt;My Dummy HTML Document&lt;/title&gt;</code></pre>
 </div>
 </div>
 <p>Since the html document has only one title, therefore, we can simply use the following command</p>
-<div id="0d61f532" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>soup.title </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="63383213" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>soup.title </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>&lt;title&gt;My Dummy HTML Document&lt;/title&gt;</code></pre>
 </div>
 </div>
 <p>or this command to get the text only</p>
-<div id="b4952028" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>soup.title.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="76136df9" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>soup.title.text</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>'My Dummy HTML Document'</code></pre>
 </div>
 </div>
 <p>This <code>soup</code> object is like a family tree. It has parents, children, greatgrand parents etc.</p>
-<div id="8f3f3e23" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>soup.title.parent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3acc7955" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>soup.title.parent</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>&lt;head&gt;
 &lt;title&gt;My Dummy HTML Document&lt;/title&gt;
@@ -601,27 +608,25 @@ window.Quarto = {
 </div>
 </div>
 <p>Now to grab an attribute from the <code>soup</code> object we can use</p>
-<div id="2be6eec2" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>soup.a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ea179322" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>soup.a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>&lt;a class="blog" href="https://mrislambd.github.io/blog" id="blog"&gt; Blog &lt;/a&gt;</code></pre>
 </div>
 </div>
 <p>or any particular thing from the attribute</p>
-<div id="b81847f3" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>soup.a[<span class="st">'class'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f69e412e" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>soup.a[<span class="st">'class'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>['blog']</code></pre>
 </div>
 </div>
 <p>We can also find multiple attribute of the same kind</p>
-<div id="16576aaf" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>soup.findAll(<span class="st">'a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0cdf4fbe" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>soup.findAll(<span class="st">'a'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_6950/2082462312.py:1: DeprecationWarning:
-
-Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
-</code></pre>
+<pre><code>/tmp/ipykernel_3175/2082462312.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
+  soup.findAll('a')</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>[&lt;a class="blog" href="https://mrislambd.github.io/blog" id="blog"&gt; Blog &lt;/a&gt;,
@@ -629,33 +634,29 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 </div>
 </div>
 <p>Then if we want any particular object from all <code>a</code> attribute</p>
-<div id="57a25205" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>soup.findAll(<span class="st">'a'</span>)[<span class="dv">0</span>][<span class="st">'id'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1d4c64c3" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>soup.findAll(<span class="st">'a'</span>)[<span class="dv">0</span>][<span class="st">'id'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_6950/2617565345.py:1: DeprecationWarning:
-
-Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
-</code></pre>
+<pre><code>/tmp/ipykernel_3175/2617565345.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
+  soup.findAll('a')[0]['id']</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>'blog'</code></pre>
 </div>
 </div>
 <p>For any <code>p</code> tag</p>
-<div id="b0d41425" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>soup.p.text </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="71b73906" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>soup.p.text </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>'This is a paragraph in my dummy HTML document.'</code></pre>
 </div>
 </div>
 <p>Similarly, if we want to grab all the <code>href</code>s from the <code>a</code> tags</p>
-<div id="35eccaa0" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>[h[<span class="st">'href'</span>] <span class="cf">for</span> h <span class="kw">in</span> soup.findAll(<span class="st">'a'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5fa99eda" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>[h[<span class="st">'href'</span>] <span class="cf">for</span> h <span class="kw">in</span> soup.findAll(<span class="st">'a'</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_6950/1829196164.py:1: DeprecationWarning:
-
-Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
-</code></pre>
+<pre><code>/tmp/ipykernel_3175/1829196164.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
+  [h['href'] for h in soup.findAll('a')]</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>['https://mrislambd.github.io/blog', 'htpps://mrislambd.github.io/research']</code></pre>
@@ -665,49 +666,49 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 <section id="example-of-webscraping-from-a-real-website" class="level2">
 <h2 class="anchored" data-anchor-id="example-of-webscraping-from-a-real-website">Example of Webscraping from a real website</h2>
 <p>In this example we want to obtain some information from <a href="https://research.nvidia.com/graduate-fellowships/archive" target="_blank">NVIDIA Graduate Fellowship Program</a>. Before accessing this website we need to know if we have permision to access their data through webscraping.</p>
-<div id="3a841a67" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<div id="d2cb823d" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url<span class="op">=</span><span class="st">"https://research.nvidia.com/graduate-fellowships/archive"</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>response.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>response.status_code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>200</code></pre>
 </div>
 </div>
 <p>The <code>status_code</code> <span class="math inline">\(200\)</span> ensures that we have enough permision to acccess their website data. However, if we obtain <code>status_code</code> of <span class="math inline">\(403, 400,\)</span> or <span class="math inline">\(500\)</span> then we do not permision or a <code>bad request</code>. For more about the status codes <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" target="_blank">click here</a>.</p>
-<div id="5f35adb8" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(response.text, <span class="st">'html.parser'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ffa252e6" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(response.text, <span class="st">'html.parser'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We want to make an analysis based on the institution of the past graduate fellows. Insepecting the elements in <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" target="_blank">this website</a> we see that the <code>div</code> those have <code>class="archive-group"</code> contains the information of the past graduate fellows.</p>
-<div id="9967ada6" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pf <span class="op">=</span> soup.find_all(<span class="st">"div"</span>, class_<span class="op">=</span><span class="st">"archive-group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4dd1eb72" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pf <span class="op">=</span> soup.find_all(<span class="st">"div"</span>, class_<span class="op">=</span><span class="st">"archive-group"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>and the first element of this <code>pf</code> contains the information of the graduate fellows in the year of 2021.</p>
-<div id="59ae4910" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>pf[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4b30fcf1" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>pf[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>&lt;div class="archive-group"&gt;
-&lt;h4 class="archive-group__title"&gt;2022 Grad Fellows&lt;/h4&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Davis Rempe&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Enze Xie (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Hong Kong&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Gokul Swamy (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Carnegie Mellon University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Hao Chen&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Texas at Austin&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Hong-Xing (Koven) Yu (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Mohit Shridhar&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Washington&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Sai Praveen Bangaru&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Massachusetts Institute of Technology&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Shlomi Steinberg&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of California, Santa Barbara &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Sneha D. Goenka&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Suyeon Choi (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Yash Sharma (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Tübingen&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Yufei Ye&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Carnegie Mellon University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Yuke Wang&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of California, Santa Barbara &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Yuntian Deng&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Harvard University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Zekun Hao&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Cornell University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 class="archive-group__title"&gt;2023 Grad Fellows&lt;/h4&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Bobbi Yogatama (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Wisconsin&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Charles Gouert (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Delaware&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Chen Wang (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Cheng Chi (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Columbia University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Eric Ryan Chan&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Ethan Tseng (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Princeton University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Hong-Xing "Koven" Yu (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Jiaru Xu (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of California, San Diego&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Kaidi Cao (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Katie Luo&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Cornell University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Rohan Yadav&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Shikhar Bahl (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Carnegie Mellon University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Songwei Ge (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Maryland, College Park&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Yicheng Zhu&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of California, Berkeley&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Zongyi Li&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;California Institute of Technology&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 </div>
 </div>
 <p>Now let’s make a <code>pandas</code> dataframe using the information in this page. We can make an use of the output from the above chunk. To grab the year, we see that <code>archive-group__title</code> class with a <code>h4</code> tag contains the year for all years. With <code>strip=True</code>, the text is cleaned by removing extra whitespace from the beginning and end. We need the first element so a <code>split()[0]</code> will do the job. Then we make another group called <code>fellows</code> that contains the fellows in a certian year by using the <code>div</code> and <code>class"views-row"</code>. Once the new group created, we then iterate through this group to extract their names and corresponding institutions.</p>
-<div id="c306e5a3" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span>[]</span>
+<div id="ef9f8ccc" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span>[]</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group <span class="kw">in</span> pf:</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> group.find(</span>
@@ -726,12 +727,12 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 <span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>        data.append({<span class="st">"Name"</span>: name, <span class="st">"Year"</span>: year, <span class="st">"Institute"</span>: institute})</span>
 <span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span>pd.DataFrame(data)</span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -742,33 +743,33 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>Davis Rempe</td>
-<td>2022</td>
+<th data-quarto-table-cell-role="th">0</th>
+<td>Bobbi Yogatama (Finalist)</td>
+<td>2023</td>
+<td>University of Wisconsin</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Charles Gouert (Finalist)</td>
+<td>2023</td>
+<td>University of Delaware</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Chen Wang (Finalist)</td>
+<td>2023</td>
 <td>Stanford University</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>Enze Xie (Finalist)</td>
-<td>2022</td>
-<td>University of Hong Kong</td>
+<th data-quarto-table-cell-role="th">3</th>
+<td>Cheng Chi (Finalist)</td>
+<td>2023</td>
+<td>Columbia University</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>Gokul Swamy (Finalist)</td>
-<td>2022</td>
-<td>Carnegie Mellon University</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>Hao Chen</td>
-<td>2022</td>
-<td>University of Texas at Austin</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>Hong-Xing (Koven) Yu (Finalist)</td>
-<td>2022</td>
+<th data-quarto-table-cell-role="th">4</th>
+<td>Eric Ryan Chan</td>
+<td>2023</td>
 <td>Stanford University</td>
 </tr>
 </tbody>
@@ -778,8 +779,8 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 </div>
 </div>
 <p>Now let’s perform some Exploratory Data Analysis (EDA). First, we analyze the unique values and distributions.</p>
-<div id="be5a4e25" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of fellows each year</span></span>
+<div id="c632aba7" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of fellows each year</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>year_counts <span class="op">=</span> data[<span class="st">'Year'</span>].value_counts().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame where years are columns and counts are values in the next row</span></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>year_data <span class="op">=</span> {</span>
@@ -793,55 +794,55 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 <span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>year_data_counts <span class="op">=</span> year_data_counts.set_index(<span class="st">'Year'</span>).T</span>
 <span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the DataFrame</span></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(year_data_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(year_data_counts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Year   2018  2022  2019  2017  2015  2006  2012  2011  2016  2007  ...  2021  \
-Count    16    15    15    15    12    12    11    11    11    11  ...    10   
+<pre><code>Year   2018  2023  2022  2019  2017  2015  2006  2012  2011  2016  ...  2021  \
+Count    16    15    15    15    15    12    12    11    11    11  ...    10   
 
 Year   2020  2003  2014  2008  2009  2010  2005  2004  2002  
 Count    10    10    10    10    10     9     8     7     6  
 
-[1 rows x 21 columns]</code></pre>
+[1 rows x 22 columns]</code></pre>
 </div>
 </div>
 <p>Next we see that most represented universities</p>
-<div id="78c850aa" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>university_counts <span class="op">=</span> data[<span class="st">'Institute'</span>].value_counts()</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(university_counts.head(<span class="dv">10</span>))  <span class="co"># Display the top 10 universities</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3d8a1c48" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>university_counts <span class="op">=</span> data[<span class="st">'Institute'</span>].value_counts()</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(university_counts.head(<span class="dv">10</span>))  <span class="co"># Display the top 10 universities</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Institute
-Stanford University                         28
+Stanford University                         33
 Massachusetts Institute of Technology       21
-Carnegie Mellon University                  17
-University of California, Berkeley          16
+Carnegie Mellon University                  18
+University of California, Berkeley          17
 University of Washington                    10
 University of Utah                          10
-Georgia Institute of Technology              9
 University of Illinois, Urbana-Champaign     9
+Georgia Institute of Technology              9
 University of California, Davis              9
-Cornell University                           7
+Cornell University                           8
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>To visualize the award distributions per year,</p>
-<div id="03a4b543" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">5</span>))</span>
+<div id="1e9d929b" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">5</span>))</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span><span class="st">'Year'</span>, data<span class="op">=</span>data, order<span class="op">=</span><span class="bu">sorted</span>(data[<span class="st">'Year'</span>].unique()))</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.gca().set_facecolor(<span class="st">'#f4f4f4'</span>) </span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>plt.gcf().patch.set_facecolor(<span class="st">'#f4f4f4'</span>)</span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Fellows Per Year'</span>)</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/cell-22-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/cell-22-output-1.png" width="734" height="449" class="figure-img"></a></p>
+<p><a href="index_files/figure-html/cell-22-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/cell-22-output-1.png" width="735" height="449" class="figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Top 10 universities visualization</p>
-<div id="fea1ef72" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<div id="107eedd6" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>top_universities <span class="op">=</span> data[<span class="st">'Institute'</span>].value_counts().head(<span class="dv">10</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>sns.barplot(y<span class="op">=</span>top_universities.index, x<span class="op">=</span>top_universities.values)</span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>plt.gca().set_facecolor(<span class="st">'#f4f4f4'</span>) </span>
@@ -849,7 +850,7 @@ Name: count, dtype: int64</code></pre>
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top 10 Universities by Number of Fellows'</span>)</span>
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Fellows'</span>)</span>
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'University'</span>)</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -859,8 +860,8 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Trend over time</p>
-<div id="80002922" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">5</span>))</span>
+<div id="18f14215" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">5</span>))</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Year'</span>] <span class="op">=</span> data[<span class="st">'Year'</span>].astype(<span class="bu">int</span>)  </span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>yearly_trend <span class="op">=</span> data.groupby(<span class="st">'Year'</span>).size()</span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>yearly_trend.plot(kind<span class="op">=</span><span class="st">'line'</span>, marker<span class="op">=</span><span class="st">'o'</span>)</span>
@@ -869,11 +870,11 @@ Name: count, dtype: int64</code></pre>
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Trend of Fellows Over Time'</span>)</span>
 <span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
 <span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Fellows'</span>)</span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/cell-24-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/cell-24-output-1.png" width="742" height="449" class="figure-img"></a></p>
+<p><a href="index_files/figure-html/cell-24-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/cell-24-output-1.png" width="733" height="449" class="figure-img"></a></p>
 </figure>
 </div>
 </div>
@@ -917,7 +918,7 @@ Name: count, dtype: int64</code></pre>
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1756081024741" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
+<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1787329568134" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
 <a href="../../posts/ann-classification1/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -939,7 +940,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1756081024742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="930">
+<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1787329568135" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="930">
 <a href="../../posts/ann-linreg/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -961,7 +962,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1756081024744" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2300">
+<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1787329568135" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2300">
 <a href="../../posts/bayesianclassification/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -994,7 +995,7 @@ Tuesday, October 22, 2024
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-islam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Islam, Rafiq. 2024. <span>“Data Collection Through Webscraping.”</span>
-August 14, 2024. <a href="https://rispace.github.io/posts/datacollection/">https://rispace.github.io/posts/datacollection/</a>.
+August 14. <a href="https://rispace.github.io/posts/datacollection/">https://rispace.github.io/posts/datacollection/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1060,13 +1061,14 @@ August 14, 2024. <a href="https://rispace.github.io/posts/datacollection/">https
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1100,16 +1102,16 @@ August 14, 2024. <a href="https://rispace.github.io/posts/datacollection/">https
     }
     function toggleCodeHandler(show) {
       return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
           if (show) {
             details.open = true;
           } else {
             details.removeAttribute("open");
           }
         }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
         const fromCls = show ? "hidden" : "unhidden";
         const toCls = show ? "unhidden" : "hidden";
         for (let i=0; i<cellCodeDivs.length; i++) {
@@ -1459,7 +1461,7 @@ August 14, 2024. <a href="https://rispace.github.io/posts/datacollection/">https
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb43" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data collection through Webscraping"</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2024-08-14"</span></span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Rafiq Islam</span></span>
@@ -1837,13 +1839,13 @@ August 14, 2024. <a href="https://rispace.github.io/posts/datacollection/">https
 <span id="cb43-422"><a href="#cb43-422" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"fb-comments"</span><span class="ot"> data-href</span><span class="op">=</span><span class="st">"https://mrislambd.github.io/dsandml/posts/datacollection/"</span><span class="ot"> data-width</span><span class="op">=</span><span class="st">"750"</span><span class="ot"> data-numposts</span><span class="op">=</span><span class="st">"5"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
 <span id="cb43-423"><a href="#cb43-423" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb43-424"><a href="#cb43-424" aria-hidden="true" tabindex="-1"></a>**You may also like**  </span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Powered by <a href="https://quarto.org/">Quarto</a> 1.7.33</p>
+<p>Powered by <a href="https://quarto.org/">Quarto</a> 1.10.18</p>
 </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
