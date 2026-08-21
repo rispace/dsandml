@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,16 @@
 
 <title>Data collection through Webscraping – Mohammad Rafiqul Islam</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -23,8 +29,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +42,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -59,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -68,17 +75,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../..//_assets/images/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-listing/list.min.js"></script>
 <script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6228460b6f51e6e0f0037a7e3ec3e767.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-5cabba2eba8214a94c4480af860c09f7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6228460b6f51e6e0f0037a7e3ec3e767.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -142,13 +152,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   })
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6878992848042528" crossorigin="anonymous"></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -161,7 +171,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -188,7 +198,169 @@ window.Quarto = {
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="floating nav-fixed">
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -196,7 +368,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../_assets/images/fsu-logo.png" alt="Florida State University" class="navbar-logo">
+    <img src="../../_assets/images/fsu-logo.png" alt="Florida State University" class="navbar-logo light-content">
+    <img src="../../_assets/images/fsu-logo.png" alt="Florida State University" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Mohammad Rafiqul Islam</span>
@@ -288,6 +461,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Data collection through Webscraping</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
@@ -352,7 +526,7 @@ window.Quarto = {
 <li><a href="https://www.kaggle.com" target="_blank">Kaggle Competition</a></li>
 </ol>
 <p>Example of collecting data from <a href="https://archive.ics.uci.edu/datasets" target="_blank">UCI Machine Learning Repository</a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ucimlrepo <span class="im">import</span> fetch_ucirepo </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ucimlrepo <span class="im">import</span> fetch_ucirepo </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fetch dataset </span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> fetch_ucirepo(<span class="bu">id</span><span class="op">=</span><span class="dv">53</span>) </span>
@@ -365,26 +539,26 @@ window.Quarto = {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iris.metadata) </span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># variable information </span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iris.variables) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iris.variables) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>you may need to install the <a href="https://archive.ics.uci.edu/datasets" target="_blank">UCI Machine Learning Repository</a> as a package using pip.</p>
 <pre><code>pip install ucimlrepo</code></pre>
 </section>
 <section id="web-scraping" class="level2">
 <h2 class="anchored" data-anchor-id="web-scraping">Web Scraping</h2>
 <p>We scrapping is another way of collecting the data for the research if the data is not available in any repositiory. We can collect the data from a website using a library called <code>BeautifulSoup</code> if the website has permision for other people to collect data from the website.</p>
-<div id="a64dbac1" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bs4                      <span class="co"># library for BeautifulSoup</span></span>
+<div id="31af7f18" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bs4                      <span class="co"># library for BeautifulSoup</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup   <span class="co"># import the BeautifulSoup object</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> set_style</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>set_style(<span class="st">"whitegrid"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>set_style(<span class="st">"whitegrid"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now let’s make a html object using <code>BeautifulSoup</code>. Let’s say we have a html website that looks like below</p>
-<div id="97191c1a" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>html_doc<span class="op">=</span><span class="st">"""</span></span>
+<div id="5fd9dd08" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>html_doc<span class="op">=</span><span class="st">"""</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;!DOCTYPE html&gt;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;html lang="en"&gt;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;head&gt;</span></span>
@@ -397,36 +571,36 @@ window.Quarto = {
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;a href="htpps://mrislambd.github.io/research" class="research" id="research"&gt; Research &lt;/a&gt;</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/body&gt;</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/html&gt;</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we want to grab information from the dummy html documnet above.</p>
-<div id="584e873f" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>soup<span class="op">=</span>BeautifulSoup(html_doc, features<span class="op">=</span><span class="st">'html.parser'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="56513784" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>soup<span class="op">=</span>BeautifulSoup(html_doc, features<span class="op">=</span><span class="st">'html.parser'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now that we have the object <code>soup</code> we can walk through each elements in this object. For example, if we want to grab the title element,</p>
-<div id="891e0e47" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>soup.html.head.title</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4adf9b5a" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>soup.html.head.title</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>&lt;title&gt;My Dummy HTML Document&lt;/title&gt;</code></pre>
 </div>
 </div>
 <p>Since the html document has only one title, therefore, we can simply use the following command</p>
-<div id="61f67b76" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>soup.title </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1e1eb4e3" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>soup.title </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>&lt;title&gt;My Dummy HTML Document&lt;/title&gt;</code></pre>
 </div>
 </div>
 <p>or this command to get the text only</p>
-<div id="8013c8cd" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>soup.title.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="93bf67ac" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>soup.title.text</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>'My Dummy HTML Document'</code></pre>
 </div>
 </div>
 <p>This <code>soup</code> object is like a family tree. It has parents, children, greatgrand parents etc.</p>
-<div id="56f9b7ef" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>soup.title.parent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="322798de" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>soup.title.parent</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>&lt;head&gt;
 &lt;title&gt;My Dummy HTML Document&lt;/title&gt;
@@ -434,27 +608,25 @@ window.Quarto = {
 </div>
 </div>
 <p>Now to grab an attribute from the <code>soup</code> object we can use</p>
-<div id="0fd8e6cf" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>soup.a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="68fa8c55" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>soup.a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>&lt;a class="blog" href="https://mrislambd.github.io/blog" id="blog"&gt; Blog &lt;/a&gt;</code></pre>
 </div>
 </div>
 <p>or any particular thing from the attribute</p>
-<div id="76e9a638" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>soup.a[<span class="st">'class'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a6d7f05c" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>soup.a[<span class="st">'class'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>['blog']</code></pre>
 </div>
 </div>
 <p>We can also find multiple attribute of the same kind</p>
-<div id="03b703c6" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>soup.findAll(<span class="st">'a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2b1a4c25" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>soup.findAll(<span class="st">'a'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/53/8y5n2fl55p3g3r5_pk9yfwk40000gn/T/ipykernel_31533/2082462312.py:1: DeprecationWarning:
-
-Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
-</code></pre>
+<pre><code>/var/folders/j_/6hzhbsps35v5652kffqhbmrc0000gn/T/ipykernel_24331/2082462312.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
+  soup.findAll('a')</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>[&lt;a class="blog" href="https://mrislambd.github.io/blog" id="blog"&gt; Blog &lt;/a&gt;,
@@ -462,33 +634,29 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 </div>
 </div>
 <p>Then if we want any particular object from all <code>a</code> attribute</p>
-<div id="5a4f8b73" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>soup.findAll(<span class="st">'a'</span>)[<span class="dv">0</span>][<span class="st">'id'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="434cf34d" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>soup.findAll(<span class="st">'a'</span>)[<span class="dv">0</span>][<span class="st">'id'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/53/8y5n2fl55p3g3r5_pk9yfwk40000gn/T/ipykernel_31533/2617565345.py:1: DeprecationWarning:
-
-Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
-</code></pre>
+<pre><code>/var/folders/j_/6hzhbsps35v5652kffqhbmrc0000gn/T/ipykernel_24331/2617565345.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
+  soup.findAll('a')[0]['id']</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>'blog'</code></pre>
 </div>
 </div>
 <p>For any <code>p</code> tag</p>
-<div id="117e43a3" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>soup.p.text </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c081f2bc" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>soup.p.text </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>'This is a paragraph in my dummy HTML document.'</code></pre>
 </div>
 </div>
 <p>Similarly, if we want to grab all the <code>href</code>s from the <code>a</code> tags</p>
-<div id="5000a019" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>[h[<span class="st">'href'</span>] <span class="cf">for</span> h <span class="kw">in</span> soup.findAll(<span class="st">'a'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="133bf15b" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>[h[<span class="st">'href'</span>] <span class="cf">for</span> h <span class="kw">in</span> soup.findAll(<span class="st">'a'</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/53/8y5n2fl55p3g3r5_pk9yfwk40000gn/T/ipykernel_31533/1829196164.py:1: DeprecationWarning:
-
-Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
-</code></pre>
+<pre><code>/var/folders/j_/6hzhbsps35v5652kffqhbmrc0000gn/T/ipykernel_24331/1829196164.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
+  [h['href'] for h in soup.findAll('a')]</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>['https://mrislambd.github.io/blog', 'htpps://mrislambd.github.io/research']</code></pre>
@@ -498,49 +666,49 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 <section id="example-of-webscraping-from-a-real-website" class="level2">
 <h2 class="anchored" data-anchor-id="example-of-webscraping-from-a-real-website">Example of Webscraping from a real website</h2>
 <p>In this example we want to obtain some information from <a href="https://research.nvidia.com/graduate-fellowships/archive" target="_blank">NVIDIA Graduate Fellowship Program</a>. Before accessing this website we need to know if we have permision to access their data through webscraping.</p>
-<div id="c4f1c7f5" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<div id="c1e9d46f" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url<span class="op">=</span><span class="st">"https://research.nvidia.com/graduate-fellowships/archive"</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>response.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>response.status_code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>200</code></pre>
 </div>
 </div>
 <p>The <code>status_code</code> <span class="math inline">\(200\)</span> ensures that we have enough permision to acccess their website data. However, if we obtain <code>status_code</code> of <span class="math inline">\(403, 400,\)</span> or <span class="math inline">\(500\)</span> then we do not permision or a <code>bad request</code>. For more about the status codes <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" target="_blank">click here</a>.</p>
-<div id="ef4a57fe" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(response.text, <span class="st">'html.parser'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="012c3732" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(response.text, <span class="st">'html.parser'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We want to make an analysis based on the institution of the past graduate fellows. Insepecting the elements in <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" target="_blank">this website</a> we see that the <code>div</code> those have <code>class="archive-group"</code> contains the information of the past graduate fellows.</p>
-<div id="bb2df1d3" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pf <span class="op">=</span> soup.find_all(<span class="st">"div"</span>, class_<span class="op">=</span><span class="st">"archive-group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7f70d0e9" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pf <span class="op">=</span> soup.find_all(<span class="st">"div"</span>, class_<span class="op">=</span><span class="st">"archive-group"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>and the first element of this <code>pf</code> contains the information of the graduate fellows in the year of 2021.</p>
-<div id="bbb2f5c0" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>pf[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a611c368" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>pf[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>&lt;div class="archive-group"&gt;
-&lt;h4 class="archive-group__title"&gt;2022 Grad Fellows&lt;/h4&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Davis Rempe&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Enze Xie (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Hong Kong&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Gokul Swamy (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Carnegie Mellon University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Hao Chen&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Texas at Austin&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Hong-Xing (Koven) Yu (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Mohit Shridhar&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Washington&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Sai Praveen Bangaru&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Massachusetts Institute of Technology&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Shlomi Steinberg&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of California, Santa Barbara &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Sneha D. Goenka&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Suyeon Choi (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Yash Sharma (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Tübingen&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Yufei Ye&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Carnegie Mellon University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Yuke Wang&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of California, Santa Barbara &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Yuntian Deng&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Harvard University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Zekun Hao&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Cornell University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 class="archive-group__title"&gt;2023 Grad Fellows&lt;/h4&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Bobbi Yogatama (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Wisconsin&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Charles Gouert (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Delaware&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Chen Wang (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Cheng Chi (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Columbia University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Eric Ryan Chan&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Ethan Tseng (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Princeton University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Hong-Xing "Koven" Yu (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Jiaru Xu (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of California, San Diego&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Kaidi Cao (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Katie Luo&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Cornell University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Rohan Yadav&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Stanford University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Shikhar Bahl (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;Carnegie Mellon University&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Songwei Ge (Finalist)&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of Maryland, College Park&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Yicheng Zhu&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;University of California, Berkeley&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="views-row"&gt;&lt;div class="views-field views-field-title"&gt;&lt;span class="field-content"&gt;Zongyi Li&lt;/span&gt;&lt;/div&gt;&lt;div class="views-field views-field-field-grad-fellow-institution"&gt;&lt;div class="field-content"&gt;California Institute of Technology&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 </div>
 </div>
 <p>Now let’s make a <code>pandas</code> dataframe using the information in this page. We can make an use of the output from the above chunk. To grab the year, we see that <code>archive-group__title</code> class with a <code>h4</code> tag contains the year for all years. With <code>strip=True</code>, the text is cleaned by removing extra whitespace from the beginning and end. We need the first element so a <code>split()[0]</code> will do the job. Then we make another group called <code>fellows</code> that contains the fellows in a certian year by using the <code>div</code> and <code>class"views-row"</code>. Once the new group created, we then iterate through this group to extract their names and corresponding institutions.</p>
-<div id="ac31cc20" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span>[]</span>
+<div id="d827baa0" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span>[]</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group <span class="kw">in</span> pf:</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> group.find(</span>
@@ -559,12 +727,12 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 <span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>        data.append({<span class="st">"Name"</span>: name, <span class="st">"Year"</span>: year, <span class="st">"Institute"</span>: institute})</span>
 <span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span>pd.DataFrame(data)</span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -575,33 +743,33 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>Davis Rempe</td>
-<td>2022</td>
+<th data-quarto-table-cell-role="th">0</th>
+<td>Bobbi Yogatama (Finalist)</td>
+<td>2023</td>
+<td>University of Wisconsin</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Charles Gouert (Finalist)</td>
+<td>2023</td>
+<td>University of Delaware</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Chen Wang (Finalist)</td>
+<td>2023</td>
 <td>Stanford University</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>Enze Xie (Finalist)</td>
-<td>2022</td>
-<td>University of Hong Kong</td>
+<th data-quarto-table-cell-role="th">3</th>
+<td>Cheng Chi (Finalist)</td>
+<td>2023</td>
+<td>Columbia University</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>Gokul Swamy (Finalist)</td>
-<td>2022</td>
-<td>Carnegie Mellon University</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>Hao Chen</td>
-<td>2022</td>
-<td>University of Texas at Austin</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>Hong-Xing (Koven) Yu (Finalist)</td>
-<td>2022</td>
+<th data-quarto-table-cell-role="th">4</th>
+<td>Eric Ryan Chan</td>
+<td>2023</td>
 <td>Stanford University</td>
 </tr>
 </tbody>
@@ -611,8 +779,8 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 </div>
 </div>
 <p>Now let’s perform some Exploratory Data Analysis (EDA). First, we analyze the unique values and distributions.</p>
-<div id="80744a7c" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of fellows each year</span></span>
+<div id="1e101e82" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of fellows each year</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>year_counts <span class="op">=</span> data[<span class="st">'Year'</span>].value_counts().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame where years are columns and counts are values in the next row</span></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>year_data <span class="op">=</span> {</span>
@@ -626,55 +794,55 @@ Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since ve
 <span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>year_data_counts <span class="op">=</span> year_data_counts.set_index(<span class="st">'Year'</span>).T</span>
 <span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the DataFrame</span></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(year_data_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(year_data_counts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Year   2018  2019  2017  2022  2006  2015  2011  2012  2016  2007  ...  2021  \
-Count    16    15    15    15    12    12    11    11    11    11  ...    10   
+<pre><code>Year   2018  2022  2019  2017  2023  2015  2006  2012  2011  2007  ...  2021  \
+Count    16    15    15    15    15    12    12    11    11    11  ...    10   
 
-Year   2014  2009  2008  2020  2003  2010  2005  2004  2002  
+Year   2020  2014  2009  2008  2003  2010  2005  2004  2002  
 Count    10    10    10    10    10     9     8     7     6  
 
-[1 rows x 21 columns]</code></pre>
+[1 rows x 22 columns]</code></pre>
 </div>
 </div>
 <p>Next we see that most represented universities</p>
-<div id="dc31d566" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>university_counts <span class="op">=</span> data[<span class="st">'Institute'</span>].value_counts()</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(university_counts.head(<span class="dv">10</span>))  <span class="co"># Display the top 10 universities</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="48733a14" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>university_counts <span class="op">=</span> data[<span class="st">'Institute'</span>].value_counts()</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(university_counts.head(<span class="dv">10</span>))  <span class="co"># Display the top 10 universities</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Institute
-Stanford University                         28
+Stanford University                         33
 Massachusetts Institute of Technology       21
-Carnegie Mellon University                  17
-University of California, Berkeley          16
-University of Utah                          10
+Carnegie Mellon University                  18
+University of California, Berkeley          17
 University of Washington                    10
-University of California, Davis              9
+University of Utah                          10
 Georgia Institute of Technology              9
+University of California, Davis              9
 University of Illinois, Urbana-Champaign     9
-Cornell University                           7
+Cornell University                           8
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>To visualize the award distributions per year,</p>
-<div id="08855f3d" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">5</span>))</span>
+<div id="95e2b13f" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">5</span>))</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span><span class="st">'Year'</span>, data<span class="op">=</span>data, order<span class="op">=</span><span class="bu">sorted</span>(data[<span class="st">'Year'</span>].unique()))</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.gca().set_facecolor(<span class="st">'#f4f4f4'</span>) </span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>plt.gcf().patch.set_facecolor(<span class="st">'#f4f4f4'</span>)</span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Fellows Per Year'</span>)</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/cell-22-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></a></p>
+<p><a href="index_files/figure-html/cell-22-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/cell-22-output-1.png" width="731" height="449" class="figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Top 10 universities visualization</p>
-<div id="d631b54d" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<div id="60d12235" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>top_universities <span class="op">=</span> data[<span class="st">'Institute'</span>].value_counts().head(<span class="dv">10</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>sns.barplot(y<span class="op">=</span>top_universities.index, x<span class="op">=</span>top_universities.values)</span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>plt.gca().set_facecolor(<span class="st">'#f4f4f4'</span>) </span>
@@ -682,18 +850,18 @@ Name: count, dtype: int64</code></pre>
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top 10 Universities by Number of Fellows'</span>)</span>
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Fellows'</span>)</span>
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'University'</span>)</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/cell-23-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></a></p>
+<p><a href="index_files/figure-html/cell-23-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/cell-23-output-1.png" width="737" height="375" class="figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Trend over time</p>
-<div id="6c529118" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">5</span>))</span>
+<div id="e43a81d9" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">5</span>))</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Year'</span>] <span class="op">=</span> data[<span class="st">'Year'</span>].astype(<span class="bu">int</span>)  </span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>yearly_trend <span class="op">=</span> data.groupby(<span class="st">'Year'</span>).size()</span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>yearly_trend.plot(kind<span class="op">=</span><span class="st">'line'</span>, marker<span class="op">=</span><span class="st">'o'</span>)</span>
@@ -702,11 +870,11 @@ Name: count, dtype: int64</code></pre>
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Trend of Fellows Over Time'</span>)</span>
 <span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
 <span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Fellows'</span>)</span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/cell-24-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></a></p>
+<p><a href="index_files/figure-html/cell-24-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/cell-24-output-1.png" width="731" height="449" class="figure-img"></a></p>
 </figure>
 </div>
 </div>
@@ -722,16 +890,13 @@ Name: count, dtype: int64</code></pre>
 <div class="columns">
 <div class="column" style="width:33%;">
 <p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1877F2; text-decoration: none;"></a></p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1877F2; text-decoration: none;">
-<p><i class="fa-brands fa-facebook fa-3x" aria-label="facebook"></i></p>
-</a><p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1877F2; text-decoration: none;"></a></p>
+</a><p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1877F2; text-decoration: none;"><i class="fa-brands fa-facebook fa-3x" aria-label="facebook"></i> </a></p>
 </div><div class="column" style="width:33%;">
 <p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#0077B5; text-decoration: none;"></a></p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#0077B5; text-decoration: none;">
-<p><i class="fa-brands fa-linkedin fa-3x" aria-label="linkedin"></i></p>
-</a><p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#0077B5; text-decoration: none;"></a></p>
+</a><p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#0077B5; text-decoration: none;"><i class="fa-brands fa-linkedin fa-3x" aria-label="linkedin"></i> </a></p>
 </div><div class="column" style="width:33%;">
 <p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1DA1F2; text-decoration: none;"></a></p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1DA1F2; text-decoration: none;">
-<p><i class="fa-brands fa-twitter fa-3x" aria-label="twitter"></i></p>
-</a><p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1DA1F2; text-decoration: none;"></a></p>
+</a><p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1DA1F2; text-decoration: none;"><i class="fa-brands fa-twitter fa-3x" aria-label="twitter"></i> </a></p>
 </div>
 </div>
 <script src="https://giscus.app/client.js" data-repo="mrislambd/mrislambd.github.io" data-repo-id="R_kgDOMV8crA" data-category="Announcements" data-category-id="DIC_kwDOMV8crM4CjbQW" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
@@ -753,7 +918,7 @@ Name: count, dtype: int64</code></pre>
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Data Science,Machine Learning,Artificial Intelligence" data-listing-date-sort="1742875200000" data-listing-file-modified-sort="1754868307205" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
+<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742878800000" data-listing-file-modified-sort="1787328740151" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
 <a href="../../posts/ann-classification1/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -763,9 +928,7 @@ Name: count, dtype: int64</code></pre>
 <h5 class="no-anchor card-title listing-title">
 Artificial Neural Network (ANN) - Classification 1
 </h5>
-<div class="listing-reading-time card-text text-muted">
-4 min
-</div>
+<div class="listing-reading-time card-text text-muted">4 min</div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Rafiq Islam
@@ -775,10 +938,9 @@ Tuesday, March 25, 2025
 </div>
 </div>
 </div>
+</div></a>
 </div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Data Science,Machine Learning,Artificial Intelligence" data-listing-date-sort="1742875200000" data-listing-file-modified-sort="1742953310000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="930">
+<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742878800000" data-listing-file-modified-sort="1787328740152" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="930">
 <a href="../../posts/ann-linreg/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -788,9 +950,7 @@ Tuesday, March 25, 2025
 <h5 class="no-anchor card-title listing-title">
 Artificial Neural Network (ANN) - Regression
 </h5>
-<div class="listing-reading-time card-text text-muted">
-5 min
-</div>
+<div class="listing-reading-time card-text text-muted">5 min</div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Rafiq Islam
@@ -800,10 +960,9 @@ Tuesday, March 25, 2025
 </div>
 </div>
 </div>
+</div></a>
 </div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="Machine Learning,Data Science,Bayesian Inference,Bayesian Statistics,Statistics" data-listing-date-sort="1729569600000" data-listing-file-modified-sort="1742106139000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2300">
+<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729573200000" data-listing-file-modified-sort="1787328740154" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2300">
 <a href="../../posts/bayesianclassification/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -813,9 +972,7 @@ Tuesday, March 25, 2025
 <h5 class="no-anchor card-title listing-title">
 Bayesian Probabilistic Models for Classification
 </h5>
-<div class="listing-reading-time card-text text-muted">
-12 min
-</div>
+<div class="listing-reading-time card-text text-muted">12 min</div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Rafiq Islam
@@ -825,13 +982,10 @@ Tuesday, October 22, 2024
 </div>
 </div>
 </div>
+</div></a>
 </div>
-</a>
 </div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
+<div class="listing-no-matching d-none">No matching items</div>
 </div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{islam2024,
   author = {Islam, Rafiq},
   title = {Data Collection Through {Webscraping}},
@@ -841,437 +995,310 @@ No matching items
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-islam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Islam, Rafiq. 2024. <span>“Data Collection Through Webscraping.”</span>
-August 14, 2024. <a href="https://rispace.github.io/posts/datacollection/">https://rispace.github.io/posts/datacollection/</a>.
+August 14. <a href="https://rispace.github.io/posts/datacollection/">https://rispace.github.io/posts/datacollection/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
       return false;
     }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/rispace\.github\.io");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
           } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
         }
-        return container.innerHTML
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/rispace\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1279,186 +1306,162 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb43" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data collection through Webscraping"</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2024-08-14"</span></span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Rafiq Islam</span></span>
@@ -1790,59 +1793,59 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb43-376"><a href="#cb43-376" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-377"><a href="#cb43-377" aria-hidden="true" tabindex="-1"></a>::::{.columns}</span>
 <span id="cb43-378"><a href="#cb43-378" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb43-379"><a href="#cb43-379" aria-hidden="true" tabindex="-1"></a>&lt;a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1877F2; text-decoration: none;"&gt;</span>
+<span id="cb43-379"><a href="#cb43-379" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/datacollection/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#1877F2; text-decoration: none;"</span><span class="dt">&gt;</span></span>
 <span id="cb43-380"><a href="#cb43-380" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb43-381"><a href="#cb43-381" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands facebook size=3x &gt;}}</span>
-<span id="cb43-382"><a href="#cb43-382" aria-hidden="true" tabindex="-1"></a>&lt;/a&gt;</span>
+<span id="cb43-382"><a href="#cb43-382" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
 <span id="cb43-383"><a href="#cb43-383" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb43-384"><a href="#cb43-384" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb43-385"><a href="#cb43-385" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb43-386"><a href="#cb43-386" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb43-387"><a href="#cb43-387" aria-hidden="true" tabindex="-1"></a>&lt;a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#0077B5; text-decoration: none;"&gt;</span>
+<span id="cb43-387"><a href="#cb43-387" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/datacollection/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#0077B5; text-decoration: none;"</span><span class="dt">&gt;</span></span>
 <span id="cb43-388"><a href="#cb43-388" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb43-389"><a href="#cb43-389" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands linkedin size=3x &gt;}}</span>
-<span id="cb43-390"><a href="#cb43-390" aria-hidden="true" tabindex="-1"></a>&lt;/a&gt;</span>
+<span id="cb43-390"><a href="#cb43-390" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
 <span id="cb43-391"><a href="#cb43-391" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb43-392"><a href="#cb43-392" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb43-393"><a href="#cb43-393" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb43-394"><a href="#cb43-394" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb43-395"><a href="#cb43-395" aria-hidden="true" tabindex="-1"></a>&lt;a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1DA1F2; text-decoration: none;"&gt;</span>
+<span id="cb43-395"><a href="#cb43-395" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/datacollection/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#1DA1F2; text-decoration: none;"</span><span class="dt">&gt;</span></span>
 <span id="cb43-396"><a href="#cb43-396" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb43-397"><a href="#cb43-397" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands twitter size=3x &gt;}}</span>
-<span id="cb43-398"><a href="#cb43-398" aria-hidden="true" tabindex="-1"></a>&lt;/a&gt;</span>
+<span id="cb43-398"><a href="#cb43-398" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
 <span id="cb43-399"><a href="#cb43-399" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb43-400"><a href="#cb43-400" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb43-401"><a href="#cb43-401" aria-hidden="true" tabindex="-1"></a>::::</span>
 <span id="cb43-402"><a href="#cb43-402" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-403"><a href="#cb43-403" aria-hidden="true" tabindex="-1"></a>&lt;script src="https://giscus.app/client.js"</span>
-<span id="cb43-404"><a href="#cb43-404" aria-hidden="true" tabindex="-1"></a>        data-repo="mrislambd/mrislambd.github.io" </span>
-<span id="cb43-405"><a href="#cb43-405" aria-hidden="true" tabindex="-1"></a>        data-repo-id="R_kgDOMV8crA"</span>
-<span id="cb43-406"><a href="#cb43-406" aria-hidden="true" tabindex="-1"></a>        data-category="Announcements"</span>
-<span id="cb43-407"><a href="#cb43-407" aria-hidden="true" tabindex="-1"></a>        data-category-id="DIC_kwDOMV8crM4CjbQW"</span>
-<span id="cb43-408"><a href="#cb43-408" aria-hidden="true" tabindex="-1"></a>        data-mapping="pathname"</span>
-<span id="cb43-409"><a href="#cb43-409" aria-hidden="true" tabindex="-1"></a>        data-strict="0"</span>
-<span id="cb43-410"><a href="#cb43-410" aria-hidden="true" tabindex="-1"></a>        data-reactions-enabled="1"</span>
-<span id="cb43-411"><a href="#cb43-411" aria-hidden="true" tabindex="-1"></a>        data-emit-metadata="0"</span>
-<span id="cb43-412"><a href="#cb43-412" aria-hidden="true" tabindex="-1"></a>        data-input-position="bottom"</span>
-<span id="cb43-413"><a href="#cb43-413" aria-hidden="true" tabindex="-1"></a>        data-theme="light"</span>
-<span id="cb43-414"><a href="#cb43-414" aria-hidden="true" tabindex="-1"></a>        data-lang="en"</span>
-<span id="cb43-415"><a href="#cb43-415" aria-hidden="true" tabindex="-1"></a>        crossorigin="anonymous"</span>
-<span id="cb43-416"><a href="#cb43-416" aria-hidden="true" tabindex="-1"></a>        async&gt;</span>
-<span id="cb43-417"><a href="#cb43-417" aria-hidden="true" tabindex="-1"></a>&lt;/script&gt;</span>
+<span id="cb43-403"><a href="#cb43-403" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://giscus.app/client.js"</span></span>
+<span id="cb43-404"><a href="#cb43-404" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo</span><span class="op">=</span><span class="st">"mrislambd/mrislambd.github.io"</span><span class="ot"> </span></span>
+<span id="cb43-405"><a href="#cb43-405" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo-id</span><span class="op">=</span><span class="st">"R_kgDOMV8crA"</span></span>
+<span id="cb43-406"><a href="#cb43-406" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category</span><span class="op">=</span><span class="st">"Announcements"</span></span>
+<span id="cb43-407"><a href="#cb43-407" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category-id</span><span class="op">=</span><span class="st">"DIC_kwDOMV8crM4CjbQW"</span></span>
+<span id="cb43-408"><a href="#cb43-408" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-mapping</span><span class="op">=</span><span class="st">"pathname"</span></span>
+<span id="cb43-409"><a href="#cb43-409" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-strict</span><span class="op">=</span><span class="st">"0"</span></span>
+<span id="cb43-410"><a href="#cb43-410" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-reactions-enabled</span><span class="op">=</span><span class="st">"1"</span></span>
+<span id="cb43-411"><a href="#cb43-411" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-emit-metadata</span><span class="op">=</span><span class="st">"0"</span></span>
+<span id="cb43-412"><a href="#cb43-412" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-input-position</span><span class="op">=</span><span class="st">"bottom"</span></span>
+<span id="cb43-413"><a href="#cb43-413" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-theme</span><span class="op">=</span><span class="st">"light"</span></span>
+<span id="cb43-414"><a href="#cb43-414" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-lang</span><span class="op">=</span><span class="st">"en"</span></span>
+<span id="cb43-415"><a href="#cb43-415" aria-hidden="true" tabindex="-1"></a><span class="ot">        crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
+<span id="cb43-416"><a href="#cb43-416" aria-hidden="true" tabindex="-1"></a><span class="ot">        async</span><span class="dt">&gt;</span></span>
+<span id="cb43-417"><a href="#cb43-417" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
 <span id="cb43-418"><a href="#cb43-418" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-419"><a href="#cb43-419" aria-hidden="true" tabindex="-1"></a>&lt;div id="fb-root"&gt;&lt;/div&gt;</span>
-<span id="cb43-420"><a href="#cb43-420" aria-hidden="true" tabindex="-1"></a>&lt;script async defer crossorigin="anonymous"</span>
-<span id="cb43-421"><a href="#cb43-421" aria-hidden="true" tabindex="-1"></a> src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v20.0"&gt;&lt;/script&gt;</span>
-<span id="cb43-422"><a href="#cb43-422" aria-hidden="true" tabindex="-1"></a>&lt;div class="fb-comments" data-href="https://mrislambd.github.io/dsandml/posts/datacollection/" data-width="750" data-numposts="5"&gt;&lt;/div&gt;</span>
+<span id="cb43-419"><a href="#cb43-419" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"fb-root"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb43-420"><a href="#cb43-420" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> async defer crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
+<span id="cb43-421"><a href="#cb43-421" aria-hidden="true" tabindex="-1"></a><span class="ot"> src</span><span class="op">=</span><span class="st">"https://connect.facebook.net/en_US/sdk.js#xfbml=1</span><span class="er">&amp;</span><span class="st">version=v20.0"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb43-422"><a href="#cb43-422" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"fb-comments"</span><span class="ot"> data-href</span><span class="op">=</span><span class="st">"https://mrislambd.github.io/dsandml/posts/datacollection/"</span><span class="ot"> data-width</span><span class="op">=</span><span class="st">"750"</span><span class="ot"> data-numposts</span><span class="op">=</span><span class="st">"5"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
 <span id="cb43-423"><a href="#cb43-423" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb43-424"><a href="#cb43-424" aria-hidden="true" tabindex="-1"></a>**You may also like**  </span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Powered by <a href="https://quarto.org/">Quarto</a> 1.5.54</p>
+<p>Powered by <a href="https://quarto.org/">Quarto</a> 1.10.18</p>
 </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
@@ -1880,7 +1883,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
