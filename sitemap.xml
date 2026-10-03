@@ -2,126 +2,126 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rispace.github.io/codepages/titanic/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.932Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.285Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/multiclass/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.040Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.384Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/svm/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.047Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.390Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/adaboost/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.968Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.319Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/decisiontree/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.973Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.324Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/eigendecomposition/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.036Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.379Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/bayesianclassification/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.969Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.320Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/simplelinreg/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.047Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.390Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/regularization/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.046Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.389Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/kmeans/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.038Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.382Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/pca/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.044Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.387Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/svd/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.047Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.390Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/classbalance/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.970Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.321Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/ann-linreg/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.969Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.320Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/lda/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.039Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.383Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.966Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.317Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/gradientboosting/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.038Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.382Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/dsmltypes/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.974Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.324Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/eda/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.034Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.378Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/dataengineering/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.971Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.322Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/logreg/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.040Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.383Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/ann-classification1/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.969Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.319Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/pytorch/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.045Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.388Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/multiplelinreg/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.043Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.386Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/biasvariance/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.970Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.321Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/naivebayes/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.044Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.387Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/knn/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.039Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.383Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/polyreg/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.045Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.388Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/datacollection/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.971Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.322Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/classificationmetrics/index.html</loc>
-    <lastmod>2026-10-02T02:14:13.971Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.321Z</lastmod>
   </url>
   <url>
     <loc>https://rispace.github.io/posts/randomforest/index.html</loc>
-    <lastmod>2026-10-02T02:14:14.046Z</lastmod>
+    <lastmod>2026-10-03T04:57:11.389Z</lastmod>
   </url>
 </urlset>
