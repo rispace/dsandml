@@ -650,7 +650,7 @@ P(x_i|y_k)=\begin{cases}\frac{N_{x_i,y_k}+\alpha}{N_{y_k}+2\alpha }\hspace{2mm}\
 <section id="gaussian-naive-bayes" class="level3">
 <h3 class="anchored" data-anchor-id="gaussian-naive-bayes">Gaussian Naive Bayes</h3>
 <p>Code credit for the custom classifier goes to <a href="https://github.com/AssemblyAI-Community/Machine-Learning-From-Scratch/blob/main/06%20NaiveBayes/naive_bayes.py" target="_blank" style="text-decoration:none">Assembly AI</a></p>
-<div id="3e400047" class="cell" data-execution_count="1">
+<div id="53d75bcf" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GNaiveBayes:</span>
@@ -702,7 +702,7 @@ P(x_i|y_k)=\begin{cases}\frac{N_{x_i,y_k}+\alpha}{N_{y_k}+2\alpha }\hspace{2mm}\
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> numerator<span class="op">/</span>denominator</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s apply this to the <code>irish</code> data set</p>
-<div id="13ac0ff5" class="cell" data-execution_count="2">
+<div id="e7fb74ac" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -776,7 +776,7 @@ P(x_i|y_k)=\begin{cases}\frac{N_{x_i,y_k}+\alpha}{N_{y_k}+2\alpha }\hspace{2mm}\
 </div>
 </div>
 </div>
-<div id="48597a0f" class="cell" data-execution_count="3">
+<div id="d2c85e45" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, confusion_matrix, classification_report  </span>
@@ -840,7 +840,7 @@ weighted avg       0.98      0.98      0.98        45
 </section>
 <section id="multinomial-naive-bayes" class="level3">
 <h3 class="anchored" data-anchor-id="multinomial-naive-bayes">Multinomial Naive Bayes</h3>
-<div id="4ea0f31e" class="cell" data-execution_count="4">
+<div id="e1c3e078" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MNaiveBayes:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, alpha <span class="op">=</span> <span class="dv">1</span>):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.alpha <span class="op">=</span> alpha</span>
@@ -973,7 +973,7 @@ weighted avg       0.98      0.98      0.98        45
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791006287914" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
+<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791008458914" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
 <a href="../../posts/ann-classification1/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -995,7 +995,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791006287914" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="930">
+<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791008458914" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="930">
 <a href="../../posts/ann-linreg/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -1017,7 +1017,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1791006287914" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2300">
+<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1791008458914" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2300">
 <a href="../../posts/bayesianclassification/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -1053,23 +1053,49 @@ Islam, Rafiq. 2024. <span>“Classification Using Naive Bayes
 Algorithm.”</span> October 10. <a href="https://rispace.github.io/posts/naivebayes/">https://rispace.github.io/posts/naivebayes/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script>
-// Keep navbar and in-page navigation in the current tab; open content links separately.
+// Internal navigation stays in the current tab.
+// External links open in a new tab.
 document.addEventListener("DOMContentLoaded", function () {
+
   document.querySelectorAll('a[href]').forEach(function (link) {
     const href = link.getAttribute('href');
-    if (link.closest('.navbar')) {
+
+    if (
+      !href ||
+      href.startsWith('#') ||
+      href.startsWith('javascript:')
+    ) {
+      return;
+    }
+
+    // Email and telephone links do not need a new browser tab
+    if (href.startsWith('mailto:') || href.startsWith('tel:')) {
       link.removeAttribute('target');
-      link.removeAttribute('rel');
-    } else if (href && !href.startsWith('#') && !href.startsWith('javascript:')) {
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
+      return;
+    }
+
+    try {
+      const url = new URL(href, window.location.href);
+      const isExternal = url.origin !== window.location.origin;
+
+      if (isExternal) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      } else {
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+      }
+    } catch (e) {
+      // Leave unusual links untouched
     }
   });
+
 
   document.querySelectorAll('.bibtex-copy').forEach(function (button) {
     button.addEventListener('click', function () {
       const source = document.getElementById(button.dataset.copyTarget);
       if (!source) return;
+
       const citation = source.textContent.trim();
       const previous = button.textContent;
       button.textContent = 'Copied';
@@ -1090,24 +1116,33 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         fallbackCopy();
       }
-      setTimeout(function () { button.textContent = previous; }, 1600);
+
+      setTimeout(function () {
+        button.textContent = previous;
+      }, 1600);
     });
   });
+
 
   document.querySelectorAll('.bibtex-dropdown').forEach(function (details) {
     details.addEventListener('toggle', function () {
       if (!details.open) return;
+
       document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (other) {
         if (other !== details) other.removeAttribute('open');
       });
     });
   });
 
+
   document.addEventListener('click', function (event) {
     document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (details) {
-      if (!details.contains(event.target)) details.removeAttribute('open');
+      if (!details.contains(event.target)) {
+        details.removeAttribute('open');
+      }
     });
   });
+
 });
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1996,11 +2031,26 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
- Copyright 2025 @ Rafiq Islam
+ Copyright 2026 @ Rafiq Islam
   </li>  
     <li class="nav-item">
     <a class="nav-link" href="../../license.txt">
 <p>License</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../research.qmd">
+<p>Research</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../teaching.qmd">
+<p>Teaching</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../cv.qmd">
+<p>CV</p>
 </a>
   </li>  
 </ul>
@@ -2022,6 +2072,18 @@ document.addEventListener("DOMContentLoaded", function () {
     <li class="nav-item compact">
     <a class="nav-link" href="mailto:rafiqfsu@gmail.com?subject&amp;body" target="_blank">
       <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/mohammad-rafiqul-islam/" target="_blank">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rispace" target="_blank">
+      <i class="bi bi-github" role="img">
 </i> 
     </a>
   </li>  
