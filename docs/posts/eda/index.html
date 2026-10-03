@@ -86,9 +86,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c8f962d185217da7fb63d497bbcee168.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-8598d2e4dfd393001eb172495299b792.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -498,7 +498,7 @@ window.Quarto = {
 <p>In this Exploratory Data Analysis and Visualization notebook, we want to explore the <a href="https://www.kaggle.com/datasets/mchirico/montcoalert" target="_blank" style="text-decoration:none">911 call data from Kaggle.com</a></p>
 <section id="the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="the-dataset">The Dataset</h2>
-<div id="e1b21e65" class="cell">
+<div id="e2c09d78" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -509,21 +509,21 @@ window.Quarto = {
 <section id="discriptive-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="discriptive-statistics">Discriptive Statistics</h2>
 <p>We first check the data information to see the number of observations, datatype, memory usages etc.</p>
-<div id="cb410a06" class="cell">
+<div id="f4525e94" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A first look of the data</p>
-<div id="70042162" class="cell">
+<div id="88c7ad16" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Some data related questions. For example,</p>
 <ul>
 <li><p>What are the top 10 zipcodes for 911 calls?</p>
-<div id="3065c5af" class="cell">
+<div id="1e02383b" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">zip</span>.value_counts().head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p>What are the top 10 twonships for the 911 calls?</p>
-<div id="bd13fe14" class="cell">
+<div id="bf649d63" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.twp.value_counts().head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ul>
@@ -531,25 +531,25 @@ window.Quarto = {
 <section id="feature-engineering" class="level2">
 <h2 class="anchored" data-anchor-id="feature-engineering">Feature Engineering</h2>
 <p>Sometimes creating new features from the existing features helps understand the data better. For example, for this dataset, we can create a new column called <code>Reason</code> for emergency 911 call.</p>
-<div id="c2b269e7" class="cell">
+<div id="4089516a" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'reason'</span>] <span class="op">=</span> df.title.<span class="bu">apply</span>(<span class="kw">lambda</span> title: title.split(<span class="st">':'</span>)[<span class="dv">0</span>])</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>what are top reasons for the emergency calls?</p>
-<div id="dece92c7" class="cell">
+<div id="f4107a18" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.reason.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>visualization of the reason column</p>
-<div id="c2039873" class="cell">
+<div id="a7ec2cb7" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span>df.reason, hue<span class="op">=</span>df.reason, palette<span class="op">=</span><span class="st">'viridis'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>timeStamp</code> column contains time information year-month-day hour:minute:second format but in string value/object. So we can convert this column to obtain new features.</p>
-<div id="9c532f38" class="cell">
+<div id="428f6ea7" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'timeStamp'</span>] <span class="op">=</span> pd.to_datetime(df.timeStamp)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> df.timeStamp.iloc[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s create new features called <code>hour</code>, <code>month</code>, and <code>day</code> of the calls.</p>
-<div id="43b10136" class="cell">
+<div id="d220ea99" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'hour'</span>] <span class="op">=</span> df.timeStamp.<span class="bu">apply</span>(<span class="kw">lambda</span> time: time.hour)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'month'</span>] <span class="op">=</span> df.timeStamp.<span class="bu">apply</span>(<span class="kw">lambda</span> time: time.month)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'day'</span>] <span class="op">=</span> df.timeStamp.<span class="bu">apply</span>(<span class="kw">lambda</span> time: time.dayofweek)</span>
@@ -567,22 +567,22 @@ window.Quarto = {
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now that we have almost a clean dataset, we can analyze the reason column based on the days of the week or months of a year.</p>
-<div id="153950fd" class="cell">
+<div id="4062dcd4" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span><span class="st">'day'</span>, data<span class="op">=</span> df, hue<span class="op">=</span><span class="st">'reason'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.legend(bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>,<span class="dv">1</span>), loc<span class="op">=</span><span class="dv">2</span>, borderaxespad<span class="op">=</span><span class="fl">0.0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>For the month column</p>
-<div id="4cb12617" class="cell">
+<div id="e38668c1" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span><span class="st">'month'</span>, data<span class="op">=</span> df, hue<span class="op">=</span><span class="st">'reason'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.legend(bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>,<span class="dv">1</span>), loc<span class="op">=</span><span class="dv">2</span>, borderaxespad<span class="op">=</span><span class="fl">0.0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To create a time series data</p>
-<div id="3f3e9252" class="cell">
+<div id="77541244" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'date'</span>] <span class="op">=</span> df[<span class="st">'timeStamp'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> time: time.date())</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'date'</span>).count()[<span class="st">'twp'</span>].plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now to see for each reason</p>
-<div id="9c0ca56b" class="cell">
+<div id="c249e17f" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> pd.to_datetime(<span class="st">'2019-01-01'</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -732,17 +732,45 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.querySelectorAll('.bibtex-copy').forEach(function (button) {
-    button.addEventListener('click', async function () {
+    button.addEventListener('click', function () {
       const source = document.getElementById(button.dataset.copyTarget);
       if (!source) return;
-      try {
-        await navigator.clipboard.writeText(source.textContent.trim());
-        const previous = button.textContent;
-        button.textContent = 'Copied';
-        setTimeout(function () { button.textContent = previous; }, 1600);
-      } catch (error) {
-        button.textContent = 'Select and copy above';
+      const citation = source.textContent.trim();
+      const previous = button.textContent;
+      button.textContent = 'Copied';
+
+      const fallbackCopy = function () {
+        const field = document.createElement('textarea');
+        field.value = citation;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(citation).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
       }
+      setTimeout(function () { button.textContent = previous; }, 1600);
+    });
+  });
+
+  document.querySelectorAll('.bibtex-dropdown').forEach(function (details) {
+    details.addEventListener('toggle', function () {
+      if (!details.open) return;
+      document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (other) {
+        if (other !== details) other.removeAttribute('open');
+      });
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (details) {
+      if (!details.contains(event.target)) details.removeAttribute('open');
     });
   });
 });

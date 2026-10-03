@@ -86,9 +86,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c8f962d185217da7fb63d497bbcee168.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-8598d2e4dfd393001eb172495299b792.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -586,7 +586,7 @@ SSE = (y - X\beta)^T(y - X\beta)
 <section id="python-implementation-of-polynomial-regression-one-variable" class="level3">
 <h3 class="anchored" data-anchor-id="python-implementation-of-polynomial-regression-one-variable">Python Implementation of Polynomial Regression (One Variable)</h3>
 <p>We use <code>PolynomialFeatures</code> from <code>Scikit-learn</code> to transform our input data <span class="math inline">\(X\)</span> to include polynomial terms (e.g., <span class="math inline">\(X^2, X^3\)</span>, etc.).</p>
-<div id="d29cacae" class="cell">
+<div id="0bb0960d" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
@@ -604,12 +604,12 @@ SSE = (y - X\beta)^T(y - X\beta)
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.gcf().patch.set_facecolor(<span class="st">'#f4f4f4'</span>)</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="1dd1a289" class="cell">
+<div id="e06d4a76" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> PolynomialFeatures(degree<span class="op">=</span><span class="dv">2</span>, interaction_only<span class="op">=</span><span class="va">False</span>, include_bias<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X_poly <span class="op">=</span> poly.fit_transform(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we fit a linear regression model on the transformed polynomial features.</p>
-<div id="2e7ad757" class="cell">
+<div id="75d807ce" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>model.fit(X_poly, y)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -620,7 +620,7 @@ SSE = (y - X\beta)^T(y - X\beta)
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Squared Error: </span><span class="sc">{</span>mean_squared_error(y, y_pred)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Finally, let’s plot the polynomial curve that fits the data.</p>
-<div id="d08b5124" class="cell">
+<div id="eda45234" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> operator</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sort_axis <span class="op">=</span> operator.itemgetter(<span class="dv">0</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sorted_zip <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">zip</span>(X, y_pred), key<span class="op">=</span>sort_axis)</span>
@@ -637,7 +637,7 @@ SSE = (y - X\beta)^T(y - X\beta)
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can evaluate the performance of the model by comparing the <strong>mean squared error (MSE)</strong> between the actual and predicted values:</p>
-<div id="bbffb422" class="cell">
+<div id="c40ced05" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y, y_pred)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Squared Error: </span><span class="sc">{</span>mse<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -645,7 +645,7 @@ SSE = (y - X\beta)^T(y - X\beta)
 <section id="python-implementation-of-polynomial-regression-two-variables" class="level3">
 <h3 class="anchored" data-anchor-id="python-implementation-of-polynomial-regression-two-variables">Python Implementation of Polynomial Regression (Two Variables)</h3>
 <p>We’ll generate some non-linear data and try to fit a polynomial regression model to it.</p>
-<div id="a657d009" class="cell">
+<div id="27d289e4" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas.plotting <span class="im">import</span> scatter_matrix</span>
@@ -666,7 +666,7 @@ SSE = (y - X\beta)^T(y - X\beta)
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Since it’s clear that the relationships are not linear. So if we fit a linear regression model, it won’t be a good fit.</p>
-<div id="3505d721" class="cell">
+<div id="5a3fae78" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">'y'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df.y</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>model1 <span class="op">=</span> LinearRegression()</span>
@@ -680,7 +680,7 @@ SSE = (y - X\beta)^T(y - X\beta)
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Therefore, we generate some non linear features from the given data.</p>
-<div id="16a99af9" class="cell">
+<div id="579f51a8" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'x1_squared'</span>]<span class="op">=</span>df.x1<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>scatter_matrix(df)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.gca().set_facecolor(<span class="st">'#f4f4f4'</span>) </span>
@@ -688,7 +688,7 @@ SSE = (y - X\beta)^T(y - X\beta)
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>From this plot, we see that <span class="math inline">\(x1\)</span> is parabolic and <span class="math inline">\(x2\)</span> is linear in relationship with <span class="math inline">\(y\)</span>. So, how about a model that combines a linear and quadratic model?</p>
-<div id="9631b748" class="cell">
+<div id="1e4e32ec" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">'y'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df.y</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>model2 <span class="op">=</span> LinearRegression()</span>
@@ -832,17 +832,45 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.querySelectorAll('.bibtex-copy').forEach(function (button) {
-    button.addEventListener('click', async function () {
+    button.addEventListener('click', function () {
       const source = document.getElementById(button.dataset.copyTarget);
       if (!source) return;
-      try {
-        await navigator.clipboard.writeText(source.textContent.trim());
-        const previous = button.textContent;
-        button.textContent = 'Copied';
-        setTimeout(function () { button.textContent = previous; }, 1600);
-      } catch (error) {
-        button.textContent = 'Select and copy above';
+      const citation = source.textContent.trim();
+      const previous = button.textContent;
+      button.textContent = 'Copied';
+
+      const fallbackCopy = function () {
+        const field = document.createElement('textarea');
+        field.value = citation;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(citation).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
       }
+      setTimeout(function () { button.textContent = previous; }, 1600);
+    });
+  });
+
+  document.querySelectorAll('.bibtex-dropdown').forEach(function (details) {
+    details.addEventListener('toggle', function () {
+      if (!details.open) return;
+      document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (other) {
+        if (other !== details) other.removeAttribute('open');
+      });
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (details) {
+      if (!details.contains(event.target)) details.removeAttribute('open');
     });
   });
 });

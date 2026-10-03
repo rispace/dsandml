@@ -86,9 +86,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c8f962d185217da7fb63d497bbcee168.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-8598d2e4dfd393001eb172495299b792.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -586,7 +586,7 @@ J = \sum_{j=1}^{k} \sum_{i=1}^{n_j} \|x_i - \mu_j\|^2
 <section id="synthetic-data" class="level3">
 <h3 class="anchored" data-anchor-id="synthetic-data">Synthetic Data</h3>
 <p>Let’s implement K-Means clustering using Python with visualizations and explore how to choose the best value of <span class="math inline">\(k\)</span> using the elbow method.</p>
-<div id="3c1ba99a" class="cell">
+<div id="44ea5464" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
@@ -598,7 +598,7 @@ J = \sum_{j=1}^{k} \sum_{i=1}^{n_j} \|x_i - \mu_j\|^2
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We’ll create a simple dataset with 4 distinct clusters for visualization.</p>
-<div id="4936f142" class="cell">
+<div id="3fdab929" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataset with 4 clusters</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">500</span>, centers<span class="op">=</span><span class="dv">4</span>, cluster_std<span class="op">=</span><span class="fl">0.60</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -610,7 +610,7 @@ J = \sum_{j=1}^{k} \sum_{i=1}^{n_j} \|x_i - \mu_j\|^2
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can now apply K-Means clustering with different values of <span class="math inline">\(k\)</span> and observe how the clusters are formed.</p>
-<div id="a0bc2abd" class="cell">
+<div id="a6090adc" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit KMeans with k=4 (since we know we generated 4 clusters)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>kmeans.fit(X)</span>
@@ -631,7 +631,7 @@ J = \sum_{j=1}^{k} \sum_{i=1}^{n_j} \|x_i - \mu_j\|^2
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To determine the optimal number of clusters, we’ll plot the inertia for different values of <span class="math inline">\(k\)</span> using the elbow method.</p>
-<div id="e2c5e738" class="cell">
+<div id="1fca52f0" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test multiple k values</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>inertia <span class="op">=</span> []</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>k_values <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
@@ -651,7 +651,7 @@ J = \sum_{j=1}^{k} \sum_{i=1}^{n_j} \|x_i - \mu_j\|^2
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We see that the curve starts to flatten at <span class="math inline">\(k=4\)</span>, suggesting this is a good choice for the number of clusters. Let’s also compute the silhouette score for different values of <span class="math inline">\(k\)</span> to confirm our choice.</p>
-<div id="9b7a7478" class="cell">
+<div id="a8e905fe" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sil_scores <span class="op">=</span> []</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">10</span>):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k)</span>
@@ -684,12 +684,12 @@ This dataset contains information about customers of a shopping mall, including 
 - <code>Annual Income</code>: Annual income of the customer in thousands of dollars.<br>
 - <code>Spending Score</code>: A score assigned by the mall based on customer behavior and spending patterns.</p>
 <p><strong>Data Source:</strong> You can find the Mall Customer Segmentation data on <a href="https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python" style="text-decoration:none" target="_blank">Kaggle</a>.</p>
-<div id="e7e3886d" class="cell">
+<div id="5de7a574" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mall <span class="op">=</span> pd.read_csv(<span class="st">'Mall_Customers.csv'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mall.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="204a042a" class="cell">
+<div id="5ad729ee" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Information</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mall.info())</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
@@ -702,7 +702,7 @@ This dataset contains information about customers of a shopping mall, including 
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cmall.describe().loc[[<span class="st">'mean'</span>,<span class="st">'std'</span>,<span class="st">'min'</span>,<span class="st">'max'</span>]].T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Pre-Process:</strong> Since our data contains categorical variable <code>Gender</code>, we need to encode this column and scale the numerical features like <code>Age</code>, <code>Annual Income</code>, and <code>Spending Score</code>.</p>
-<div id="1479b930" class="cell">
+<div id="9c62d75c" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> mall[[<span class="st">'Age'</span>,<span class="st">'Income'</span>,<span class="st">'SpendingScore'</span>]]</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
@@ -710,7 +710,7 @@ This dataset contains information about customers of a shopping mall, including 
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X_scaled[:<span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Next we use the <code>Elbow</code> method to find the best <span class="math inline">\(k\)</span>, the number of clusters</p>
-<div id="7e540575" class="cell">
+<div id="91cd6dcd" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>k_values <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">15</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>inertia <span class="op">=</span> []</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> k_values:</span>
@@ -727,7 +727,7 @@ This dataset contains information about customers of a shopping mall, including 
 </div>
 <p>The elbow point in the plot (where the decrease in inertia starts to slow) helps determine the optimal number of clusters. Let’s say we find that <span class="math inline">\(k=5\)</span> looks like a reasonable choice from the plot.</p>
 <p>To further validate the choice of <span class="math inline">\(k\)</span>, let’s compute the <code>silhouette</code> score for different cluster numbers. A higher <code>silhouette</code> score indicates better-defined clusters</p>
-<div id="563ed97e" class="cell">
+<div id="31787535" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sil_scores <span class="op">=</span> []</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,<span class="dv">15</span>):</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">123</span>)</span>
@@ -742,7 +742,7 @@ This dataset contains information about customers of a shopping mall, including 
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.show() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Next, we apply <span class="math inline">\(k=5\)</span> clusters</p>
-<div id="29521049" class="cell">
+<div id="ad144d47" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="fl">9.5</span>,<span class="dv">6</span>))</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">123</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>mall[<span class="st">'Cluster'</span>] <span class="op">=</span> kmeans.fit_predict(X_scaled)</span>
@@ -758,18 +758,18 @@ This dataset contains information about customers of a shopping mall, including 
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Analyze the segments</p>
-<div id="4592cc1b" class="cell">
+<div id="019e6954" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cluster_summary <span class="op">=</span> mall.drop(columns<span class="op">=</span>[<span class="st">'Gender'</span>,<span class="st">'ID'</span>]).groupby(<span class="st">'Cluster'</span>).mean()</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cluster_summary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now say we have two new customers</p>
-<div id="4da6d91c" class="cell">
+<div id="97467adb" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>new_customer <span class="op">=</span> {<span class="st">'ID'</span>:[<span class="dv">201</span>,<span class="dv">202</span>],<span class="st">'Gender'</span>:[<span class="st">'Male'</span>,<span class="st">'Female'</span>],<span class="st">'Age'</span>: [<span class="dv">30</span>,<span class="dv">50</span>],<span class="st">'Income'</span>:[<span class="dv">40</span>,<span class="dv">70</span>],<span class="st">'SpendingScore'</span>:[<span class="dv">70</span>,<span class="dv">20</span>]}</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>new_customer <span class="op">=</span> pd.DataFrame(new_customer)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(new_customer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We would like to know in which cluster they belong.</p>
-<div id="afd3e3b5" class="cell">
+<div id="5102bf12" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>X_new <span class="op">=</span> new_customer[[<span class="st">'Age'</span>, <span class="st">'Income'</span>,<span class="st">'SpendingScore'</span>]]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>X_new_sc <span class="op">=</span> scaler.transform(X_new)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>cluster_labels <span class="op">=</span> kmeans.predict(X_new_sc)</span>
@@ -971,17 +971,45 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.querySelectorAll('.bibtex-copy').forEach(function (button) {
-    button.addEventListener('click', async function () {
+    button.addEventListener('click', function () {
       const source = document.getElementById(button.dataset.copyTarget);
       if (!source) return;
-      try {
-        await navigator.clipboard.writeText(source.textContent.trim());
-        const previous = button.textContent;
-        button.textContent = 'Copied';
-        setTimeout(function () { button.textContent = previous; }, 1600);
-      } catch (error) {
-        button.textContent = 'Select and copy above';
+      const citation = source.textContent.trim();
+      const previous = button.textContent;
+      button.textContent = 'Copied';
+
+      const fallbackCopy = function () {
+        const field = document.createElement('textarea');
+        field.value = citation;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(citation).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
       }
+      setTimeout(function () { button.textContent = previous; }, 1600);
+    });
+  });
+
+  document.querySelectorAll('.bibtex-dropdown').forEach(function (details) {
+    details.addEventListener('toggle', function () {
+      if (!details.open) return;
+      document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (other) {
+        if (other !== details) other.removeAttribute('open');
+      });
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (details) {
+      if (!details.contains(event.target)) details.removeAttribute('open');
     });
   });
 });

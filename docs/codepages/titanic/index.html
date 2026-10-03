@@ -84,9 +84,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c8f962d185217da7fb63d497bbcee168.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-8598d2e4dfd393001eb172495299b792.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -459,7 +459,7 @@ window.Quarto = {
 
 <section id="the-data" class="level2">
 <h2 class="anchored" data-anchor-id="the-data">The Data</h2>
-<div id="b2165b2d" class="cell">
+<div id="0603875d" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -474,14 +474,14 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
 <section id="descriptive-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="descriptive-statistics">Descriptive Statistics</h3>
-<div id="86fb683b" class="cell">
+<div id="6f15f198" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>titanic.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="5f7534bc" class="cell">
+<div id="05350e78" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>titanic.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Seems like there are some missing data for the <code>Age</code>, <code>Cabin</code>, and <code>Emberked</code> features. To see with visualization</p>
-<div id="48ca33ef" class="cell">
+<div id="5230e75c" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(titanic.isnull(), yticklabels<span class="op">=</span><span class="va">False</span>, cbar<span class="op">=</span><span class="va">False</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p style="text-align: justify">
@@ -490,15 +490,15 @@ Approximately <span class="math inline">\(20\%\)</span> of the <code>Age</code> 
 </section>
 <section id="data-visualization" class="level3">
 <h3 class="anchored" data-anchor-id="data-visualization">Data Visualization</h3>
-<div id="d89de1d4" class="cell">
+<div id="78295554" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span><span class="st">'Survived'</span>, hue<span class="op">=</span><span class="st">'Sex'</span>, data<span class="op">=</span> titanic, palette<span class="op">=</span><span class="st">'RdBu_r'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Looks like maximum of the passenger who didn’t survived are male.</p>
-<div id="d2f18f0f" class="cell">
+<div id="18e5501f" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span><span class="st">'Survived'</span>, hue<span class="op">=</span><span class="st">'Pclass'</span>, data<span class="op">=</span>titanic, palette<span class="op">=</span><span class="st">'rainbow'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>From this plot we see that people from class 3 has the highest proportion who didn’t survive. In the survival class, passenger class 1 has the highest proportion.</p>
-<div id="2c1492aa" class="cell">
+<div id="ba7da900" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">7.9</span>, <span class="dv">4</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>titanic[<span class="st">'Age'</span>].hist(bins<span class="op">=</span><span class="dv">35</span>, color<span class="op">=</span><span class="st">'darkred'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, ax<span class="op">=</span>ax1)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Age'</span>)</span>
@@ -510,7 +510,7 @@ Approximately <span class="math inline">\(20\%\)</span> of the <code>Age</code> 
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Seems like <code>Age</code> is almost normally distributed. However, the the <code>Fare</code> is positively skewed. Other categorical features</p>
-<div id="ec53d856" class="cell">
+<div id="208cceba" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">7.9</span>, <span class="dv">4</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -537,14 +537,14 @@ Approximately <span class="math inline">\(20\%\)</span> of the <code>Age</code> 
 <p style="text-align: justify">
 Here, the <code>Age</code> feature is a continuous feature and almost normally distributed. So we can impute this by the mean of the <code>Age</code> variable. However, this feature can be classified by other categorical features such as <code>Sex</code>, <code>Pclass</code>, <code>SibSp</code>, or <code>Perch</code>. But we can be smarter by taking consideration of greater and homogeneously diversified categorical feature. In this case, <code>Pclass</code> is the perfect one.
 </p>
-<div id="acf39834" class="cell">
+<div id="d971c886" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'Pclass'</span>, y<span class="op">=</span><span class="st">'Age'</span>, hue<span class="op">=</span><span class="st">'Pclass'</span>,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>titanic, palette<span class="op">=</span><span class="st">'winter'</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>So, whenever a passenger is in the 1st class, the mean <code>Age</code> is around 37 and for the 2nd class and 3rd class the mean <code>Age</code> are 29 and 24, respectively.</p>
-<div id="d8bd88fd" class="cell">
+<div id="2fb3f1f8" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> age_imputation(cols):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    Age <span class="op">=</span> cols[<span class="dv">0</span>]</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    Pclass <span class="op">=</span> cols[<span class="dv">1</span>]</span>
@@ -561,7 +561,7 @@ Here, the <code>Age</code> feature is a continuous feature and almost normally d
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>sns.heatmap(titanic.isnull(), yticklabels<span class="op">=</span><span class="va">False</span>, cbar<span class="op">=</span><span class="va">False</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Since there are too many missing in <code>Cabin</code>, so we can drop it along with two missing values from the <code>Emberked</code> feature.</p>
-<div id="47f02dfa" class="cell">
+<div id="c5caf3e2" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>titanic.drop(<span class="st">'Cabin'</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>titanic.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sns.heatmap(titanic.isnull(), yticklabels<span class="op">=</span><span class="va">False</span>, cbar<span class="op">=</span><span class="va">False</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -570,7 +570,7 @@ Here, the <code>Age</code> feature is a continuous feature and almost normally d
 </section>
 <section id="converting-the-categorical-features" class="level3">
 <h3 class="anchored" data-anchor-id="converting-the-categorical-features">Converting the Categorical Features</h3>
-<div id="c539d6a3" class="cell">
+<div id="f08a4faa" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>titanic[<span class="st">'Male'</span>] <span class="op">=</span> pd.get_dummies(titanic.Sex,dtype<span class="op">=</span><span class="bu">int</span>)[<span class="st">'male'</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>emb <span class="op">=</span> pd.get_dummies(titanic[<span class="st">'Embarked'</span>],drop_first<span class="op">=</span><span class="va">True</span>, dtype<span class="op">=</span><span class="bu">int</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>titanic <span class="op">=</span> pd.concat([titanic, emb], axis<span class="op">=</span><span class="dv">1</span>)</span>
@@ -581,7 +581,7 @@ Here, the <code>Age</code> feature is a continuous feature and almost normally d
 </section>
 <section id="modeling" class="level2">
 <h2 class="anchored" data-anchor-id="modeling">Modeling</h2>
-<div id="3106b888" class="cell">
+<div id="4fb776ac" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span>
@@ -598,7 +598,7 @@ Here, the <code>Age</code> feature is a continuous feature and almost normally d
 </section>
 <section id="evaluation" class="level2">
 <h2 class="anchored" data-anchor-id="evaluation">Evaluation</h2>
-<div id="fe03b81f" class="cell">
+<div id="338af646" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_test,pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
@@ -635,17 +635,45 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.querySelectorAll('.bibtex-copy').forEach(function (button) {
-    button.addEventListener('click', async function () {
+    button.addEventListener('click', function () {
       const source = document.getElementById(button.dataset.copyTarget);
       if (!source) return;
-      try {
-        await navigator.clipboard.writeText(source.textContent.trim());
-        const previous = button.textContent;
-        button.textContent = 'Copied';
-        setTimeout(function () { button.textContent = previous; }, 1600);
-      } catch (error) {
-        button.textContent = 'Select and copy above';
+      const citation = source.textContent.trim();
+      const previous = button.textContent;
+      button.textContent = 'Copied';
+
+      const fallbackCopy = function () {
+        const field = document.createElement('textarea');
+        field.value = citation;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(citation).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
       }
+      setTimeout(function () { button.textContent = previous; }, 1600);
+    });
+  });
+
+  document.querySelectorAll('.bibtex-dropdown').forEach(function (details) {
+    details.addEventListener('toggle', function () {
+      if (!details.open) return;
+      document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (other) {
+        if (other !== details) other.removeAttribute('open');
+      });
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (details) {
+      if (!details.contains(event.target)) details.removeAttribute('open');
     });
   });
 });

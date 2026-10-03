@@ -86,9 +86,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c8f962d185217da7fb63d497bbcee168.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-8598d2e4dfd393001eb172495299b792.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -581,7 +581,7 @@ Imagine you’re training a model to detect credit card fraud. Out of 100,000 tr
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>Let’s explain everything with the famous <em>IRIS</em> dataset from the <code>seaborn</code> library.</p>
-<div id="2d0e0a9a" class="cell">
+<div id="e3084517" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -609,7 +609,7 @@ Important
 <p>As we can see that the number of observation is <code>{python} len(labels)</code>. So, if we just directly split this data into 70-30 or 80-20 training-test ratio then the training data will be an imbalanced data.</p>
 </div>
 </div>
-<div id="8c72aa52" class="cell">
+<div id="3f284f16" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>trainProp <span class="op">=</span> <span class="fl">0.8</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>numTrainData <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(labels)<span class="op">*</span>trainProp)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>trainTestB <span class="op">=</span> np.zeros(<span class="bu">len</span>(labels), dtype<span class="op">=</span><span class="bu">bool</span>)</span>
@@ -617,7 +617,7 @@ Important
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>trainTestB</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s check if the dataset is balanced</p>
-<div id="bcd88aa3" class="cell">
+<div id="bbda2b0d" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Class average in full dataset'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(torch.mean(labels.<span class="bu">float</span>()))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
@@ -640,7 +640,7 @@ Note
 <p>Note that the average in all cases should be either 1 or very close to one, as we have 0,1, and 2 classes.</p>
 </div>
 </div>
-<div id="df0c1fcb" class="cell">
+<div id="75e6cf09" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>actualTrain <span class="op">=</span> np.random.choice(<span class="bu">range</span>(<span class="bu">len</span>(labels)), numTrainData, replace<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>trainTestB <span class="op">=</span> np.zeros(<span class="bu">len</span>(labels), dtype<span class="op">=</span><span class="bu">bool</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>trainTestB[actualTrain] <span class="op">=</span> <span class="va">True</span></span>
@@ -651,7 +651,7 @@ Note
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(torch.mean(labels[<span class="op">~</span>trainTestB].<span class="bu">float</span>()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Modeling</p>
-<div id="01c8e945" class="cell">
+<div id="0ad142f1" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>iris_classifier <span class="op">=</span> nn.Sequential(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    nn.Linear(<span class="dv">4</span>, <span class="dv">64</span>),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    nn.ReLU(),</span>
@@ -663,7 +663,7 @@ Note
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> torch.optim.SGD(iris_classifier.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Data Structure</p>
-<div id="c0777061" class="cell">
+<div id="a0bc9a72" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Full data shape'</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.shape)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' '</span>)</span>
@@ -674,7 +674,7 @@ Note
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="op">~</span>trainTestB, :].shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Next, train and test the model</p>
-<div id="a2aa4740" class="cell">
+<div id="1ef18578" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nEpochs <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>losses <span class="op">=</span> torch.zeros(nEpochs)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>accuracy_track <span class="op">=</span> []</span>
@@ -698,7 +698,7 @@ Note
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    optimizer.step()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>After training, now we can use our model to compute train and test accuracies</p>
-<div id="770c52da" class="cell">
+<div id="051b8d87" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> iris_classifier(data[trainTestB, :])</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>training_accuracy <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> torch.mean(</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    (torch.argmax(pred, axis<span class="op">=</span><span class="dv">1</span>)<span class="op">==</span>labels[trainTestB]).<span class="bu">float</span>()</span>
@@ -711,7 +711,7 @@ Note
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Accuracy on test data: </span><span class="sc">%g%%</span><span class="st">'</span> <span class="op">%</span>test_accuracy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Instead of manual splitting, we could also use <code>sklearn</code> library and obtain similar results</p>
-<div id="d2d57221" class="cell">
+<div id="a1e2d46b" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> modeling():</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    iris_classifier <span class="op">=</span> nn.Sequential(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        nn.Linear(<span class="dv">4</span>, <span class="dv">64</span>),</span>
@@ -754,7 +754,7 @@ Note
 <span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> training_accuracy, test_accuracy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we re-train the model</p>
-<div id="89b49429" class="cell">
+<div id="a37cf17a" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>iris_classifier, loss_fun, optimizer <span class="op">=</span> modeling()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>train_acc, test_acc <span class="op">=</span> model_training()</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.plot(train_acc, <span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'train'</span>)</span>
@@ -891,17 +891,45 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.querySelectorAll('.bibtex-copy').forEach(function (button) {
-    button.addEventListener('click', async function () {
+    button.addEventListener('click', function () {
       const source = document.getElementById(button.dataset.copyTarget);
       if (!source) return;
-      try {
-        await navigator.clipboard.writeText(source.textContent.trim());
-        const previous = button.textContent;
-        button.textContent = 'Copied';
-        setTimeout(function () { button.textContent = previous; }, 1600);
-      } catch (error) {
-        button.textContent = 'Select and copy above';
+      const citation = source.textContent.trim();
+      const previous = button.textContent;
+      button.textContent = 'Copied';
+
+      const fallbackCopy = function () {
+        const field = document.createElement('textarea');
+        field.value = citation;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(citation).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
       }
+      setTimeout(function () { button.textContent = previous; }, 1600);
+    });
+  });
+
+  document.querySelectorAll('.bibtex-dropdown').forEach(function (details) {
+    details.addEventListener('toggle', function () {
+      if (!details.open) return;
+      document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (other) {
+        if (other !== details) other.removeAttribute('open');
+      });
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (details) {
+      if (!details.contains(event.target)) details.removeAttribute('open');
     });
   });
 });

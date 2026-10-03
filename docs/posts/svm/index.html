@@ -86,9 +86,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d55ad538553833994e65ea0dc4f9e74e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c8f962d185217da7fb63d497bbcee168.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-6f0648c25d1e330123f9948b207cf87e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-8598d2e4dfd393001eb172495299b792.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-d4574cdef541e0fa40919a8962586ab1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -557,7 +557,7 @@ w^T\mathbf{x}+b=0;\hspace{4mm}\implies w_0x+w_1y+b=0;\hspace{4mm}\implies y=\fra
 <p><span class="math display">\[
 w^T\mathbf{x}+b=0;\hspace{4mm}\implies w_0x+w_1y+w_2z+b=0;\hspace{4mm}\implies z=\frac{-w_0x-w_1y-b}{w_2}
 \]</span></p>
-<div id="b66c45c2" class="cell">
+<div id="306bdb6e" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -656,7 +656,7 @@ These two conditions combaine the equation mention above. That is all points mus
 <p><span class="math display">\[
 \frac{|d_1-d_2|}{\sqrt{a^2+b^2+c^2}}
 \]</span></p>
-<div id="83c7c24e" class="cell">
+<div id="e3e35fce" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
@@ -760,7 +760,7 @@ f(x) = \text{sign} \left( \sum_{i=1}^N \alpha_i y_i x_i^T x + b \right)
 <section id="nonlinear-support-vector-machines" class="level2">
 <h2 class="anchored" data-anchor-id="nonlinear-support-vector-machines">Nonlinear Support Vector Machines</h2>
 <p>Imagine we have a dataset that looks like this.</p>
-<div id="a6cd2d7f" class="cell">
+<div id="402ee1b1" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_moons</span>
@@ -819,7 +819,7 @@ K(x_1,x_2)&amp; = \left(x_1x_2+\frac{1}{2}\right)^2\\
 &amp; = x_1x_2+x_1^2x_2^2+\frac{1}{4}\\
 &amp; = (x_1,x_1^2,\frac{1}{2})\cdot (x_2,x_2^2,\frac{1}{2})
 \end{align*}\]</span></p>
-<div id="456bda78" class="cell">
+<div id="b36fd75b" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>))</span>
@@ -859,7 +859,7 @@ K(x_1,x_2)&amp; = \left(x_1x_2+\frac{1}{2}\right)^2\\
 </details>
 </div>
 <p>or for a 2D data to 3D transformation along with 2D hyperplane</p>
-<div id="a7f267e0" class="cell">
+<div id="becea491" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_circles</span>
@@ -1020,7 +1020,7 @@ In soft margin SVM, the margin is not strict. Some points are allowed to lie wit
 <p style="text-align: justify">
 The regularization parameter <span class="math inline">\(C\)</span> controls the trade-off between margin width and classification accuracy. <strong>Cross-validation</strong> is commonly used to select the optimal value of <span class="math inline">\(C\)</span> by evaluating the model’s performance across different values of <span class="math inline">\(C\)</span> and choosing the one that generalizes best to unseen data.
 </p>
-<div id="3c13abfe" class="cell">
+<div id="f2f90b0c" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1079,7 +1079,7 @@ The regularization parameter <span class="math inline">\(C\)</span> controls the
 <section id="linearsvc" class="level3">
 <h3 class="anchored" data-anchor-id="linearsvc">LinearSVC</h3>
 <p>Let’s first create the data</p>
-<div id="1cfc8fd6" class="cell">
+<div id="0b754523" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">123</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n_rows <span class="op">=</span> <span class="dv">200</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>diff <span class="op">=</span> <span class="fl">0.1</span></span>
@@ -1102,7 +1102,7 @@ The regularization parameter <span class="math inline">\(C\)</span> controls the
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we apply linear SVM classifier</p>
-<div id="011fedee" class="cell">
+<div id="2d78a624" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> LinearSVC</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>maximum_margin_SVC <span class="op">=</span> LinearSVC(C<span class="op">=</span> <span class="dv">1000</span>, max_iter<span class="op">=</span><span class="dv">10000</span>, dual<span class="op">=</span><span class="st">"auto"</span>)</span>
@@ -1129,7 +1129,7 @@ The regularization parameter <span class="math inline">\(C\)</span> controls the
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The data that we used to explain the polynomial kernels</p>
-<div id="dcb46c3e" class="cell">
+<div id="b71ff879" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.random.random(<span class="dv">50</span>)<span class="op">-</span><span class="dv">1</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.ones(<span class="bu">len</span>(X))</span>
@@ -1154,7 +1154,7 @@ The regularization parameter <span class="math inline">\(C\)</span> controls the
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>For the higher dimensions</p>
-<div id="c4c0e716" class="cell">
+<div id="658e62e0" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_circles(n_samples<span class="op">=</span><span class="dv">300</span>, factor<span class="op">=</span><span class="fl">0.3</span>, noise<span class="op">=</span><span class="fl">0.1</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create SVM models with polynomial and RBF kernels</span></span>
@@ -1366,17 +1366,45 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.querySelectorAll('.bibtex-copy').forEach(function (button) {
-    button.addEventListener('click', async function () {
+    button.addEventListener('click', function () {
       const source = document.getElementById(button.dataset.copyTarget);
       if (!source) return;
-      try {
-        await navigator.clipboard.writeText(source.textContent.trim());
-        const previous = button.textContent;
-        button.textContent = 'Copied';
-        setTimeout(function () { button.textContent = previous; }, 1600);
-      } catch (error) {
-        button.textContent = 'Select and copy above';
+      const citation = source.textContent.trim();
+      const previous = button.textContent;
+      button.textContent = 'Copied';
+
+      const fallbackCopy = function () {
+        const field = document.createElement('textarea');
+        field.value = citation;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(citation).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
       }
+      setTimeout(function () { button.textContent = previous; }, 1600);
+    });
+  });
+
+  document.querySelectorAll('.bibtex-dropdown').forEach(function (details) {
+    details.addEventListener('toggle', function () {
+      if (!details.open) return;
+      document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (other) {
+        if (other !== details) other.removeAttribute('open');
+      });
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    document.querySelectorAll('.bibtex-dropdown[open]').forEach(function (details) {
+      if (!details.contains(event.target)) details.removeAttribute('open');
     });
   });
 });
