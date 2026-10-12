@@ -86,11 +86,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e6c6665dfdddd33494f60fc6ae848125.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-98e6688e65d9ff42c0108ad9622ebe5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-cc13196b022ca7e684462bdf41e32eeb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-afa571733b3577baf9b27c57bd6965cd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-98e6688e65d9ff42c0108ad9622ebe5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cc13196b022ca7e684462bdf41e32eeb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -538,7 +536,7 @@ window.Quarto = {
 <section id="web-scraping" class="level2">
 <h2 class="anchored" data-anchor-id="web-scraping">Web Scraping</h2>
 <p>We scrapping is another way of collecting the data for the research if the data is not available in any repositiory. We can collect the data from a website using a library called <code>BeautifulSoup</code> if the website has permision for other people to collect data from the website.</p>
-<div id="be63b09f" class="cell" data-execution_count="1">
+<div id="b188fb27" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bs4                      <span class="co"># library for BeautifulSoup</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup   <span class="co"># import the BeautifulSoup object</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -549,7 +547,7 @@ window.Quarto = {
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>set_style(<span class="st">"whitegrid"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now let’s make a html object using <code>BeautifulSoup</code>. Let’s say we have a html website that looks like below</p>
-<div id="9abff244" class="cell" data-execution_count="2">
+<div id="ffa9783b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>html_doc<span class="op">=</span><span class="st">"""</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;!DOCTYPE html&gt;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;html lang="en"&gt;</span></span>
@@ -566,32 +564,32 @@ window.Quarto = {
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we want to grab information from the dummy html documnet above.</p>
-<div id="96698146" class="cell" data-execution_count="3">
+<div id="89a03672" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>soup<span class="op">=</span>BeautifulSoup(html_doc, features<span class="op">=</span><span class="st">'html.parser'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now that we have the object <code>soup</code> we can walk through each elements in this object. For example, if we want to grab the title element,</p>
-<div id="b82ef2ce" class="cell" data-execution_count="4">
+<div id="cffdc6a9" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>soup.html.head.title</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>&lt;title&gt;My Dummy HTML Document&lt;/title&gt;</code></pre>
 </div>
 </div>
 <p>Since the html document has only one title, therefore, we can simply use the following command</p>
-<div id="1ece7821" class="cell" data-execution_count="5">
+<div id="498a92f8" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>soup.title </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>&lt;title&gt;My Dummy HTML Document&lt;/title&gt;</code></pre>
 </div>
 </div>
 <p>or this command to get the text only</p>
-<div id="43a518a3" class="cell" data-execution_count="6">
+<div id="b6b7bb09" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>soup.title.text</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>'My Dummy HTML Document'</code></pre>
 </div>
 </div>
 <p>This <code>soup</code> object is like a family tree. It has parents, children, greatgrand parents etc.</p>
-<div id="942541d2" class="cell" data-execution_count="7">
+<div id="e90d2c85" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>soup.title.parent</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>&lt;head&gt;
@@ -600,24 +598,24 @@ window.Quarto = {
 </div>
 </div>
 <p>Now to grab an attribute from the <code>soup</code> object we can use</p>
-<div id="07f3db30" class="cell" data-execution_count="8">
+<div id="abfa9c7c" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>soup.a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>&lt;a class="blog" href="https://mrislambd.github.io/blog" id="blog"&gt; Blog &lt;/a&gt;</code></pre>
 </div>
 </div>
 <p>or any particular thing from the attribute</p>
-<div id="82b5ceff" class="cell" data-execution_count="9">
+<div id="f2800a47" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>soup.a[<span class="st">'class'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>['blog']</code></pre>
 </div>
 </div>
 <p>We can also find multiple attribute of the same kind</p>
-<div id="945b4011" class="cell" data-execution_count="10">
+<div id="a3d63565" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>soup.findAll(<span class="st">'a'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_6935/2082462312.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
+<pre><code>/tmp/ipykernel_6792/2082462312.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
   soup.findAll('a')</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -626,10 +624,10 @@ window.Quarto = {
 </div>
 </div>
 <p>Then if we want any particular object from all <code>a</code> attribute</p>
-<div id="74881503" class="cell" data-execution_count="11">
+<div id="5ac44878" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>soup.findAll(<span class="st">'a'</span>)[<span class="dv">0</span>][<span class="st">'id'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_6935/2617565345.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
+<pre><code>/tmp/ipykernel_6792/2617565345.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
   soup.findAll('a')[0]['id']</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -637,17 +635,17 @@ window.Quarto = {
 </div>
 </div>
 <p>For any <code>p</code> tag</p>
-<div id="38e786aa" class="cell" data-execution_count="12">
+<div id="290a3dca" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>soup.p.text </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>'This is a paragraph in my dummy HTML document.'</code></pre>
 </div>
 </div>
 <p>Similarly, if we want to grab all the <code>href</code>s from the <code>a</code> tags</p>
-<div id="27d41116" class="cell" data-execution_count="13">
+<div id="00bd9be8" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>[h[<span class="st">'href'</span>] <span class="cf">for</span> h <span class="kw">in</span> soup.findAll(<span class="st">'a'</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_6935/1829196164.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
+<pre><code>/tmp/ipykernel_6792/1829196164.py:1: DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since version 4.0.0.
   [h['href'] for h in soup.findAll('a')]</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -658,7 +656,7 @@ window.Quarto = {
 <section id="example-of-webscraping-from-a-real-website" class="level2">
 <h2 class="anchored" data-anchor-id="example-of-webscraping-from-a-real-website">Example of Webscraping from a real website</h2>
 <p>In this example we want to obtain some information from <a href="https://research.nvidia.com/graduate-fellowships/archive" target="_blank">NVIDIA Graduate Fellowship Program</a>. Before accessing this website we need to know if we have permision to access their data through webscraping.</p>
-<div id="3675665b" class="cell" data-execution_count="14">
+<div id="5da29107" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url<span class="op">=</span><span class="st">"https://research.nvidia.com/graduate-fellowships/archive"</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>response.status_code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -667,15 +665,15 @@ window.Quarto = {
 </div>
 </div>
 <p>The <code>status_code</code> <span class="math inline">\(200\)</span> ensures that we have enough permision to acccess their website data. However, if we obtain <code>status_code</code> of <span class="math inline">\(403, 400,\)</span> or <span class="math inline">\(500\)</span> then we do not permision or a <code>bad request</code>. For more about the status codes <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" target="_blank">click here</a>.</p>
-<div id="79a4d647" class="cell" data-execution_count="15">
+<div id="f17c2980" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(response.text, <span class="st">'html.parser'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We want to make an analysis based on the institution of the past graduate fellows. Insepecting the elements in <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" target="_blank">this website</a> we see that the <code>div</code> those have <code>class="archive-group"</code> contains the information of the past graduate fellows.</p>
-<div id="598033b5" class="cell" data-execution_count="16">
+<div id="dbd4b251" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pf <span class="op">=</span> soup.find_all(<span class="st">"div"</span>, class_<span class="op">=</span><span class="st">"archive-group"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>and the first element of this <code>pf</code> contains the information of the graduate fellows in the year of 2021.</p>
-<div id="32bd6d8e" class="cell" data-execution_count="17">
+<div id="d860ab56" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>pf[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>&lt;div class="archive-group"&gt;
@@ -699,7 +697,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Now let’s make a <code>pandas</code> dataframe using the information in this page. We can make an use of the output from the above chunk. To grab the year, we see that <code>archive-group__title</code> class with a <code>h4</code> tag contains the year for all years. With <code>strip=True</code>, the text is cleaned by removing extra whitespace from the beginning and end. We need the first element so a <code>split()[0]</code> will do the job. Then we make another group called <code>fellows</code> that contains the fellows in a certian year by using the <code>div</code> and <code>class"views-row"</code>. Once the new group created, we then iterate through this group to extract their names and corresponding institutions.</p>
-<div id="2b79bea9" class="cell" data-execution_count="18">
+<div id="dbc8db00" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span>[]</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group <span class="kw">in</span> pf:</span>
@@ -771,7 +769,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Now let’s perform some Exploratory Data Analysis (EDA). First, we analyze the unique values and distributions.</p>
-<div id="c5b3f790" class="cell" data-execution_count="19">
+<div id="42b15ac9" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of fellows each year</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>year_counts <span class="op">=</span> data[<span class="st">'Year'</span>].value_counts().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame where years are columns and counts are values in the next row</span></span>
@@ -798,7 +796,7 @@ Count    10    10    10    10    10     9     8     7     6
 </div>
 </div>
 <p>Next we see that most represented universities</p>
-<div id="050698de" class="cell" data-execution_count="20">
+<div id="d0b034ac" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>university_counts <span class="op">=</span> data[<span class="st">'Institute'</span>].value_counts()</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(university_counts.head(<span class="dv">10</span>))  <span class="co"># Display the top 10 universities</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -817,7 +815,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>To visualize the award distributions per year,</p>
-<div id="7b371085" class="cell" data-execution_count="21">
+<div id="5abfa2b7" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">5</span>))</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span><span class="st">'Year'</span>, data<span class="op">=</span>data, order<span class="op">=</span><span class="bu">sorted</span>(data[<span class="st">'Year'</span>].unique()))</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.gca().set_facecolor(<span class="st">'#f4f4f4'</span>) </span>
@@ -833,7 +831,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Top 10 universities visualization</p>
-<div id="bd753d74" class="cell" data-execution_count="22">
+<div id="705ed155" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>top_universities <span class="op">=</span> data[<span class="st">'Institute'</span>].value_counts().head(<span class="dv">10</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>sns.barplot(y<span class="op">=</span>top_universities.index, x<span class="op">=</span>top_universities.values)</span>
@@ -852,7 +850,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Trend over time</p>
-<div id="a71f8ead" class="cell" data-execution_count="23">
+<div id="3737dfaf" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">5</span>))</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Year'</span>] <span class="op">=</span> data[<span class="st">'Year'</span>].astype(<span class="bu">int</span>)  </span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>yearly_trend <span class="op">=</span> data.groupby(<span class="st">'Year'</span>).size()</span>
@@ -878,28 +876,6 @@ Name: count, dtype: int64</code></pre>
 <ul>
 <li><a href="https://doi.org/10.24432/C56C76." target="_blank">Fisher,R. A.. (1988). Iris. UCI Machine Learning Repository.</a></li>
 </ul>
-<p><strong>Share on</strong></p>
-<div class="columns">
-<div class="column" style="width:33%;">
-<p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1877F2; text-decoration: none;"></a></p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1877F2; text-decoration: none;">
-</a><p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1877F2; text-decoration: none;"><i class="fa-brands fa-facebook fa-3x" aria-label="facebook"></i> </a></p>
-</div><div class="column" style="width:33%;">
-<p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#0077B5; text-decoration: none;"></a></p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#0077B5; text-decoration: none;">
-</a><p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#0077B5; text-decoration: none;"><i class="fa-brands fa-linkedin fa-3x" aria-label="linkedin"></i> </a></p>
-</div><div class="column" style="width:33%;">
-<p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1DA1F2; text-decoration: none;"></a></p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1DA1F2; text-decoration: none;">
-</a><p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/datacollection/" target="_blank" style="color:#1DA1F2; text-decoration: none;"><i class="fa-brands fa-twitter fa-3x" aria-label="twitter"></i> </a></p>
-</div>
-</div>
-<script src="https://giscus.app/client.js" data-repo="mrislambd/mrislambd.github.io" data-repo-id="R_kgDOMV8crA" data-category="Announcements" data-category-id="DIC_kwDOMV8crM4CjbQW" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<div id="fb-root">
-
-</div>
-<script async="" defer="" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v20.0"></script>
-<div class="fb-comments" data-href="https://mrislambd.github.io/dsandml/posts/datacollection/" data-width="750" data-numposts="5">
-
-</div>
 <p><strong>You may also like</strong></p>
 
 
@@ -910,7 +886,7 @@ Name: count, dtype: int64</code></pre>
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791769068303" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
+<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791779227814" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
 <a href="../../posts/ann-classification1/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -932,7 +908,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791769068304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="930">
+<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791779227814" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="767">
 <a href="../../posts/ann-linreg/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -942,7 +918,7 @@ Tuesday, March 25, 2025
 <h5 class="no-anchor card-title listing-title">
 Artificial Neural Network (ANN) - Regression
 </h5>
-<div class="listing-reading-time card-text text-muted">5 min</div>
+<div class="listing-reading-time card-text text-muted">4 min</div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Rafiq Islam
@@ -954,7 +930,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1791769068304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2300">
+<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1791779227814" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2139">
 <a href="../../posts/bayesianclassification/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -964,7 +940,7 @@ Tuesday, March 25, 2025
 <h5 class="no-anchor card-title listing-title">
 Bayesian Probabilistic Models for Classification
 </h5>
-<div class="listing-reading-time card-text text-muted">12 min</div>
+<div class="listing-reading-time card-text text-muted">11 min</div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Rafiq Islam
@@ -1080,6 +1056,76 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+});
+</script>
+<script>
+/* Share buttons + comments heading, identical on every Rafiq Islam site.
+   Shown automatically on any page that has comments turned on
+   (comments: giscus: ... in a folder's _metadata.yml). Nothing to add by hand. */
+document.addEventListener("DOMContentLoaded", function () {
+  if (!document.getElementById("giscus-base-theme")) return;
+  var main = document.querySelector("main#quarto-document-content") || document.querySelector("main");
+  if (!main || main.querySelector(".share-block")) return;
+
+  var url = window.location.href.split("#")[0].split("?")[0];
+  var title = (document.querySelector("h1.title") || {}).textContent || document.title;
+  title = title.trim();
+  var u = encodeURIComponent(url), t = encodeURIComponent(title);
+
+  var targets = [
+    ["LinkedIn", "bi-linkedin", "https://www.linkedin.com/sharing/share-offsite/?url=" + u],
+    ["Facebook", "bi-facebook", "https://www.facebook.com/sharer/sharer.php?u=" + u],
+    ["X", "bi-twitter-x", "https://twitter.com/intent/tweet?url=" + u + "&text=" + t],
+    ["Email", "bi-envelope", "mailto:?subject=" + t + "&body=" + u]
+  ];
+
+  var block = document.createElement("section");
+  block.className = "share-block";
+  block.setAttribute("aria-label", "Share and comment");
+
+  var row = document.createElement("div");
+  row.className = "share-bar";
+  var label = document.createElement("span");
+  label.className = "share-label";
+  label.textContent = "Share";
+  row.appendChild(label);
+
+  targets.forEach(function (s) {
+    var a = document.createElement("a");
+    a.className = "share-btn";
+    a.href = s[2];
+    a.innerHTML = '<i class="bi ' + s[1] + '" aria-hidden="true"></i><span>' + s[0] + "</span>";
+    if (s[0] !== "Email") { a.target = "_blank"; a.rel = "noopener noreferrer"; }
+    a.setAttribute("aria-label", "Share on " + s[0]);
+    row.appendChild(a);
+  });
+
+  var copy = document.createElement("button");
+  copy.type = "button";
+  copy.className = "share-btn";
+  copy.innerHTML = '<i class="bi bi-link-45deg" aria-hidden="true"></i><span>Copy link</span>';
+  copy.addEventListener("click", function () {
+    var done = function () {
+      var s = copy.querySelector("span"); s.textContent = "Copied";
+      setTimeout(function () { s.textContent = "Copy link"; }, 1600);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(done, done);
+    } else {
+      var f = document.createElement("textarea");
+      f.value = url; f.style.position = "fixed"; f.style.opacity = "0";
+      document.body.appendChild(f); f.select(); document.execCommand("copy"); f.remove(); done();
+    }
+  });
+  row.appendChild(copy);
+  block.appendChild(row);
+
+  var heading = document.createElement("p");
+  heading.className = "comments-title";
+  heading.textContent = "Comments";
+  block.appendChild(heading);
+
+  main.appendChild(block);
 });
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1550,7 +1596,39 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
-  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+  </script>
+<input type="hidden" id="giscus-base-theme" value="noborder_light">
+<input type="hidden" id="giscus-alt-theme" value="noborder_dark">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "rispace/rispace.github.io";
+    script.dataset.repoId = "R_kgDOMV8crA";
+    script.dataset.category = "Announcements";
+    script.dataset.categoryId = "DIC_kwDOMV8crM4CjbQW";
+    script.dataset.mapping = "pathname";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data collection through Webscraping"</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2024-08-14"</span></span>
@@ -1878,57 +1956,8 @@ document.addEventListener("DOMContentLoaded", function () {
 <span id="cb43-371"><a href="#cb43-371" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Fisher,R. A.. (1988). Iris. UCI Machine Learning Repository.</span><span class="co">](https://doi.org/10.24432/C56C76.)</span>{target="_blank"}</span>
 <span id="cb43-372"><a href="#cb43-372" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-373"><a href="#cb43-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-374"><a href="#cb43-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-375"><a href="#cb43-375" aria-hidden="true" tabindex="-1"></a>**Share on**  </span>
-<span id="cb43-376"><a href="#cb43-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-377"><a href="#cb43-377" aria-hidden="true" tabindex="-1"></a>::::{.columns}</span>
-<span id="cb43-378"><a href="#cb43-378" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb43-379"><a href="#cb43-379" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/datacollection/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#1877F2; text-decoration: none;"</span><span class="dt">&gt;</span></span>
-<span id="cb43-380"><a href="#cb43-380" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-381"><a href="#cb43-381" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands facebook size=3x &gt;}}</span>
-<span id="cb43-382"><a href="#cb43-382" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb43-383"><a href="#cb43-383" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-384"><a href="#cb43-384" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb43-385"><a href="#cb43-385" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-386"><a href="#cb43-386" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb43-387"><a href="#cb43-387" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/datacollection/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#0077B5; text-decoration: none;"</span><span class="dt">&gt;</span></span>
-<span id="cb43-388"><a href="#cb43-388" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-389"><a href="#cb43-389" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands linkedin size=3x &gt;}}</span>
-<span id="cb43-390"><a href="#cb43-390" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb43-391"><a href="#cb43-391" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-392"><a href="#cb43-392" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb43-393"><a href="#cb43-393" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-394"><a href="#cb43-394" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb43-395"><a href="#cb43-395" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/datacollection/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#1DA1F2; text-decoration: none;"</span><span class="dt">&gt;</span></span>
-<span id="cb43-396"><a href="#cb43-396" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-397"><a href="#cb43-397" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands twitter size=3x &gt;}}</span>
-<span id="cb43-398"><a href="#cb43-398" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb43-399"><a href="#cb43-399" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-400"><a href="#cb43-400" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb43-401"><a href="#cb43-401" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb43-402"><a href="#cb43-402" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-403"><a href="#cb43-403" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://giscus.app/client.js"</span></span>
-<span id="cb43-404"><a href="#cb43-404" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo</span><span class="op">=</span><span class="st">"mrislambd/mrislambd.github.io"</span><span class="ot"> </span></span>
-<span id="cb43-405"><a href="#cb43-405" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo-id</span><span class="op">=</span><span class="st">"R_kgDOMV8crA"</span></span>
-<span id="cb43-406"><a href="#cb43-406" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category</span><span class="op">=</span><span class="st">"Announcements"</span></span>
-<span id="cb43-407"><a href="#cb43-407" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category-id</span><span class="op">=</span><span class="st">"DIC_kwDOMV8crM4CjbQW"</span></span>
-<span id="cb43-408"><a href="#cb43-408" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-mapping</span><span class="op">=</span><span class="st">"pathname"</span></span>
-<span id="cb43-409"><a href="#cb43-409" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-strict</span><span class="op">=</span><span class="st">"0"</span></span>
-<span id="cb43-410"><a href="#cb43-410" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-reactions-enabled</span><span class="op">=</span><span class="st">"1"</span></span>
-<span id="cb43-411"><a href="#cb43-411" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-emit-metadata</span><span class="op">=</span><span class="st">"0"</span></span>
-<span id="cb43-412"><a href="#cb43-412" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-input-position</span><span class="op">=</span><span class="st">"bottom"</span></span>
-<span id="cb43-413"><a href="#cb43-413" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-theme</span><span class="op">=</span><span class="st">"light"</span></span>
-<span id="cb43-414"><a href="#cb43-414" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-lang</span><span class="op">=</span><span class="st">"en"</span></span>
-<span id="cb43-415"><a href="#cb43-415" aria-hidden="true" tabindex="-1"></a><span class="ot">        crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
-<span id="cb43-416"><a href="#cb43-416" aria-hidden="true" tabindex="-1"></a><span class="ot">        async</span><span class="dt">&gt;</span></span>
-<span id="cb43-417"><a href="#cb43-417" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="cb43-418"><a href="#cb43-418" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb43-419"><a href="#cb43-419" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"fb-root"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb43-420"><a href="#cb43-420" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> async defer crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
-<span id="cb43-421"><a href="#cb43-421" aria-hidden="true" tabindex="-1"></a><span class="ot"> src</span><span class="op">=</span><span class="st">"https://connect.facebook.net/en_US/sdk.js#xfbml=1</span><span class="er">&amp;</span><span class="st">version=v20.0"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="cb43-422"><a href="#cb43-422" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"fb-comments"</span><span class="ot"> data-href</span><span class="op">=</span><span class="st">"https://mrislambd.github.io/dsandml/posts/datacollection/"</span><span class="ot"> data-width</span><span class="op">=</span><span class="st">"750"</span><span class="ot"> data-numposts</span><span class="op">=</span><span class="st">"5"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb43-423"><a href="#cb43-423" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-424"><a href="#cb43-424" aria-hidden="true" tabindex="-1"></a>**You may also like**  </span>
+<span id="cb43-374"><a href="#cb43-374" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-375"><a href="#cb43-375" aria-hidden="true" tabindex="-1"></a>**You may also like**  </span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

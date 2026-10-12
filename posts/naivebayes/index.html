@@ -86,11 +86,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e6c6665dfdddd33494f60fc6ae848125.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-98e6688e65d9ff42c0108ad9622ebe5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-cc13196b022ca7e684462bdf41e32eeb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-afa571733b3577baf9b27c57bd6965cd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-98e6688e65d9ff42c0108ad9622ebe5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cc13196b022ca7e684462bdf41e32eeb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -642,7 +640,7 @@ P(x_i|y_k)=\begin{cases}\frac{N_{x_i,y_k}+\alpha}{N_{y_k}+2\alpha }\hspace{2mm}\
 <section id="gaussian-naive-bayes" class="level3">
 <h3 class="anchored" data-anchor-id="gaussian-naive-bayes">Gaussian Naive Bayes</h3>
 <p>Code credit for the custom classifier goes to <a href="https://github.com/AssemblyAI-Community/Machine-Learning-From-Scratch/blob/main/06%20NaiveBayes/naive_bayes.py" target="_blank" style="text-decoration:none">Assembly AI</a></p>
-<div id="ffd7417b" class="cell" data-execution_count="1">
+<div id="8da39138" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GNaiveBayes:</span>
@@ -694,7 +692,7 @@ P(x_i|y_k)=\begin{cases}\frac{N_{x_i,y_k}+\alpha}{N_{y_k}+2\alpha }\hspace{2mm}\
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> numerator<span class="op">/</span>denominator</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s apply this to the <code>irish</code> data set</p>
-<div id="41b4308b" class="cell" data-execution_count="2">
+<div id="970518bc" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -768,7 +766,7 @@ P(x_i|y_k)=\begin{cases}\frac{N_{x_i,y_k}+\alpha}{N_{y_k}+2\alpha }\hspace{2mm}\
 </div>
 </div>
 </div>
-<div id="5a939600" class="cell" data-execution_count="3">
+<div id="0fe9de15" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, confusion_matrix, classification_report  </span>
@@ -832,7 +830,7 @@ weighted avg       0.98      0.98      0.98        45
 </section>
 <section id="multinomial-naive-bayes" class="level3">
 <h3 class="anchored" data-anchor-id="multinomial-naive-bayes">Multinomial Naive Bayes</h3>
-<div id="08bf3548" class="cell" data-execution_count="4">
+<div id="ab39d83e" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MNaiveBayes:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, alpha <span class="op">=</span> <span class="dv">1</span>):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.alpha <span class="op">=</span> alpha</span>
@@ -932,28 +930,6 @@ weighted avg       0.98      0.98      0.98        45
 <li><strong>Zero-Frequency Problem</strong>: If a feature value was not present in the training data, Naive Bayes will assign zero probability to the entire class, which can be addressed using Laplace smoothing.</li>
 </ul>
 <hr>
-<p><strong>Share on</strong></p>
-<div class="columns">
-<div class="column" style="width:33%;">
-<p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/naivebayes/" target="_blank" style="color:#1877F2; text-decoration: none;"></a></p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/naivebayes/" target="_blank" style="color:#1877F2; text-decoration: none;">
-</a><p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/naivebayes/" target="_blank" style="color:#1877F2; text-decoration: none;"><i class="fa-brands fa-facebook fa-3x" aria-label="facebook"></i> </a></p>
-</div><div class="column" style="width:33%;">
-<p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/naivebayes/" target="_blank" style="color:#0077B5; text-decoration: none;"></a></p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/naivebayes/" target="_blank" style="color:#0077B5; text-decoration: none;">
-</a><p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/naivebayes/" target="_blank" style="color:#0077B5; text-decoration: none;"><i class="fa-brands fa-linkedin fa-3x" aria-label="linkedin"></i> </a></p>
-</div><div class="column" style="width:33%;">
-<p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/naivebayes/" target="_blank" style="color:#1DA1F2; text-decoration: none;"></a></p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/naivebayes/" target="_blank" style="color:#1DA1F2; text-decoration: none;">
-</a><p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/naivebayes/" target="_blank" style="color:#1DA1F2; text-decoration: none;"><i class="fa-brands fa-twitter fa-3x" aria-label="twitter"></i> </a></p>
-</div>
-</div>
-<script src="https://giscus.app/client.js" data-repo="mrislambd/mrislambd.github.io" data-repo-id="R_kgDOMV8crA" data-category="Announcements" data-category-id="DIC_kwDOMV8crM4CjbQW" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<div id="fb-root">
-
-</div>
-<script async="" defer="" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v20.0"></script>
-<div class="fb-comments" data-href="https://mrislambd.github.io/dsandml/posts/naivebayes/" data-width="750" data-numposts="5">
-
-</div>
 <p><strong>You may also like</strong></p>
 
 
@@ -965,7 +941,7 @@ weighted avg       0.98      0.98      0.98        45
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791769068303" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
+<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791779227814" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
 <a href="../../posts/ann-classification1/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -987,7 +963,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791769068304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="930">
+<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791779227814" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="767">
 <a href="../../posts/ann-linreg/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -997,7 +973,7 @@ Tuesday, March 25, 2025
 <h5 class="no-anchor card-title listing-title">
 Artificial Neural Network (ANN) - Regression
 </h5>
-<div class="listing-reading-time card-text text-muted">5 min</div>
+<div class="listing-reading-time card-text text-muted">4 min</div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Rafiq Islam
@@ -1009,7 +985,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1791769068304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2300">
+<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1791779227814" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2139">
 <a href="../../posts/bayesianclassification/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -1019,7 +995,7 @@ Tuesday, March 25, 2025
 <h5 class="no-anchor card-title listing-title">
 Bayesian Probabilistic Models for Classification
 </h5>
-<div class="listing-reading-time card-text text-muted">12 min</div>
+<div class="listing-reading-time card-text text-muted">11 min</div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Rafiq Islam
@@ -1135,6 +1111,76 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+});
+</script>
+<script>
+/* Share buttons + comments heading, identical on every Rafiq Islam site.
+   Shown automatically on any page that has comments turned on
+   (comments: giscus: ... in a folder's _metadata.yml). Nothing to add by hand. */
+document.addEventListener("DOMContentLoaded", function () {
+  if (!document.getElementById("giscus-base-theme")) return;
+  var main = document.querySelector("main#quarto-document-content") || document.querySelector("main");
+  if (!main || main.querySelector(".share-block")) return;
+
+  var url = window.location.href.split("#")[0].split("?")[0];
+  var title = (document.querySelector("h1.title") || {}).textContent || document.title;
+  title = title.trim();
+  var u = encodeURIComponent(url), t = encodeURIComponent(title);
+
+  var targets = [
+    ["LinkedIn", "bi-linkedin", "https://www.linkedin.com/sharing/share-offsite/?url=" + u],
+    ["Facebook", "bi-facebook", "https://www.facebook.com/sharer/sharer.php?u=" + u],
+    ["X", "bi-twitter-x", "https://twitter.com/intent/tweet?url=" + u + "&text=" + t],
+    ["Email", "bi-envelope", "mailto:?subject=" + t + "&body=" + u]
+  ];
+
+  var block = document.createElement("section");
+  block.className = "share-block";
+  block.setAttribute("aria-label", "Share and comment");
+
+  var row = document.createElement("div");
+  row.className = "share-bar";
+  var label = document.createElement("span");
+  label.className = "share-label";
+  label.textContent = "Share";
+  row.appendChild(label);
+
+  targets.forEach(function (s) {
+    var a = document.createElement("a");
+    a.className = "share-btn";
+    a.href = s[2];
+    a.innerHTML = '<i class="bi ' + s[1] + '" aria-hidden="true"></i><span>' + s[0] + "</span>";
+    if (s[0] !== "Email") { a.target = "_blank"; a.rel = "noopener noreferrer"; }
+    a.setAttribute("aria-label", "Share on " + s[0]);
+    row.appendChild(a);
+  });
+
+  var copy = document.createElement("button");
+  copy.type = "button";
+  copy.className = "share-btn";
+  copy.innerHTML = '<i class="bi bi-link-45deg" aria-hidden="true"></i><span>Copy link</span>';
+  copy.addEventListener("click", function () {
+    var done = function () {
+      var s = copy.querySelector("span"); s.textContent = "Copied";
+      setTimeout(function () { s.textContent = "Copy link"; }, 1600);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(done, done);
+    } else {
+      var f = document.createElement("textarea");
+      f.value = url; f.style.position = "fixed"; f.style.opacity = "0";
+      document.body.appendChild(f); f.select(); document.execCommand("copy"); f.remove(); done();
+    }
+  });
+  row.appendChild(copy);
+  block.appendChild(row);
+
+  var heading = document.createElement("p");
+  heading.className = "comments-title";
+  heading.textContent = "Comments";
+  block.appendChild(heading);
+
+  main.appendChild(block);
 });
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1605,7 +1651,39 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
-  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+  </script>
+<input type="hidden" id="giscus-base-theme" value="noborder_light">
+<input type="hidden" id="giscus-alt-theme" value="noborder_dark">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "rispace/rispace.github.io";
+    script.dataset.repoId = "R_kgDOMV8crA";
+    script.dataset.category = "Announcements";
+    script.dataset.categoryId = "DIC_kwDOMV8crM4CjbQW";
+    script.dataset.mapping = "pathname";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Classification using Naive Bayes algorithm"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2024-10-10"</span></span>
@@ -1964,59 +2042,9 @@ document.addEventListener("DOMContentLoaded", function () {
 <span id="cb7-364"><a href="#cb7-364" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-365"><a href="#cb7-365" aria-hidden="true" tabindex="-1"></a>---  </span>
 <span id="cb7-366"><a href="#cb7-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-367"><a href="#cb7-367" aria-hidden="true" tabindex="-1"></a>**Share on**  </span>
-<span id="cb7-368"><a href="#cb7-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-369"><a href="#cb7-369" aria-hidden="true" tabindex="-1"></a>::::{.columns}</span>
-<span id="cb7-370"><a href="#cb7-370" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb7-371"><a href="#cb7-371" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/naivebayes/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#1877F2; text-decoration: none;"</span><span class="dt">&gt;</span></span>
-<span id="cb7-372"><a href="#cb7-372" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb7-373"><a href="#cb7-373" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands facebook size=3x &gt;}}</span>
-<span id="cb7-374"><a href="#cb7-374" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb7-375"><a href="#cb7-375" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb7-376"><a href="#cb7-376" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-377"><a href="#cb7-377" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb7-378"><a href="#cb7-378" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb7-379"><a href="#cb7-379" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/naivebayes/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#0077B5; text-decoration: none;"</span><span class="dt">&gt;</span></span>
-<span id="cb7-380"><a href="#cb7-380" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb7-381"><a href="#cb7-381" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands linkedin size=3x &gt;}}</span>
-<span id="cb7-382"><a href="#cb7-382" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb7-383"><a href="#cb7-383" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb7-384"><a href="#cb7-384" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-385"><a href="#cb7-385" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb7-386"><a href="#cb7-386" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb7-387"><a href="#cb7-387" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/naivebayes/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#1DA1F2; text-decoration: none;"</span><span class="dt">&gt;</span></span>
-<span id="cb7-388"><a href="#cb7-388" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb7-389"><a href="#cb7-389" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands twitter size=3x &gt;}}</span>
-<span id="cb7-390"><a href="#cb7-390" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb7-391"><a href="#cb7-391" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb7-392"><a href="#cb7-392" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-393"><a href="#cb7-393" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb7-394"><a href="#cb7-394" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb7-395"><a href="#cb7-395" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://giscus.app/client.js"</span></span>
-<span id="cb7-396"><a href="#cb7-396" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo</span><span class="op">=</span><span class="st">"mrislambd/mrislambd.github.io"</span><span class="ot"> </span></span>
-<span id="cb7-397"><a href="#cb7-397" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo-id</span><span class="op">=</span><span class="st">"R_kgDOMV8crA"</span></span>
-<span id="cb7-398"><a href="#cb7-398" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category</span><span class="op">=</span><span class="st">"Announcements"</span></span>
-<span id="cb7-399"><a href="#cb7-399" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category-id</span><span class="op">=</span><span class="st">"DIC_kwDOMV8crM4CjbQW"</span></span>
-<span id="cb7-400"><a href="#cb7-400" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-mapping</span><span class="op">=</span><span class="st">"pathname"</span></span>
-<span id="cb7-401"><a href="#cb7-401" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-strict</span><span class="op">=</span><span class="st">"0"</span></span>
-<span id="cb7-402"><a href="#cb7-402" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-reactions-enabled</span><span class="op">=</span><span class="st">"1"</span></span>
-<span id="cb7-403"><a href="#cb7-403" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-emit-metadata</span><span class="op">=</span><span class="st">"0"</span></span>
-<span id="cb7-404"><a href="#cb7-404" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-input-position</span><span class="op">=</span><span class="st">"bottom"</span></span>
-<span id="cb7-405"><a href="#cb7-405" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-theme</span><span class="op">=</span><span class="st">"light"</span></span>
-<span id="cb7-406"><a href="#cb7-406" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-lang</span><span class="op">=</span><span class="st">"en"</span></span>
-<span id="cb7-407"><a href="#cb7-407" aria-hidden="true" tabindex="-1"></a><span class="ot">        crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
-<span id="cb7-408"><a href="#cb7-408" aria-hidden="true" tabindex="-1"></a><span class="ot">        async</span><span class="dt">&gt;</span></span>
-<span id="cb7-409"><a href="#cb7-409" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="cb7-410"><a href="#cb7-410" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb7-411"><a href="#cb7-411" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"fb-root"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb7-412"><a href="#cb7-412" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> async defer crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
-<span id="cb7-413"><a href="#cb7-413" aria-hidden="true" tabindex="-1"></a><span class="ot"> src</span><span class="op">=</span><span class="st">"https://connect.facebook.net/en_US/sdk.js#xfbml=1</span><span class="er">&amp;</span><span class="st">version=v20.0"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="cb7-414"><a href="#cb7-414" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"fb-comments"</span><span class="ot"> data-href</span><span class="op">=</span><span class="st">"https://mrislambd.github.io/dsandml/posts/naivebayes/"</span><span class="ot"> data-width</span><span class="op">=</span><span class="st">"750"</span><span class="ot"> data-numposts</span><span class="op">=</span><span class="st">"5"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span>  </span>
-<span id="cb7-415"><a href="#cb7-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-416"><a href="#cb7-416" aria-hidden="true" tabindex="-1"></a>**You may also like**  </span>
-<span id="cb7-417"><a href="#cb7-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-418"><a href="#cb7-418" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-419"><a href="#cb7-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-367"><a href="#cb7-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-368"><a href="#cb7-368" aria-hidden="true" tabindex="-1"></a>**You may also like**  </span>
+<span id="cb7-369"><a href="#cb7-369" aria-hidden="true" tabindex="-1"></a></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

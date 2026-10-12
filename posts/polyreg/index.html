@@ -86,11 +86,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e6c6665dfdddd33494f60fc6ae848125.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-98e6688e65d9ff42c0108ad9622ebe5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-cc13196b022ca7e684462bdf41e32eeb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-afa571733b3577baf9b27c57bd6965cd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-98e6688e65d9ff42c0108ad9622ebe5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cc13196b022ca7e684462bdf41e32eeb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -581,7 +579,7 @@ SSE = (y - X\beta)^T(y - X\beta)
 <section id="python-implementation-of-polynomial-regression-one-variable" class="level3">
 <h3 class="anchored" data-anchor-id="python-implementation-of-polynomial-regression-one-variable">Python Implementation of Polynomial Regression (One Variable)</h3>
 <p>We use <code>PolynomialFeatures</code> from <code>Scikit-learn</code> to transform our input data <span class="math inline">\(X\)</span> to include polynomial terms (e.g., <span class="math inline">\(X^2, X^3\)</span>, etc.).</p>
-<div id="66a14392" class="cell" data-execution_count="1">
+<div id="72f12161" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
@@ -606,12 +604,12 @@ SSE = (y - X\beta)^T(y - X\beta)
 </div>
 </div>
 </div>
-<div id="c361a841" class="cell" data-execution_count="2">
+<div id="f50d2597" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> PolynomialFeatures(degree<span class="op">=</span><span class="dv">2</span>, interaction_only<span class="op">=</span><span class="va">False</span>, include_bias<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X_poly <span class="op">=</span> poly.fit_transform(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we fit a linear regression model on the transformed polynomial features.</p>
-<div id="e0dbc530" class="cell" data-execution_count="3">
+<div id="5ea5a2f5" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>model.fit(X_poly, y)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -627,7 +625,7 @@ Mean Squared Error: 9.447441952450275</code></pre>
 </div>
 </div>
 <p>Finally, let’s plot the polynomial curve that fits the data.</p>
-<div id="a9d9eec9" class="cell" data-execution_count="4">
+<div id="15303c07" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> operator</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sort_axis <span class="op">=</span> operator.itemgetter(<span class="dv">0</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>sorted_zip <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">zip</span>(X, y_pred), key<span class="op">=</span>sort_axis)</span>
@@ -651,7 +649,7 @@ Mean Squared Error: 9.447441952450275</code></pre>
 </div>
 </div>
 <p>We can evaluate the performance of the model by comparing the <strong>mean squared error (MSE)</strong> between the actual and predicted values:</p>
-<div id="577503be" class="cell" data-execution_count="5">
+<div id="4493ce62" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y, y_pred)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Squared Error: </span><span class="sc">{</span>mse<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -662,7 +660,7 @@ Mean Squared Error: 9.447441952450275</code></pre>
 <section id="python-implementation-of-polynomial-regression-two-variables" class="level3">
 <h3 class="anchored" data-anchor-id="python-implementation-of-polynomial-regression-two-variables">Python Implementation of Polynomial Regression (Two Variables)</h3>
 <p>We’ll generate some non-linear data and try to fit a polynomial regression model to it.</p>
-<div id="5e3c24b2" class="cell" data-execution_count="6">
+<div id="6cd1ac4e" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas.plotting <span class="im">import</span> scatter_matrix</span>
@@ -698,7 +696,7 @@ Mean Squared Error: 9.447441952450275</code></pre>
 </div>
 </div>
 <p>Since it’s clear that the relationships are not linear. So if we fit a linear regression model, it won’t be a good fit.</p>
-<div id="dac5dbae" class="cell" data-execution_count="7">
+<div id="11dd0970" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">'y'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df.y</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>model1 <span class="op">=</span> LinearRegression()</span>
@@ -719,7 +717,7 @@ Mean Squared Error: 9.447441952450275</code></pre>
 </div>
 </div>
 <p>Therefore, we generate some non linear features from the given data.</p>
-<div id="3a17f3fd" class="cell" data-execution_count="8">
+<div id="53fb2ae1" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'x1_squared'</span>]<span class="op">=</span>df.x1<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>scatter_matrix(df)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.gca().set_facecolor(<span class="st">'#f4f4f4'</span>) </span>
@@ -734,7 +732,7 @@ Mean Squared Error: 9.447441952450275</code></pre>
 </div>
 </div>
 <p>From this plot, we see that <span class="math inline">\(x1\)</span> is parabolic and <span class="math inline">\(x2\)</span> is linear in relationship with <span class="math inline">\(y\)</span>. So, how about a model that combines a linear and quadratic model?</p>
-<div id="56beadfe" class="cell" data-execution_count="9">
+<div id="305d808c" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">'y'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df.y</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>model2 <span class="op">=</span> LinearRegression()</span>
@@ -758,28 +756,6 @@ Mean Squared Error: 9.447441952450275</code></pre>
 <p style="text-align:justify">
 Polynomial regression is a powerful technique that extends the basic linear regression model to capture non-linear relationships between variables. By transforming the input data into polynomial terms, the model becomes more flexible, allowing it to better fit data that doesn’t follow a linear pattern.<br> <br> The mathematical derivation shows that polynomial regression is still linear in terms of its parameters, allowing us to use simple optimization techniques like ordinary least squares (OLS) for parameter estimation.<br> <br> In Python, using Scikit-learn makes it easy to implement polynomial regression. We can increase the degree of the polynomial to improve model accuracy, but we need to be careful of <strong>overfitting</strong>, where the model becomes too complex and fits the noise in the data rather than the underlying pattern.
 </p>
-<p><strong>Share on</strong></p>
-<div class="columns">
-<div class="column" style="width:33%;">
-<p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/polyreg/" target="_blank" style="color:#1877F2; text-decoration: none;"></a></p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/polyreg/" target="_blank" style="color:#1877F2; text-decoration: none;">
-</a><p><a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/polyreg/" target="_blank" style="color:#1877F2; text-decoration: none;"><i class="fa-brands fa-facebook fa-3x" aria-label="facebook"></i> </a></p>
-</div><div class="column" style="width:33%;">
-<p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/polyreg/" target="_blank" style="color:#0077B5; text-decoration: none;"></a></p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/polyreg/" target="_blank" style="color:#0077B5; text-decoration: none;">
-</a><p><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/polyreg/" target="_blank" style="color:#0077B5; text-decoration: none;"><i class="fa-brands fa-linkedin fa-3x" aria-label="linkedin"></i> </a></p>
-</div><div class="column" style="width:33%;">
-<p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/polyreg/" target="_blank" style="color:#1DA1F2; text-decoration: none;"></a></p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/polyreg/" target="_blank" style="color:#1DA1F2; text-decoration: none;">
-</a><p><a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/polyreg/" target="_blank" style="color:#1DA1F2; text-decoration: none;"><i class="fa-brands fa-twitter fa-3x" aria-label="twitter"></i> </a></p>
-</div>
-</div>
-<script src="https://giscus.app/client.js" data-repo="mrislambd/mrislambd.github.io" data-repo-id="R_kgDOMV8crA" data-category="Announcements" data-category-id="DIC_kwDOMV8crM4CjbQW" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<div id="fb-root">
-
-</div>
-<script async="" defer="" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v20.0"></script>
-<div class="fb-comments" data-href="https://mrislambd.github.io/dsandml/posts/polyreg/" data-width="750" data-numposts="5">
-
-</div>
 <p><strong>You may also like</strong></p>
 
 
@@ -791,7 +767,7 @@ Polynomial regression is a powerful technique that extends the basic linear regr
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791769068303" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
+<div class="g-col-1" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791779227814" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
 <a href="../../posts/ann-classification1/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -813,7 +789,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791769068304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="930">
+<div class="g-col-1" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmclMkNBcnRpZmljaWFsJTIwSW50ZWxsaWdlbmNl" data-listing-date-sort="1742860800000" data-listing-file-modified-sort="1791779227814" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="767">
 <a href="../../posts/ann-linreg/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -823,7 +799,7 @@ Tuesday, March 25, 2025
 <h5 class="no-anchor card-title listing-title">
 Artificial Neural Network (ANN) - Regression
 </h5>
-<div class="listing-reading-time card-text text-muted">5 min</div>
+<div class="listing-reading-time card-text text-muted">4 min</div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Rafiq Islam
@@ -835,7 +811,7 @@ Tuesday, March 25, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1791769068304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2300">
+<div class="g-col-1" data-index="2" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMFNjaWVuY2UlMkNCYXllc2lhbiUyMEluZmVyZW5jZSUyQ0JheWVzaWFuJTIwU3RhdGlzdGljcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1729555200000" data-listing-file-modified-sort="1791779227814" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2139">
 <a href="../../posts/bayesianclassification/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -845,7 +821,7 @@ Tuesday, March 25, 2025
 <h5 class="no-anchor card-title listing-title">
 Bayesian Probabilistic Models for Classification
 </h5>
-<div class="listing-reading-time card-text text-muted">12 min</div>
+<div class="listing-reading-time card-text text-muted">11 min</div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Rafiq Islam
@@ -961,6 +937,76 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+});
+</script>
+<script>
+/* Share buttons + comments heading, identical on every Rafiq Islam site.
+   Shown automatically on any page that has comments turned on
+   (comments: giscus: ... in a folder's _metadata.yml). Nothing to add by hand. */
+document.addEventListener("DOMContentLoaded", function () {
+  if (!document.getElementById("giscus-base-theme")) return;
+  var main = document.querySelector("main#quarto-document-content") || document.querySelector("main");
+  if (!main || main.querySelector(".share-block")) return;
+
+  var url = window.location.href.split("#")[0].split("?")[0];
+  var title = (document.querySelector("h1.title") || {}).textContent || document.title;
+  title = title.trim();
+  var u = encodeURIComponent(url), t = encodeURIComponent(title);
+
+  var targets = [
+    ["LinkedIn", "bi-linkedin", "https://www.linkedin.com/sharing/share-offsite/?url=" + u],
+    ["Facebook", "bi-facebook", "https://www.facebook.com/sharer/sharer.php?u=" + u],
+    ["X", "bi-twitter-x", "https://twitter.com/intent/tweet?url=" + u + "&text=" + t],
+    ["Email", "bi-envelope", "mailto:?subject=" + t + "&body=" + u]
+  ];
+
+  var block = document.createElement("section");
+  block.className = "share-block";
+  block.setAttribute("aria-label", "Share and comment");
+
+  var row = document.createElement("div");
+  row.className = "share-bar";
+  var label = document.createElement("span");
+  label.className = "share-label";
+  label.textContent = "Share";
+  row.appendChild(label);
+
+  targets.forEach(function (s) {
+    var a = document.createElement("a");
+    a.className = "share-btn";
+    a.href = s[2];
+    a.innerHTML = '<i class="bi ' + s[1] + '" aria-hidden="true"></i><span>' + s[0] + "</span>";
+    if (s[0] !== "Email") { a.target = "_blank"; a.rel = "noopener noreferrer"; }
+    a.setAttribute("aria-label", "Share on " + s[0]);
+    row.appendChild(a);
+  });
+
+  var copy = document.createElement("button");
+  copy.type = "button";
+  copy.className = "share-btn";
+  copy.innerHTML = '<i class="bi bi-link-45deg" aria-hidden="true"></i><span>Copy link</span>';
+  copy.addEventListener("click", function () {
+    var done = function () {
+      var s = copy.querySelector("span"); s.textContent = "Copied";
+      setTimeout(function () { s.textContent = "Copy link"; }, 1600);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(done, done);
+    } else {
+      var f = document.createElement("textarea");
+      f.value = url; f.style.position = "fixed"; f.style.opacity = "0";
+      document.body.appendChild(f); f.select(); document.execCommand("copy"); f.remove(); done();
+    }
+  });
+  row.appendChild(copy);
+  block.appendChild(row);
+
+  var heading = document.createElement("p");
+  heading.className = "comments-title";
+  heading.textContent = "Comments";
+  block.appendChild(heading);
+
+  main.appendChild(block);
 });
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1431,7 +1477,39 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
-  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+  </script>
+<input type="hidden" id="giscus-base-theme" value="noborder_light">
+<input type="hidden" id="giscus-alt-theme" value="noborder_dark">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "rispace/rispace.github.io";
+    script.dataset.repoId = "R_kgDOMV8crA";
+    script.dataset.category = "Announcements";
+    script.dataset.categoryId = "DIC_kwDOMV8crM4CjbQW";
+    script.dataset.mapping = "pathname";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Polynomial Regression"</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2024-09-20"</span></span>
@@ -1741,56 +1819,8 @@ document.addEventListener("DOMContentLoaded", function () {
 <span id="cb13-325"><a href="#cb13-325" aria-hidden="true" tabindex="-1"></a>In Python, using Scikit-learn makes it easy to implement polynomial regression. We can increase the degree of the polynomial to improve model accuracy, but we need to be careful of **overfitting**, where the model becomes too complex and fits the noise in the data rather than the underlying pattern.</span>
 <span id="cb13-326"><a href="#cb13-326" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span> </span>
 <span id="cb13-327"><a href="#cb13-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-328"><a href="#cb13-328" aria-hidden="true" tabindex="-1"></a>**Share on**  </span>
-<span id="cb13-329"><a href="#cb13-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-330"><a href="#cb13-330" aria-hidden="true" tabindex="-1"></a>::::{.columns}</span>
-<span id="cb13-331"><a href="#cb13-331" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb13-332"><a href="#cb13-332" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/polyreg/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#1877F2; text-decoration: none;"</span><span class="dt">&gt;</span></span>
-<span id="cb13-333"><a href="#cb13-333" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-334"><a href="#cb13-334" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands facebook size=3x &gt;}}</span>
-<span id="cb13-335"><a href="#cb13-335" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb13-336"><a href="#cb13-336" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-337"><a href="#cb13-337" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb13-338"><a href="#cb13-338" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-339"><a href="#cb13-339" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb13-340"><a href="#cb13-340" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/polyreg/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#0077B5; text-decoration: none;"</span><span class="dt">&gt;</span></span>
-<span id="cb13-341"><a href="#cb13-341" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-342"><a href="#cb13-342" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands linkedin size=3x &gt;}}</span>
-<span id="cb13-343"><a href="#cb13-343" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb13-344"><a href="#cb13-344" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-345"><a href="#cb13-345" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb13-346"><a href="#cb13-346" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-347"><a href="#cb13-347" aria-hidden="true" tabindex="-1"></a>:::{.column width="33%"}</span>
-<span id="cb13-348"><a href="#cb13-348" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/polyreg/"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#1DA1F2; text-decoration: none;"</span><span class="dt">&gt;</span></span>
-<span id="cb13-349"><a href="#cb13-349" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-350"><a href="#cb13-350" aria-hidden="true" tabindex="-1"></a>{{&lt; fa brands twitter size=3x &gt;}}</span>
-<span id="cb13-351"><a href="#cb13-351" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb13-352"><a href="#cb13-352" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-353"><a href="#cb13-353" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb13-354"><a href="#cb13-354" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb13-355"><a href="#cb13-355" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-356"><a href="#cb13-356" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://giscus.app/client.js"</span></span>
-<span id="cb13-357"><a href="#cb13-357" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo</span><span class="op">=</span><span class="st">"mrislambd/mrislambd.github.io"</span><span class="ot"> </span></span>
-<span id="cb13-358"><a href="#cb13-358" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo-id</span><span class="op">=</span><span class="st">"R_kgDOMV8crA"</span></span>
-<span id="cb13-359"><a href="#cb13-359" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category</span><span class="op">=</span><span class="st">"Announcements"</span></span>
-<span id="cb13-360"><a href="#cb13-360" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category-id</span><span class="op">=</span><span class="st">"DIC_kwDOMV8crM4CjbQW"</span></span>
-<span id="cb13-361"><a href="#cb13-361" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-mapping</span><span class="op">=</span><span class="st">"pathname"</span></span>
-<span id="cb13-362"><a href="#cb13-362" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-strict</span><span class="op">=</span><span class="st">"0"</span></span>
-<span id="cb13-363"><a href="#cb13-363" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-reactions-enabled</span><span class="op">=</span><span class="st">"1"</span></span>
-<span id="cb13-364"><a href="#cb13-364" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-emit-metadata</span><span class="op">=</span><span class="st">"0"</span></span>
-<span id="cb13-365"><a href="#cb13-365" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-input-position</span><span class="op">=</span><span class="st">"bottom"</span></span>
-<span id="cb13-366"><a href="#cb13-366" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-theme</span><span class="op">=</span><span class="st">"light"</span></span>
-<span id="cb13-367"><a href="#cb13-367" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-lang</span><span class="op">=</span><span class="st">"en"</span></span>
-<span id="cb13-368"><a href="#cb13-368" aria-hidden="true" tabindex="-1"></a><span class="ot">        crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
-<span id="cb13-369"><a href="#cb13-369" aria-hidden="true" tabindex="-1"></a><span class="ot">        async</span><span class="dt">&gt;</span></span>
-<span id="cb13-370"><a href="#cb13-370" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="cb13-371"><a href="#cb13-371" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-372"><a href="#cb13-372" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"fb-root"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb13-373"><a href="#cb13-373" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> async defer crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
-<span id="cb13-374"><a href="#cb13-374" aria-hidden="true" tabindex="-1"></a><span class="ot"> src</span><span class="op">=</span><span class="st">"https://connect.facebook.net/en_US/sdk.js#xfbml=1</span><span class="er">&amp;</span><span class="st">version=v20.0"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="cb13-375"><a href="#cb13-375" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"fb-comments"</span><span class="ot"> data-href</span><span class="op">=</span><span class="st">"https://mrislambd.github.io/dsandml/posts/polyreg/"</span><span class="ot"> data-width</span><span class="op">=</span><span class="st">"750"</span><span class="ot"> data-numposts</span><span class="op">=</span><span class="st">"5"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb13-376"><a href="#cb13-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-377"><a href="#cb13-377" aria-hidden="true" tabindex="-1"></a>**You may also like**</span>
+<span id="cb13-328"><a href="#cb13-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-329"><a href="#cb13-329" aria-hidden="true" tabindex="-1"></a>**You may also like**</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
