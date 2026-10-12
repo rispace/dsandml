@@ -171,7 +171,6 @@ The ROC-AUC curve helps visualize the performance of a classification model by p
 ### Summary of the Metrices  
 
 
-
 | Metric | Formula |  
 |--------|---------|  
 | Precision: | $\frac{TP}{TP+FP}$ |  
@@ -182,7 +181,6 @@ The ROC-AUC curve helps visualize the performance of a classification model by p
 | Total Error Rate: | $\frac{FP+FN}{TN+TP+FN+FP}$ |  
 | Accuracy: | $\frac{TP+TN}{TN+TP+FN+FP}$ |  
  
-
 
 
 ---
@@ -458,56 +456,6 @@ print(f'MCC: {mcc:.4f}')
 - [Scikit-learn Documentation](https://scikit-learn.org/stable/user_guide.html){target="_blank" style="text-decoration:none"}
 - [Precision-Recall vs ROC Curves article by *Sebastian Raschka*](https://sebastianraschka.com/faq/docs/roc-vs-pr.html){target="_blank" style="text-decoration:none"}  
 - [F1 Score Explained *towardsdatascience.com* blog post](https://towardsdatascience.com/f1-score-what-is-it-and-how-to-use-it-444b04d9aad8){target="_blank" style="text-decoration:none"}
-
-
-**Share on**
-
-::::{.columns}
-:::{.column width="33%"}
-<a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/classificationmetrics/" target="_blank" style="color:#1877F2; text-decoration: none;">
- 
-{{< fa brands facebook size=3x >}}
-</a>
- 
-:::
- 
-:::{.column width="33%"}
-<a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/classificationmetrics/" target="_blank" style="color:#0077B5; text-decoration: none;">
- 
-{{< fa brands linkedin size=3x >}}
-</a>
- 
-:::
- 
-:::{.column width="33%"}
-<a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/classificationmetrics/" target="_blank" style="color:#1DA1F2; text-decoration: none;">
- 
-{{< fa brands twitter size=3x >}}
-</a>
- 
-:::
-::::
- 
-<script src="https://giscus.app/client.js"
-        data-repo="mrislambd/mrislambd.github.io" 
-        data-repo-id="R_kgDOMV8crA"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMV8crM4CjbQW"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="light"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
- 
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
- src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0"></script>
-<div class="fb-comments" data-href="https://mrislambd.github.io/dsandml/posts/classificationmetrics/" data-width="750" data-numposts="5"></div>
 
 
 ---  

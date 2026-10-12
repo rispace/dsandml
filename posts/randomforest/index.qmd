@@ -122,7 +122,6 @@ Random Forest makes few assumptions about the data, making it highly flexible. S
 - **Non-linearity:** Random Forest can handle non-linear relationships between features and the target.
 
 
-
 ## Advantages of Random Forest
 
 - **Reduction of Overfitting:** Random Forest reduces overfitting by averaging the predictions of multiple trees.
@@ -130,7 +129,6 @@ Random Forest makes few assumptions about the data, making it highly flexible. S
 - **Robust to Noise:** It is relatively resistant to outliers and noise due to its ensemble nature.
 - **Works with Categorical & Continuous Variables:** Random Forest can handle both categorical and continuous data types.
 - **Feature Importance:** It provides an estimate of feature importance, allowing for better interpretability of models.
-
 
 
 ## Disadvantages of Random Forest
@@ -331,57 +329,6 @@ Random Forest is a highly flexible, non-parametric machine learning algorithm th
 3. Hastie, T., Tibshirani, R., & Friedman, J. (2009). "The Elements of Statistical Learning". Springer Series in Statistics.
 
 
-**Share on**  
-
-::::{.columns}
-:::{.column width="33%"}
-<a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/randomforest/" target="_blank" style="color:#1877F2; text-decoration: none;">
- 
-{{< fa brands facebook size=3x >}}
-</a>
- 
-:::
- 
-:::{.column width="33%"}
-<a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/randomforest/" target="_blank" style="color:#0077B5; text-decoration: none;">
- 
-{{< fa brands linkedin size=3x >}}
-</a>
- 
-:::
- 
-:::{.column width="33%"}
-<a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/randomforest/" target="_blank" style="color:#1DA1F2; text-decoration: none;">
- 
-{{< fa brands twitter size=3x >}}
-</a>
- 
-:::
-::::
- 
-<script src="https://giscus.app/client.js"
-        data-repo="mrislambd/mrislambd.github.io" 
-        data-repo-id="R_kgDOMV8crA"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMV8crM4CjbQW"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="light"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
- 
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
- src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0"></script>
-<div class="fb-comments" data-href="https://mrislambd.github.io/dsandml/posts/randomforest/" data-width="750" data-numposts="5"></div>
-
 **You may also like**  
-
-
 
 

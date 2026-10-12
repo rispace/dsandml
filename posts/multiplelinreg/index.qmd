@@ -169,7 +169,6 @@ The update rule comes from the idea of moving the parameter vector $\beta$ in th
 3. **Iterative Update**: Starting from an initial guess $\beta_0$, we repeatedly apply the update rule until the algorithm converges, meaning that the changes in $\beta_k$ become negligible, and $\beta_k$ is close to the optimal value $\beta^*$.
 
 
-
 ### Stochastic Gradient Descent (SGD)
 
 <p style="text-align: justify">
@@ -204,7 +203,6 @@ Where:
 
 - $i_k$ is the index of a randomly selected data point at iteration $k$.
 - $\nabla f_{i_k}(\beta_k)$ is the gradient of the cost function with respect to the parameter $\beta_k$, evaluated only at the data point indexed by $i_k$.
-
 
 
 ## Python Execution  
@@ -407,57 +405,6 @@ So the model parameters: slope $\beta_0=$ `{python} theta[0]` and coefficients $
 Up next [knn regression](/posts/knn/index.qmd)
 
 ---
-
-**Share on**  
-
-::::{.columns}
-:::{.column width="33%"}
-<a href="https://www.facebook.com/sharer.php?u=https://mrislambd.github.io/dsandml/posts/multiplelinreg/" target="_blank" style="color:#1877F2; text-decoration: none;">
- 
-{{< fa brands facebook size=3x >}}
-</a>
- 
-:::
- 
-:::{.column width="33%"}
-<a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mrislambd.github.io/dsandml/posts/multiplelinreg/" target="_blank" style="color:#0077B5; text-decoration: none;">
- 
-{{< fa brands linkedin size=3x >}}
-</a>
- 
-:::
- 
-:::{.column width="33%"}
-<a href="https://www.twitter.com/intent/tweet?url=https://mrislambd.github.io/dsandml/posts/multiplelinreg/" target="_blank" style="color:#1DA1F2; text-decoration: none;">
- 
-{{< fa brands twitter size=3x >}}
-</a>
- 
-:::
-::::
- 
-<script src="https://giscus.app/client.js"
-        data-repo="mrislambd/mrislambd.github.io" 
-        data-repo-id="R_kgDOMV8crA"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMV8crM4CjbQW"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="light"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
- 
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
- src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0"></script>
-<div class="fb-comments" data-href="https://mrislambd.github.io/dsandml/posts/multiplelinreg/" data-width="750" data-numposts="5"></div>
-
-
 
 
 **You may also like**
